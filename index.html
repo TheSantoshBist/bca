@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Technical Seminar - Unit 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --done-color: #10b981;
+            --pending-color: #f59e0b;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --border: #334155;
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .header-section {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .search-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+            max-width: 1350px;
+            margin: 0 auto;
+        }
+      
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+              .student-name::before {
+            content: ">_";
+            margin-right: 10px;
+            opacity: 0.5;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card.is-done { border-color: var(--done-color); border-left: 6px solid var(--done-color); }
+        .card.is-pending { border-left: 6px solid var(--pending-color); }
+
+        .status-badge {
+            align-self: flex-end;
+            font-size: 0.65rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .status-badge.done { background: rgba(16, 185, 129, 0.2); color: var(--done-color); }
+        .status-badge.pending { background: rgba(245, 158, 11, 0.2); color: var(--pending-color); }
+
+        .student-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .score-pill {
+            background: var(--done-color);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .topic-box {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px dashed var(--border);
+        }
+
+        .topic-title { font-weight: 600; color: var(--accent); font-size: 0.95rem; }
+        .depth-desc { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 20px; flex-grow: 1; }
+        .meta-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { font-size: 0.7rem; background: #334155; padding: 3px 8px; border-radius: 4px; color: #cbd5e1; }
+    </style>
+</head>
+<body>
+
+<div class="header-section">
+    <h1>Java Unit 1 Seminar</h1>
+    <p>Presentation Schedule & Live Grading Dashboard</p>
+</div>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search student name or topic..." onkeyup="filterCards()">
+</div>
+
+<div class="container" id="cardContainer"></div>
+
+<script>
+    const data = [
+        { name: "Himesh Nath", topic: "JVM Architecture Deep Dive", depth: "Explain Class Loader, JVM Memory (Heap/Stack), and Execution Engine.", isDone: false, score: null, tech: ["Digital Slides", "Whiteboard"] },
+        { name: "Prashant Paneru", topic: "Encapsulation & Abstraction", depth: "Explain data hiding with code. Why use private variables?", isDone: false, score: null, tech: ["Digital Slides", "Marker"] },
+        { name: "Sumit Rokaya", topic: "Inheritance & Polymorphism", depth: "Method Overloading vs. Overriding. Java's 'No Multiple Inheritance' rule.", isDone: false, score: null, tech: ["Live Coding", "Digital Slides"] },
+        { name: "Ravi Prasad Kalauni", topic: "The Magic of Bytecode", depth: "Explain JIT Compilation and the .class file structure.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Puja Bhatt", topic: "POP vs. OOP Paradigm", depth: "Detailed comparison between Procedure vs Object oriented approaches.", isDone: false, score: null, tech: ["Whiteboard", "Digital Slides"] },
+        { name: "Himanshu Pandeya", topic: "Advanced Scanner Class", depth: "Handling complex user inputs and input validation logic.", isDone: false, score: null, tech: ["Live Coding"] },
+        { name: "Jeevan Bhatta", topic: "C++ vs. Java: Technical Shift", depth: "Focus on Pointers, Garbage Collection, and Platform Neutrality.", isDone: false, score: null, tech: ["Digital Slides", "Marker"] },
+        { name: "Deepak Bohara", topic: "JDK vs JRE vs JVM Stack", depth: "Diagram explaining how these three interact for a developer.", isDone: false, score: null, tech: ["Whiteboard", "Digital Slides"] },
+        { name: "Parwati Kumari Saud", topic: "The Compilation Lifecycle", depth: "From Source Code (.java) to Machine Code via Bytecode.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Prerana Bhatt", topic: "Main Method Decoded", depth: "Word-by-word breakdown: public, static, void, main, args.", isDone: false, score: null, tech: ["Whiteboard"] },
+        { name: "Monika Bhatt", topic: "Naming Conventions", depth: "Rules for naming Classes, Methods, Variables, and Packages.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Samikshya Bhatt", topic: "Object Lifecycle", depth: "How objects are created using 'new' and stored in memory.", isDone: false, score: null, tech: ["Digital Slides", "Marker"] },
+        { name: "Mahesh Prasad Bhatt", topic: "Class vs Object", depth: "Logical Blueprint (Class) vs Physical Instance (Object).", isDone: false, score: null, tech: ["Whiteboard"] },
+        { name: "Sagar Bhatta", topic: "Security Features of Java", depth: "Explain Bytecode verifier and Security Manager.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Kabi Raj Bhatt", topic: "Robustness in Java", depth: "How Java handles errors and memory automatically.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Raksha Bhatt", topic: "Scanner Class Basics", depth: "Inputting Integer, Float, and String values safely.", isDone: false, score: null, tech: ["Live Coding", "Digital Slides"] },
+        { name: "Kusum Dhami", topic: "Simple vs Secure Features", depth: "Why Java is simple (no pointers) and why it's secure.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Laxmi Kumari Bhatta", topic: "JRE & Libraries", depth: "What libraries are inside JRE and why we need them.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Bishal Joshi", topic: "OOP Pillars Overview", depth: "General introduction to the 4 pillars of OOP.", isDone: false, score: null, tech: ["Digital Slides", "Marker"] },
+        { name: "Dipika Chand", topic: "History: The Green Team", depth: "Birth of Oak, Consumer Electronics vision, and name change.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Rohit Joshi", topic: "First Java Program Flow", depth: "Detailed look at a 'Hello World' program structure.", isDone: false, score: null, tech: ["Whiteboard"] },
+        { name: "Lochan Bhatta", topic: "Platform Independence", depth: "Detailed look at why Java is OS neutral.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Avinab Chand", topic: "Why Java? (Unit 1 Overview)", depth: "The primary advantages of Java over other languages.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Priti Joshi", topic: "Environment Setup", depth: "Difference between PATH and CLASSPATH variables.", isDone: false, score: null, tech: ["Live Demo"] },
+        { name: "Gayatri Bhatt", topic: "Syntax Rules & Structure", depth: "The basic rules for writing valid Java code.", isDone: false, score: null, tech: ["Whiteboard"] },
+        { name: "Prem Raj Pant", topic: "Compilation (javac vs java)", depth: "The difference between compiler tool and interpreter tool.", isDone: false, score: null, tech: ["Whiteboard", "Marker"] },
+        { name: "Sabina Joshi", topic: "System.out Deep Dive", depth: "What is System, what is out, and how println works.", isDone: false, score: null, tech: ["Whiteboard"] },
+        { name: "Hridayendra Chand", topic: "JDK Tooling Suite", depth: "Introduction to javac, java, and jar tools.", isDone: false, score: null, tech: ["Live Demo"] },
+        { name: "Bhuwan Joshi", topic: "High Performance in Java", depth: "Concept of JIT Compiler (Just-In-Time).", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Hemant Rawal", topic: "Java Versioning History", depth: "Major versions and the evolution of the language.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Nabin Karki", topic: "Interpreted Nature", depth: "Why Java is called both compiled and interpreted.", isDone: false, score: null, tech: ["Digital Slides", "Marker"] },
+        { name: "Pankaj Chand", topic: "POP vs OOP (Unit 1)", depth: "Fundamental differences between the two paradigms.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Aayush Thakurathi", topic: "Java History & Evolution", depth: "The timeline of Java from 1991 to present.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Aayush Ayer", topic: "Key Features of Java", depth: "Summarize top features like Robust, Secure, and Portable.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Ashish Bhatt", topic: "Bytecode Portability", depth: "How the .class file behaves on different hardware.", isDone: false, score: null, tech: ["Digital Slides"] },
+        { name: "Simon Joshi", topic: "Structure of Java Program", depth: "Order of statements: package, import, class, main method.", isDone: false, score: null, tech: ["Whiteboard", "Marker"] }
+    ];
+
+    function renderCards(filter = "") {
+        const container = document.getElementById('cardContainer');
+        container.innerHTML = "";
+        
+        data.filter(s => 
+            s.name.toLowerCase().includes(filter.toLowerCase()) || 
+            s.topic.toLowerCase().includes(filter.toLowerCase())
+        ).forEach(student => {
+            const card = `
+                <div class="card ${student.isDone ? 'is-done' : 'is-pending'}">
+                    <div class="status-badge ${student.isDone ? 'done' : 'pending'}">
+                        ${student.isDone ? 'Completed' : 'Upcoming'}
+                    </div>
+                    <div class="student-name">
+                        ${student.name} 
+                        ${student.isDone ? `<span class="score-pill">${student.score}/10</span>` : ''}
+                    </div>
+                    <div class="topic-box">
+                        <div class="topic-title">${student.topic}</div>
+                    </div>
+                    <div class="depth-desc"><strong>Target:</strong> ${student.depth}</div>
+                    <div class="meta-tags">
+                        <span class="tag">5-7 Min</span>
+                        ${student.tech.map(t => `<span class="tag">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+    }
+
+    function filterCards() {
+        const query = document.getElementById('searchInput').value;
+        renderCards(query);
+    }
+
+    renderCards();
+</script>
+
+</body>
+</html>
