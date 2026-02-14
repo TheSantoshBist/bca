@@ -156,44 +156,49 @@
 
 <script>
     // Data mapped from Unit 1 names to Unit 2 PDF Topics 
-    const data = [
-        { name: "Himesh Nath", topic: "Java Tokens & Identifiers", depth: "Breaking down code into keywords, literals, and identifiers.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Prashant Paneru", topic: "Primitive Data Types & Memory", depth: "Table of sizes (bits) and ranges for all 8 primitive types.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Sumit Rokaya", topic: "Type Casting: Narrowing vs. Widening", depth: "Implicit vs. Explicit conversion with code examples.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Ravi Prasad Kalauni", topic: "Arithmetic & Relational Operators", depth: "Hierarchy of operations and boolean logic results.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Puja Bhatt", topic: "The Ternary Operator", depth: "Replacing simple if-else with ?: syntax efficiently.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Himanshu Pandeya", topic: "Naming Conversions", depth: "Best practices for naming variables, constants, and methods.", isDone: false, score:null, tech: ["Digital Slides"] },
-        { name: "Jeevan Bhatta", topic: "Constants & the 'final' Keyword", depth: "How to declare unchangeable variables in Java.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Deepak Bohara", topic: "If-Else Ladder vs. Switch Case", depth: "When to use which for efficiency and readability.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Parwati Kumari Saud", topic: "The Switch Statement Evolution", depth: "Handling multiple cases and the default block.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Prerana Bhatt", topic: "While vs. Do-While Loops", depth: "Explaining 'exit-controlled' vs 'entry-controlled' logic.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Monika Bhatt", topic: "For Loop Anatomy", depth: "Initialization, Condition, and Increment/Decrement breakdown.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Samikshya Bhatt", topic: "Nested Loops & Pattern Logic", depth: "Developing logic for a simple star or number triangle.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Mahesh Prasad Bhatt", topic: "Jump Statements: Break & Continue", depth: "Controlling loop flow and skipping iterations.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Sagar Bhatta", topic: "Return Statement Logic", depth: "How values are passed back from methods to callers.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Kabi Raj Bhatt", topic: "Scanner Class for Input", depth: "Using next(), nextLine(), and nextInt() effectively.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Raksha Bhatt", topic: "1D Array Declaration & Init", depth: "Syntax for declaring, instantiating, and initializing arrays.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Kusum Dhami", topic: "Array Traversal Techniques", depth: "Using standard for loops vs the enhanced for-each loop.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Laxmi Kumari Bhatta", topic: "Memory Map of Arrays", depth: "Visualizing how arrays are stored in the heap memory.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Bishal Joshi", topic: "Finding Extremes in Arrays", depth: "Logic for finding the Largest and Smallest elements.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Dipika Chand", topic: "2D Array: The Matrix Structure", depth: "Handling rows and columns using nested loops.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Rohit Joshi", topic: "Jagged Arrays in Java", depth: "Creating arrays with varying column lengths.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Lochan Bhatta", topic: "Array Length vs String Length", depth: "Difference between .length property and .length() method.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Avinab Chand", topic: "String Immutability Concept", depth: "Why Strings cannot be changed once created in memory.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Priti Joshi", topic: "String Concatenation Methods", depth: "Using + operator vs .concat() method in logic.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Gayatri Bhatt", topic: "String Comparison Deep Dive", depth: "Fundamental differences between == and .equals().", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Prem Raj Pant", topic: "The StringBuffer Class", depth: "Mutability and common methods like append() and reverse().", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Sabina Joshi", topic: "String Search Methods", depth: "Using indexOf(), lastIndexOf(), and contains().", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Hridayendra Chand", topic: "Escape Sequences & Formatting", depth: "Mastering \\n, \\t along with System.out.printf.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Bhuwan Joshi", topic: "Word Counting Logic", depth: "Practical application: counting words in a text string.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Hemant Rawal", topic: "Predefined Methods in Java", depth: "Overview of Math class methods (sqrt, pow, random).", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Nabin Karki", topic: "User-Defined Method Structure", depth: "Defining access modifiers, return types, and parameters.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Pankaj Chand", topic: "Static Methods vs Instance", depth: "Calling methods without creating an object instance.", isDone: false, score: null, tech: ["Digital Slides"] },
-        { name: "Aayush Thakurathi", topic: "Method Parameters & Arguments", depth: "Explaining 'Pass by Value' logic in Java.", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Aayush Ayer", topic: "Method Overloading (Basics)", depth: "Same name, different parameters within the same class.", isDone: false, score: null, tech: ["Live Code"] },
-        { name: "Ashish Bhatt", topic: "Recursion Fundamentals", depth: "A method calling itself (example: Factorial logic).", isDone: false, score: null, tech: ["Whiteboard"] },
-        { name: "Simon Joshi", topic: "Unit 2 Best Practices", depth: "Summarizing naming conventions and coding standards.", isDone: false, score: null, tech: ["Digital Slides"] }
-    ];
+const data = [
+    // --- HIGH COMPLEXITY (For Toppers) ---
+    { name: "Himesh Nath", topic: "2D Array: The Matrix Structure", depth: "Handling rows and columns using nested loops.", isDone: false, score: null, tech: ["Whiteboard"]  },
+    { name: "Prashant Paneru", topic: "String Immutability Concept", depth: "Why Strings cannot be changed once created in memory.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Sumit Rokaya", topic: "Memory Map of Arrays", depth: "Visualizing how arrays are stored in the heap memory.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Ravi Prasad Kalauni", topic: "Jagged Arrays in Java", depth: "Creating arrays with varying column lengths.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Puja Bhatt", topic: "Method Parameters & Arguments", depth: "Explaining 'Pass by Value' logic in Java.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Himanshu Pandeya", topic: "Type Casting: Narrowing vs. Widening", depth: "Implicit vs. Explicit conversion with code examples.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Jeevan Bhatta", topic: "Nested Loops & Pattern Logic", depth: "Developing logic for a simple star or number triangle.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Deepak Bohara", topic: "Method Overloading (Basics)", depth: "Same name, different parameters within the same class.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Parwati Kumari Saud", topic: "Static Methods vs Instance", depth: "Calling methods without creating an object instance.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Prerana Bhatt", topic: "The StringBuffer Class", depth: "Mutability and common methods like append() and reverse().", isDone: false, score: null, tech: ["Live Code"] },
+
+    // --- INTERMEDIATE LOGIC ---
+    { name: "Monika Bhatt", topic: "User-Defined Method Structure", depth: "Defining access modifiers, return types, and parameters.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Samikshya Bhatt", topic: "Garbage Collection Concept", depth: "How Java automatically clears memory.", isDone: false, score: null, tech: ["Digital Slide"] },
+    { name: "Mahesh Prasad Bhatt", topic: "Finding Extremes in Arrays", depth: "Logic for finding the Largest and Smallest elements.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Sagar Bhatta", topic: "Return Statement Logic", depth: "How values are passed back from methods to callers.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Kabi Raj Bhatt", topic: "The Switch Statement Evolution", depth: "Handling multiple cases and the default block.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Raksha Bhatt", topic: "Word Counting Logic", depth: "Practical application: counting words in a text string.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Kusum Dhami", topic: "String Comparison Deep Dive", depth: "Fundamental differences between == and .equals().", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Laxmi Kumari Bhatta", topic: "Array Traversal Techniques", depth: "Using standard for loops vs the enhanced for-each loop.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Bishal Joshi", topic: "Jump Statements: Break & Continue", depth: "Controlling loop flow and skipping iterations.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Dipika Chand", topic: "The Ternary Operator", depth: "Replacing simple if-else with ?: syntax efficiently.", isDone: false, score: null, tech: ["Live Code"] },
+
+    // --- FUNDAMENTALS & SYNTAX ---
+    { name: "Rohit Joshi", topic: "While vs. Do-While Loops", depth: "Explaining 'exit-controlled' vs 'entry-controlled' logic.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Lochan Bhatta", topic: "For Loop Anatomy", depth: "Initialization, Condition, and Increment/Decrement breakdown.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Avinab Chand", topic: "1D Array Declaration & Init", depth: "Syntax for declaring, instantiating, and initializing arrays.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Priti Joshi", topic: "Scanner Class for Input", depth: "Using next(), nextLine(), and nextInt() effectively.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Gayatri Bhatt", topic: "Primitive Data Types & Memory", depth: "Table of sizes (bits) and ranges for all 8 primitive types.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Prem Raj Pant", topic: "Arithmetic & Relational Operators", depth: "Hierarchy of operations and boolean logic results.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Sabina Joshi", topic: "Array Length vs String Length", depth: "Difference between .length property and .length() method.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Hridayendra Chand", topic: "Java Tokens & Identifiers", depth: "Breaking down code into keywords, literals, and identifiers.", isDone: false, score: null, tech: ["Whiteboard"] },
+    { name: "Bhuwan Joshi", topic: "Escape Sequences & Formatting", depth: "Mastering \\n, \\t along with System.out.printf.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Hemant Rawal", topic: "String Search Methods", depth: "Using indexOf(), lastIndexOf(), and contains().", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Nabin Karki", topic: "Constants & the 'final' Keyword", depth: "How to declare unchangeable variables in Java.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Pankaj Chand", topic: "Predefined Methods in Java", depth: "Overview of Math class methods (sqrt, pow, random).", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Aayush Thakurathi", topic: "If-Else Ladder vs. Switch Case", depth: "When to use which for efficiency and readability.", isDone: false, score: null, tech: ["Digital Slides"] },
+    { name: "Aayush Ayer", topic: "Naming Conversions", depth: "Best practices for naming variables, constants, and methods.", isDone: false, score:null, tech: ["Digital Slides"] },
+    { name: "Ashish Bhatt", topic: "String Concatenation Methods", depth: "Using + operator vs .concat() method in logic.", isDone: false, score: null, tech: ["Live Code"] },
+    { name: "Simon Joshi", topic: "Unit 2 Best Practices", depth: "Summarizing naming conventions and coding standards.", isDone: false, score: null, tech: ["Digital Slides"] }
+];
 
     function renderCards(filter = "") {
         const container = document.getElementById('cardContainer');
@@ -235,4 +240,5 @@
 </script>
 
 </body>
+
 </html>
