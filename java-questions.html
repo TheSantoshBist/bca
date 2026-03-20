@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOP using Java — Important Questions & Model Answers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #0c0e14;
+    --surface: #13161f;
+    --surface2: #1a1e2e;
+    --border: #252a40;
+    --accent: #e8a020;
+    --accent2: #4ec9b0;
+    --accent3: #f44747;
+    --accent4: #569cd6;
+    --accent5: #b5cea8;
+    --accent6: #c586c0;
+    --text: #d4d8e8;
+    --text-dim: #6b7599;
+    --high: #f44747;
+    --med: #e8a020;
+    --low: #4ec9b0;
+    --code-bg: #0a0c12;
+    --java-orange: #e8a020;
+    --u1:#569cd6; --u2:#4ec9b0; --u3:#c586c0; --u4:#f44747; 
+    --u5:#b5cea8; --u6:#e8a020; --u7:#9cdcfe; --u8:#ce9178;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Serif', Georgia, serif;
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #08090f 0%, #101420 60%, #0a0c14 100%);
+    border-bottom: 3px solid var(--java-orange);
+    padding: 52px 44px 40px;
+    position: relative; overflow: hidden;
+  }
+  .header::after {
+    content:'';
+    position:absolute; top:-60px; right:-60px;
+    width:300px; height:300px; border-radius:50%;
+    background: radial-gradient(circle, rgba(232,160,32,0.07) 0%, transparent 70%);
+  }
+  .header-tag {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px; letter-spacing:4px; color:var(--java-orange);
+    text-transform:uppercase; margin-bottom:14px;
+  }
+  .header h1 {
+    font-family:'Syne',sans-serif;
+    font-size:3rem; font-weight:800; color:#fff;
+    line-height:1.1; margin-bottom:10px;
+  }
+  .header h1 span { color:var(--java-orange); }
+  .header-sub { color:var(--text-dim); font-size:13px; margin-top:10px; }
+  .header-meta { margin-top:22px; display:flex; gap:16px; flex-wrap:wrap; }
+  .meta-pill {
+    background:rgba(232,160,32,0.1); border:1px solid rgba(232,160,32,0.3);
+    border-radius:20px; padding:4px 14px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px;
+    color:var(--java-orange); letter-spacing:1px;
+  }
+
+  /* NAV */
+  .nav {
+    background:var(--surface); border-bottom:1px solid var(--border);
+    padding:0 44px; position:sticky; top:0; z-index:100;
+    display:flex; gap:0; overflow-x:auto;
+    scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+  }
+  .nav a {
+    display:block; padding:13px 16px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1px;
+    color:var(--text-dim); text-decoration:none;
+    border-bottom:2px solid transparent; white-space:nowrap;
+    transition:all 0.2s;
+  }
+  .nav a:hover { color:var(--java-orange); border-bottom-color:var(--java-orange); }
+
+  /* CONTAINER */
+  .container { max-width:1020px; margin:0 auto; padding:44px; }
+
+  /* ANALYSIS */
+  .analysis-box {
+    background:var(--surface); border:1px solid var(--border);
+    border-left:4px solid var(--java-orange); border-radius:10px;
+    padding:26px 30px; margin-bottom:44px;
+  }
+  .analysis-box h2 {
+    font-family:'Syne',sans-serif; font-size:1.15rem;
+    color:var(--java-orange); margin-bottom:16px;
+  }
+  .grid-4 {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:14px; margin-top:16px;
+  }
+  .a-card {
+    background:var(--code-bg); border:1px solid var(--border);
+    border-radius:6px; padding:14px 16px;
+  }
+  .a-card h4 {
+    font-family:'IBM Plex Mono',monospace; font-size:9px;
+    letter-spacing:2px; color:var(--accent2);
+    text-transform:uppercase; margin-bottom:8px;
+  }
+  .a-card p { font-size:12.5px; color:var(--text-dim); line-height:1.6; }
+
+  /* FREQUENCY TABLE */
+  .freq-table {
+    width:100%; border-collapse:collapse;
+    margin:16px 0; font-size:12.5px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .freq-table th {
+    background:var(--code-bg); color:var(--accent2);
+    padding:8px 12px; text-align:left;
+    border:1px solid var(--border);
+    font-size:10px; letter-spacing:1px;
+  }
+  .freq-table td {
+    padding:7px 12px; border:1px solid var(--border);
+    color:var(--text-dim);
+  }
+  .freq-table tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
+  .stars { color:var(--java-orange); letter-spacing:1px; }
+
+  /* LEGEND */
+  .legend {
+    display:flex; gap:20px; flex-wrap:wrap;
+    margin-bottom:30px; align-items:center;
+  }
+  .legend-item { display:flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; }
+  .dot { width:9px; height:9px; border-radius:50%; }
+
+  /* UNIT HEADER */
+  .unit-section { margin-bottom:60px; }
+  .unit-header {
+    display:flex; align-items:flex-start; gap:16px;
+    margin-bottom:26px; padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  .unit-badge {
+    flex-shrink:0; width:50px; height:50px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; font-weight:600; color:#fff;
+  }
+  .unit-info h2 {
+    font-family:'Syne',sans-serif; font-size:1.45rem; color:#fff; margin-bottom:4px;
+  }
+  .unit-info p { font-size:11px; color:var(--text-dim); font-family:'IBM Plex Mono',monospace; }
+
+  /* Q CARD */
+  .q-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; margin-bottom:18px; overflow:hidden;
+  }
+  .q-header {
+    padding:16px 20px; display:flex; align-items:center; gap:12px;
+    cursor:pointer; border-bottom:1px solid transparent;
+    transition:background 0.2s;
+  }
+  .q-header:hover { background:var(--surface2); }
+  .q-header.open { border-bottom-color:var(--border); }
+
+  .p-high { background:rgba(244,71,71,0.13); color:var(--high); border:1px solid rgba(244,71,71,0.3); }
+  .p-med  { background:rgba(232,160,32,0.11); color:var(--med);  border:1px solid rgba(232,160,32,0.3); }
+  .p-low  { background:rgba(78,201,176,0.11); color:var(--low);  border:1px solid rgba(78,201,176,0.3); }
+
+  .priority-badge {
+    font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:2px;
+    padding:3px 10px; border-radius:20px; text-transform:uppercase;
+    font-weight:600; flex-shrink:0;
+  }
+  .marks-badge {
+    font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--text-dim);
+    background:var(--code-bg); border:1px solid var(--border);
+    padding:3px 10px; border-radius:20px; flex-shrink:0;
+  }
+  .year-tag {
+    font-family:'IBM Plex Mono',monospace; font-size:8px; color:var(--accent2);
+    background:rgba(78,201,176,0.1); border:1px solid rgba(78,201,176,0.2);
+    padding:2px 8px; border-radius:20px; flex-shrink:0;
+  }
+  .q-title {
+    flex:1; font-size:13.5px; color:var(--text);
+    font-family:'IBM Plex Serif',serif; font-style:italic;
+  }
+  .toggle-icon {
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    color:var(--text-dim); flex-shrink:0;
+  }
+
+  .q-body { padding:26px 30px; display:none; }
+  .q-body.open { display:block; }
+
+  .q-text {
+    background:var(--surface2); border-left:3px solid var(--java-orange);
+    border-radius:4px; padding:13px 18px; margin-bottom:22px;
+    font-size:13.5px; color:#e8ecff; font-style:italic;
+  }
+
+  .answer-label {
+    font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:2px;
+    color:var(--accent2); text-transform:uppercase;
+    margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  .answer-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  .answer { font-size:13.5px; line-height:1.9; color:var(--text); }
+  .answer h4 {
+    font-family:'IBM Plex Mono',monospace; font-size:10px;
+    letter-spacing:1px; color:var(--java-orange);
+    text-transform:uppercase; margin:18px 0 8px;
+  }
+  .answer p { margin-bottom:10px; }
+  .answer ul, .answer ol { padding-left:22px; margin-bottom:10px; }
+  .answer li { margin-bottom:5px; }
+  .answer strong { color:#e8ecff; font-weight:600; }
+
+  pre {
+    background:var(--code-bg); border:1px solid var(--border);
+    border-radius:8px; padding:18px 20px; overflow-x:auto;
+    margin:14px 0;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; line-height:1.65;
+  }
+  /* Syntax colors — Java style (VS Code Dark+) */
+  .kw  { color:#569cd6; }   /* keywords: class, public, etc */
+  .kw2 { color:#c586c0; }   /* secondary kw: extends, implements */
+  .str { color:#ce9178; }   /* strings */
+  .cm  { color:#6a7388; font-style:italic; } /* comments */
+  .cl  { color:#4ec9b0; }   /* class names */
+  .fn  { color:#dcdcaa; }   /* method names */
+  .num { color:#b5cea8; }   /* numbers */
+  .ann { color:#9cdcfe; }   /* @annotations / variables */
+  .ty  { color:#4ec9b0; }   /* types */
+
+  .tip-box {
+    background:rgba(78,201,176,0.07); border:1px solid rgba(78,201,176,0.2);
+    border-radius:6px; padding:12px 16px; margin-top:14px;
+    font-size:12.5px; color:var(--accent2);
+  }
+  .tip-box strong { color:#6de8d0; }
+
+  .warn-box {
+    background:rgba(232,160,32,0.07); border:1px solid rgba(232,160,32,0.2);
+    border-radius:6px; padding:12px 16px; margin-top:14px;
+    font-size:12.5px; color:var(--java-orange);
+  }
+
+  hr.div { border:none; border-top:1px solid var(--border); margin:52px 0; }
+
+  .footer {
+    background:var(--surface); border-top:1px solid var(--border);
+    padding:22px 44px; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-dim);
+  }
+
+  @media(max-width:640px){
+    .container{padding:20px}
+    .header{padding:28px 20px}
+    .header h1{font-size:1.9rem}
+    .grid-4{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-tag">Pokhara University · BCA · Semester III · CMP215</div>
+  <h1>Object Oriented Programming<br><span>using Java</span></h1>
+  <div class="header-sub">Deep Analysis: 2022–2025 Papers + Full Syllabus · Perfect 7 & 8 Mark Answers · All Units</div>
+  <div class="header-meta">
+    <span class="meta-pill">8 UNITS · 48 HRS</span>
+    <span class="meta-pill">4 YEARS ANALYZED</span>
+    <span class="meta-pill">FULL CODE EXAMPLES</span>
+    <span class="meta-pill">EXAM-READY ANSWERS</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#analysis">📊 Analysis</a>
+  <a href="#unit1">U1: Intro</a>
+  <a href="#unit2">U2: Fundamentals</a>
+  <a href="#unit3">U3: OOP</a>
+  <a href="#unit4">U4: Inheritance</a>
+  <a href="#unit5">U5: Threading</a>
+  <a href="#unit6">U6: Exception+IO</a>
+  <a href="#unit7">U7: JDBC</a>
+  <a href="#unit8">U8: JavaFX</a>
+</nav>
+
+<div class="container">
+
+  <!-- ANALYSIS -->
+  <section id="analysis" class="unit-section">
+    <div class="analysis-box">
+      <h2>📊 Deep Pattern Analysis — 2022 to 2025</h2>
+      <div class="answer" style="margin-bottom:18px;">
+        <p>Exam: 7 questions. Q1–Q6 have part (a) = 8 marks and (b) = 7 marks. Q7 = "Any two short notes" (2×5 = 10 marks). Total = 100, Time = 3 hrs. The 2025 paper is titled <strong>"Object Oriented Programming using Java"</strong> (new name) while 2022–2024 were "Java Programming". The 2025 paper dropped: Applet, AWT, Swing GUI, Socket programming, and Generics — these are from the OLD syllabus and are <strong>unlikely to appear again</strong>.</p>
+      </div>
+
+      <table class="freq-table">
+        <tr>
+          <th>TOPIC</th>
+          <th>2022</th>
+          <th>2023</th>
+          <th>2024 Spr</th>
+          <th>2024 Fall</th>
+          <th>2025</th>
+          <th>VERDICT</th>
+        </tr>
+        <tr><td>Platform Independence / JVM / OOP Structure</td><td>✓</td><td>✓</td><td></td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>Arrays (1D, 2D, sorting)</td><td></td><td></td><td></td><td>✓</td><td>✓</td><td><span class="stars">★★★★</span></td></tr>
+        <tr><td>Strings + StringBuffer</td><td></td><td></td><td></td><td></td><td>✓</td><td><span class="stars">★★★★</span></td></tr>
+        <tr><td>Class + Constructor (Employee/Circle)</td><td></td><td></td><td></td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>Method Overloading vs Overriding</td><td></td><td></td><td></td><td>✓</td><td>✓</td><td><span class="stars">★★★★</span></td></tr>
+        <tr><td>Wrapper Class + Autoboxing</td><td></td><td></td><td></td><td></td><td>✓</td><td><span class="stars">★★★★</span></td></tr>
+        <tr><td>Inheritance (types + multiple via interface)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>Interface (Shape/Circle/Rectangle)</td><td></td><td></td><td></td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>Abstract Class</td><td></td><td></td><td>✓</td><td></td><td>✓</td><td><span class="stars">★★★★</span></td></tr>
+        <tr><td>Multithreading (Thread + Runnable)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>Exception Handling (user-defined)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>File I/O (read/write file)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>JDBC (connect + query DB)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td><span class="stars">★★★★★</span></td></tr>
+        <tr><td>JavaFX (architecture + Hello app)</td><td></td><td></td><td></td><td>✓</td><td>✓</td><td><span class="stars">★★★★</span></td></tr>
+        <tr><td>Package</td><td></td><td></td><td></td><td>✓</td><td></td><td><span class="stars">★★★</span></td></tr>
+        <tr><td>Collection Framework (ArrayList, Set)</td><td></td><td>✓</td><td></td><td>✓</td><td></td><td><span class="stars">★★★★</span></td></tr>
+      </table>
+
+      <div class="grid-4">
+        <div class="a-card">
+          <h4>Must-Prepare (Will Definitely Come)</h4>
+          <p>Platform Independence + JVM · Class+Constructor (Employee) · Inheritance+Interface · Multithreading · Exception (user-defined) · File I/O · JDBC</p>
+        </div>
+        <div class="a-card">
+          <h4>High Chance (Likely)</h4>
+          <p>Arrays (1D/2D) · Strings+StringBuffer · Abstract Class · Method Overriding vs Overloading · Wrapper Class+Autoboxing · JavaFX · Collection Framework</p>
+        </div>
+        <div class="a-card">
+          <h4>NEW Syllabus Only (2025+)</h4>
+          <p>JavaFX replaces Applet. OOP using Java course name. No Generics. No Socket. No AWT/Swing. Focus on core OOP, JavaFX, JDBC.</p>
+        </div>
+        <div class="a-card">
+          <h4>Q7 Short Notes — Best Bets</h4>
+          <p>Abstraction &amp; Polymorphism · Package · Collection Framework · Thread lifecycle · JDBC Drivers · JavaFX Architecture · Autoboxing · Finalize method</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-dim);">PRIORITY:</span>
+      <span class="legend-item"><span class="dot" style="background:var(--high)"></span>HIGH — Very likely</span>
+      <span class="legend-item"><span class="dot" style="background:var(--med)"></span>MEDIUM — Good chance</span>
+      <span class="legend-item"><span class="dot" style="background:var(--low)"></span>LOW — Know basics</span>
+    </div>
+  </section>
+
+  <!-- ========== UNIT 1 ========== -->
+  <section id="unit1" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u1);">U1</div>
+      <div class="unit-info">
+        <h2>Introduction to Java Programming</h2>
+        <p>4 hrs · Platform Independence · JVM · JDK · OOP Concepts · Compile & Execute</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2022·2023·2024·2025</span>
+        <span class="q-title">What is Platform Independence? Write steps to compile and execute a Java program with diagram.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What do you mean by platform independence? Write down the steps to compile and execute java program with necessary diagram. / What is the "Write Once Run Anywhere" feature of Java? Explain with JVM architecture.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Platform Independence in Java</h4>
+          <p><strong>Platform independence</strong> means a Java program, once written and compiled, can run on any operating system or hardware without modification. This is Java's most famous feature, described by Sun Microsystems as <strong>"Write Once, Run Anywhere" (WORA)</strong>.</p>
+          <p>Traditional languages like C/C++ compile source code directly into machine code specific to an OS (Windows, Linux, Mac). Java works differently — it compiles into an intermediate format called <strong>Bytecode</strong>, which is platform-neutral. Each OS has a <strong>JVM (Java Virtual Machine)</strong> that reads and executes this bytecode. So the same bytecode runs on any OS that has a JVM installed.</p>
+
+          <h4>Key Components</h4>
+          <ul>
+            <li><strong>JDK (Java Development Kit):</strong> The complete development environment. Contains tools to write, compile, and run Java programs. Includes the compiler (javac), JRE, and developer tools.</li>
+            <li><strong>JRE (Java Runtime Environment):</strong> Contains the JVM and libraries needed to run Java programs. Used by end-users who only want to run programs, not develop them.</li>
+            <li><strong>JVM (Java Virtual Machine):</strong> An abstract machine that reads Java bytecode and translates it into machine code for the underlying hardware. Each OS has its own JVM.</li>
+            <li><strong>Bytecode:</strong> The intermediate, platform-neutral code produced by the Java compiler (.class file).</li>
+          </ul>
+
+          <h4>Steps to Compile and Execute a Java Program</h4>
+          <pre><span class="cm">/* Step 1: Write the source code in a text editor */</span>
+<span class="cm">/* File: HelloWorld.java  (filename must match class name) */</span>
+
+<span class="kw">public class</span> <span class="cl">HelloWorld</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Hello, Pokhara University!"</span>);
+    }
+}</pre>
+          <pre><span class="cm">/* Step 2: Compile using javac command */</span>
+javac HelloWorld.java
+<span class="cm">/* This creates HelloWorld.class (bytecode file) */</span>
+
+<span class="cm">/* Step 3: Run using java command */</span>
+java HelloWorld
+<span class="cm">/* Output: Hello, Pokhara University! */</span></pre>
+
+          <h4>Diagram: Java Execution Process</h4>
+          <pre><span class="cm">Source Code (.java)
+       ↓  javac (Java Compiler)
+   Bytecode (.class)
+       ↓
+  ┌─────────────────────────────────────────┐
+  │            JVM (Platform-Specific)      │
+  │   ┌──────────┐  ┌────────────────────┐  │
+  │   │  Class   │  │  Execution Engine  │  │
+  │   │  Loader  │→ │  (Interprets +     │  │
+  │   └──────────┘  │   JIT Compiler)    │  │
+  │                 └────────────────────┘  │
+  └─────────────────────────────────────────┘
+       ↓
+  Machine Code runs on OS (Windows/Linux/Mac)</span></pre>
+
+          <p>The JVM on Windows produces Windows machine code. The JVM on Linux produces Linux machine code. But both read the same <strong>.class bytecode</strong>. This is why Java is platform-independent.</p>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always draw the diagram. Mention JDK → JRE → JVM relationship. The key phrase to use: "Bytecode is platform-neutral; JVM is platform-specific." This question appears every year — prepare it perfectly.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2024 Fall</span>
+        <span class="q-title">Describe the Structure of Java Programming and concepts of OOP with real world examples.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Describe the Structure of Java Programming and concepts of OOP with real world examples.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Structure of a Java Program</h4>
+          <p>A Java program has a well-defined structure. Every Java program must have at least one class, and execution begins from the <code>main()</code> method.</p>
+          <pre><span class="cm">// 1. Package declaration (optional)</span>
+<span class="kw">package</span> mypackage;
+
+<span class="cm">// 2. Import statements (optional)</span>
+<span class="kw">import</span> java.util.Scanner;
+
+<span class="cm">// 3. Class declaration (mandatory)</span>
+<span class="kw">public class</span> <span class="cl">MyProgram</span> {
+
+    <span class="cm">// 4. Instance variables (fields)</span>
+    <span class="kw">private</span> <span class="ty">String</span> name;
+    <span class="kw">private</span> <span class="ty">int</span> age;
+
+    <span class="cm">// 5. main() method — entry point of program</span>
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Java Program Structure!"</span>);
+    }
+}</pre>
+
+          <h4>Four Core OOP Concepts with Real-World Examples</h4>
+
+          <p><strong>1. Encapsulation</strong> — Wrapping data (variables) and methods together inside a class, and hiding internal details from the outside world using access modifiers (private, public).</p>
+          <p><em>Real-world example:</em> A car's engine is hidden under the hood (private). You interact with it only through the steering wheel and pedals (public methods). You don't need to know how the engine works internally.</p>
+          <pre><span class="kw">class</span> <span class="cl">BankAccount</span> {
+    <span class="kw">private double</span> balance;          <span class="cm">// hidden from outside</span>
+    <span class="kw">public void</span> <span class="fn">deposit</span>(<span class="ty">double</span> amt) { balance += amt; }
+    <span class="kw">public double</span> <span class="fn">getBalance</span>()       { <span class="kw">return</span> balance; }
+}</pre>
+
+          <p><strong>2. Inheritance</strong> — A child class (subclass) inherits properties and methods from a parent class (superclass) using the <code>extends</code> keyword. Promotes code reuse.</p>
+          <p><em>Real-world example:</em> "Vehicle" is a parent class. "Car" and "Bike" are child classes. They inherit common features (wheels, speed) but add their own (Car has 4 doors, Bike has 2 wheels).</p>
+          <pre><span class="kw">class</span> <span class="cl">Animal</span>    { <span class="kw">void</span> <span class="fn">eat</span>() { <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Eating..."</span>); } }
+<span class="kw">class</span> <span class="cl">Dog</span> <span class="kw2">extends</span> <span class="cl">Animal</span> { <span class="kw">void</span> <span class="fn">bark</span>(){ <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Woof!"</span>); } }</pre>
+
+          <p><strong>3. Polymorphism</strong> — One method name behaves differently depending on the object or arguments. Achieved through method overloading (compile-time) and method overriding (runtime).</p>
+          <p><em>Real-world example:</em> A "print" button on a printer — it prints documents, photos, or PDFs differently based on the file type, but the button (method call) is the same.</p>
+
+          <p><strong>4. Abstraction</strong> — Hiding complex implementation details and showing only the necessary interface to the user. Achieved using abstract classes and interfaces.</p>
+          <p><em>Real-world example:</em> When you press the "Start" button on a car, you don't need to know about fuel injection, engine timing, etc. The complexity is hidden; you just see the result.</p>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always write all 4 OOP concepts with a real-world example AND a small code snippet for each. This structure earns full marks.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 2 ========== -->
+  <section id="unit2" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u2);">U2</div>
+      <div class="unit-info">
+        <h2>Java Fundamental Concepts</h2>
+        <p>7 hrs · Arrays · Strings · StringBuffer · Methods · Control Statements</p>
+      </div>
+    </div>
+
+    <!-- Arrays -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2024 Fall</span>
+        <span class="q-title">Explain 1D and 2D arrays in Java with examples showing accessing and displaying elements.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Explain 1D and 2D array with the help of example explaining accessing and displaying the elements on an array.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is an Array?</h4>
+          <p>An <strong>array</strong> is a container object that holds a fixed number of values of the same data type. Each element in an array is accessed by its index number, starting from 0. Arrays are stored in contiguous memory locations.</p>
+
+          <h4>1D Array (One-Dimensional Array)</h4>
+          <p>A single row of elements. Think of it like a list or a single column in a table.</p>
+          <pre><span class="kw">public class</span> <span class="cl">OneDArray</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// Declaration and initialization of 1D array</span>
+        <span class="ty">int</span>[] marks = {85, 90, 75, 92, 68};
+
+        <span class="cm">// Accessing individual elements</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"First element: "</span> + marks[<span class="num">0</span>]); <span class="cm">// 85</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Third element: "</span> + marks[<span class="num">2</span>]); <span class="cm">// 75</span>
+
+        <span class="cm">// Displaying all elements using for loop</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"All Marks:"</span>);
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="num">0</span>; i &lt; marks.length; i++) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"marks["</span> + i + <span class="str">"] = "</span> + marks[i]);
+        }
+        <span class="cm">// Output: marks[0]=85, marks[1]=90, marks[2]=75, ...</span>
+    }
+}</pre>
+
+          <h4>2D Array (Two-Dimensional Array)</h4>
+          <p>An array of arrays — like a table with rows and columns (a matrix). Accessed using two indices: [row][column].</p>
+          <pre><span class="kw">public class</span> <span class="cl">TwoDArray</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// 2D array: 3 rows, 3 columns (3x3 matrix)</span>
+        <span class="ty">int</span>[][] matrix = {
+            {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>},
+            {<span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>},
+            {<span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>}
+        };
+
+        <span class="cm">// Accessing a specific element</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Row 0, Col 1: "</span> + matrix[<span class="num">0</span>][<span class="num">1</span>]); <span class="cm">// 2</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Row 2, Col 2: "</span> + matrix[<span class="num">2</span>][<span class="num">2</span>]); <span class="cm">// 9</span>
+
+        <span class="cm">// Displaying all elements using nested for loop</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Matrix:"</span>);
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="num">0</span>; i &lt; matrix.length; i++) {
+            <span class="kw">for</span> (<span class="ty">int</span> j = <span class="num">0</span>; j &lt; matrix[i].length; j++) {
+                <span class="ty">System</span>.out.<span class="fn">print</span>(matrix[i][j] + <span class="str">" "</span>);
+            }
+            <span class="ty">System</span>.out.<span class="fn">println</span>();
+        }
+        <span class="cm">/* Output:
+           1 2 3
+           4 5 6
+           7 8 9  */</span>
+    }
+}</pre>
+          <div class="tip-box"><strong>Exam Tip:</strong> Always mention index starts from 0. Show array.length for 1D, and matrix.length + matrix[i].length for 2D. Nested for loop is essential for 2D display.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strings + StringBuffer -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2025</span>
+        <span class="q-title">Explain Java Strings and StringBuffer with examples. How does StringBuffer differ from String?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Explain Java Strings and StringBuffer with examples. How does StringBuffer differ from String?</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Java String</h4>
+          <p>A <strong>String</strong> in Java is a sequence of characters. Strings are objects of the <code>java.lang.String</code> class. The most important property of String in Java is that it is <strong>immutable</strong> — once a String object is created, its value cannot be changed. Any modification creates a new String object in memory.</p>
+          <pre><span class="kw">public class</span> <span class="cl">StringDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="ty">String</span> s1 = <span class="str">"Hello"</span>;
+        <span class="ty">String</span> s2 = <span class="str">"World"</span>;
+
+        <span class="cm">// String methods</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(s1.<span class="fn">length</span>());        <span class="cm">// 5</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(s1.<span class="fn">toUpperCase</span>());   <span class="cm">// HELLO</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(s1.<span class="fn">charAt</span>(<span class="num">0</span>));       <span class="cm">// H</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(s1.<span class="fn">concat</span>(<span class="str">" World"</span>)); <span class="cm">// Hello World</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(s1.<span class="fn">equals</span>(s2));      <span class="cm">// false</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(s1.<span class="fn">substring</span>(<span class="num">1</span>, <span class="num">4</span>)); <span class="cm">// ell</span>
+
+        <span class="cm">// Immutability demo</span>
+        <span class="ty">String</span> s3 = s1 + <span class="str">" Java"</span>;  <span class="cm">// creates NEW object, s1 unchanged</span>
+    }
+}</pre>
+
+          <h4>StringBuffer</h4>
+          <p>A <strong>StringBuffer</strong> is a <strong>mutable</strong> sequence of characters. Unlike String, its content can be changed without creating new objects. It is used when a string needs to be modified many times (e.g., in loops). StringBuffer is also <strong>thread-safe</strong> (synchronized).</p>
+          <pre><span class="kw">public class</span> <span class="cl">StringBufferDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="ty">StringBuffer</span> sb = <span class="kw">new</span> <span class="ty">StringBuffer</span>(<span class="str">"Hello"</span>);
+
+        sb.<span class="fn">append</span>(<span class="str">" World"</span>);   <span class="cm">// modifies SAME object → "Hello World"</span>
+        sb.<span class="fn">insert</span>(<span class="num">5</span>, <span class="str">","</span>);      <span class="cm">// → "Hello, World"</span>
+        sb.<span class="fn">reverse</span>();           <span class="cm">// → "dlroW ,olleH"</span>
+        sb.<span class="fn">delete</span>(<span class="num">0</span>, <span class="num">5</span>);        <span class="cm">// removes chars 0-4</span>
+        sb.<span class="fn">replace</span>(<span class="num">0</span>, <span class="num">3</span>, <span class="str">"Hi"</span>); <span class="cm">// replaces range with "Hi"</span>
+
+        <span class="ty">System</span>.out.<span class="fn">println</span>(sb.<span class="fn">toString</span>()); <span class="cm">// convert back to String</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(sb.<span class="fn">length</span>());
+    }
+}</pre>
+
+          <h4>String vs StringBuffer — Key Differences</h4>
+          <pre><span class="cm">Feature        | String              | StringBuffer
+---------------|---------------------|----------------------
+Mutability     | Immutable           | Mutable
+Memory         | Creates new object  | Modifies same object
+               | on each change      |
+Performance    | Slow (for many      | Fast (no new objects)
+               | modifications)      |
+Thread Safety  | Yes (immutable)     | Yes (synchronized)
+Use Case       | Fixed strings       | Frequently modified
+When to use    | s = "abc"           | Loops, building text</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> The key difference to always mention: String is immutable, StringBuffer is mutable. Always show StringBuffer.append(), insert(), reverse(), delete() methods. Immutability means every change to String creates a new object — this wastes memory.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wrapper + Autoboxing -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2025</span>
+        <span class="q-title">What are Wrapper Classes? Explain Autoboxing and Unboxing with an example.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What are Wrapper class? Explain Auto boxing and unboxing with an example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What are Wrapper Classes?</h4>
+          <p>In Java, there are 8 primitive data types (int, double, char, boolean, etc.) that are not objects. However, Java's Collection Framework (like ArrayList) can only store objects, not primitives. <strong>Wrapper classes</strong> provide a way to use primitive data types as objects. Each primitive type has a corresponding wrapper class in <code>java.lang</code> package.</p>
+
+          <pre><span class="cm">Primitive Type  | Wrapper Class
+----------------|---------------
+byte            | Byte
+short           | Short
+int             | Integer
+long            | Long
+float           | Float
+double          | Double
+char            | Character
+boolean         | Boolean</span></pre>
+
+          <p>Wrapper classes also provide useful utility methods for conversion, parsing, and comparison.</p>
+          <pre><span class="ty">Integer</span> num = <span class="ty">Integer</span>.<span class="fn">valueOf</span>(<span class="num">25</span>);        <span class="cm">// int to Integer object</span>
+<span class="ty">int</span> x = num.<span class="fn">intValue</span>();                    <span class="cm">// Integer to int</span>
+<span class="ty">int</span> y = <span class="ty">Integer</span>.<span class="fn">parseInt</span>(<span class="str">"100"</span>);         <span class="cm">// String to int</span>
+<span class="ty">String</span> s = <span class="ty">Integer</span>.<span class="fn">toString</span>(<span class="num">50</span>);          <span class="cm">// int to String</span>
+<span class="ty">int</span> max = <span class="ty">Integer</span>.MAX_VALUE;              <span class="cm">// 2147483647</span></pre>
+
+          <h4>Autoboxing</h4>
+          <p><strong>Autoboxing</strong> is the automatic conversion of a primitive type to its corresponding wrapper class object. Java does this automatically — the programmer does not need to manually call valueOf() or a constructor.</p>
+          <pre><span class="cm">// WITHOUT autoboxing (old way)</span>
+<span class="ty">Integer</span> obj1 = <span class="ty">Integer</span>.<span class="fn">valueOf</span>(<span class="num">10</span>);
+
+<span class="cm">// WITH autoboxing (Java 5+) — automatic conversion</span>
+<span class="ty">Integer</span> obj2 = <span class="num">42</span>;  <span class="cm">// int 42 is automatically boxed to Integer</span>
+
+<span class="cm">// Autoboxing in Collections</span>
+java.util.<span class="ty">ArrayList</span>&lt;<span class="ty">Integer</span>&gt; list = <span class="kw">new</span> java.util.<span class="ty">ArrayList</span>&lt;&gt;();
+list.<span class="fn">add</span>(<span class="num">10</span>);  <span class="cm">// int 10 is autoboxed to Integer automatically</span>
+list.<span class="fn">add</span>(<span class="num">20</span>);</pre>
+
+          <h4>Unboxing</h4>
+          <p><strong>Unboxing</strong> is the reverse — the automatic conversion of a wrapper class object back to its corresponding primitive type.</p>
+          <pre><span class="ty">Integer</span> wrapped = <span class="num">100</span>;      <span class="cm">// autoboxing: int → Integer</span>
+<span class="ty">int</span> primitive = wrapped;    <span class="cm">// unboxing: Integer → int (automatic)</span>
+
+<span class="cm">// Full demonstration</span>
+<span class="ty">Integer</span> a = <span class="num">5</span>;             <span class="cm">// autoboxing</span>
+<span class="ty">Integer</span> b = <span class="num">10</span>;            <span class="cm">// autoboxing</span>
+<span class="ty">int</span> sum = a + b;           <span class="cm">// unboxing: a and b converted to int for + operator</span>
+<span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Sum = "</span> + sum); <span class="cm">// Sum = 15</span></pre>
+
+          <h4>Why Autoboxing/Unboxing is Important</h4>
+          <ul>
+            <li>Makes code cleaner and shorter — no need for explicit conversion calls.</li>
+            <li>Allows primitives to be used seamlessly in Collections (ArrayList, HashMap, etc.).</li>
+            <li>Reduces programmer errors from manual boxing/unboxing.</li>
+          </ul>
+          <div class="warn-box"><strong>Note:</strong> Autoboxing can cause performance issues in tight loops because many wrapper objects are created. Also, comparing Integer objects with == compares references (not values) — always use .equals() for comparison.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 3 ========== -->
+  <section id="unit3" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u3);">U3</div>
+      <div class="unit-info">
+        <h2>Java Object Oriented Programming</h2>
+        <p>8 hrs · Class · Object · Constructor · Encapsulation · Method Overloading · Visibility Modes</p>
+      </div>
+    </div>
+
+    <!-- Employee Class Constructor -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2024 Fall</span>
+        <span class="q-title">Define class. Create Employee class with default and parameterized constructors. Write main() and create two objects.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define class. Create a class Employee having two constructors to set default and parameterized value to name, designation and salary instance variables, and displayInfo() method. Also write main method inside same class and create two objects for both constructors, finally call displayInfo() to show result.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a Class?</h4>
+          <p>A <strong>class</strong> is a blueprint or template for creating objects. It defines the properties (instance variables/fields) and behaviors (methods) that objects of the class will have. A class is not a real object itself — it describes what objects of that type will look like.</p>
+          <h4>What is a Constructor?</h4>
+          <p>A <strong>constructor</strong> is a special method in a class that is automatically called when an object is created using the <code>new</code> keyword. It has the same name as the class and no return type. Constructors are used to initialize instance variables. There are two types: <strong>Default Constructor</strong> (no parameters) and <strong>Parameterized Constructor</strong> (with parameters).</p>
+
+          <pre><span class="kw">public class</span> <span class="cl">Employee</span> {
+
+    <span class="cm">// Instance variables (fields)</span>
+    <span class="kw">private</span> <span class="ty">String</span> name;
+    <span class="kw">private</span> <span class="ty">String</span> designation;
+    <span class="kw">private</span> <span class="ty">double</span> salary;
+
+    <span class="cm">// Default Constructor — sets default values</span>
+    <span class="kw">public</span> <span class="fn">Employee</span>() {
+        name        = <span class="str">"Unknown"</span>;
+        designation = <span class="str">"Not Assigned"</span>;
+        salary      = <span class="num">0.0</span>;
+    }
+
+    <span class="cm">// Parameterized Constructor — sets values passed by user</span>
+    <span class="kw">public</span> <span class="fn">Employee</span>(<span class="ty">String</span> n, <span class="ty">String</span> d, <span class="ty">double</span> s) {
+        name        = n;
+        designation = d;
+        salary      = s;
+    }
+
+    <span class="cm">// Method to display employee information</span>
+    <span class="kw">public void</span> <span class="fn">displayInfo</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"--- Employee Info ---"</span>);
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Name        : "</span> + name);
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Designation : "</span> + designation);
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Salary      : "</span> + salary);
+    }
+
+    <span class="cm">// Main method — entry point</span>
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// Object 1: using Default Constructor</span>
+        <span class="cl">Employee</span> emp1 = <span class="kw">new</span> <span class="cl">Employee</span>();
+        emp1.<span class="fn">displayInfo</span>();
+
+        <span class="cm">// Object 2: using Parameterized Constructor</span>
+        <span class="cl">Employee</span> emp2 = <span class="kw">new</span> <span class="cl">Employee</span>(<span class="str">"Ram Sharma"</span>, <span class="str">"Software Engineer"</span>, <span class="num">75000.00</span>);
+        emp2.<span class="fn">displayInfo</span>();
+    }
+}
+
+<span class="cm">/* Output:
+--- Employee Info ---
+Name        : Unknown
+Designation : Not Assigned
+Salary      : 0.0
+--- Employee Info ---
+Name        : Ram Sharma
+Designation : Software Engineer
+Salary      : 75000.0  */</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> This exact question (Employee class, two constructors, displayInfo) appeared in 2025. Always show the output comment at the end. Use private fields — this also demonstrates Encapsulation.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Method Overloading vs Overriding -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2024 Fall</span>
+        <span class="q-title">Compare Method Overriding and Method Overloading with example programs.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Compare Method Overriding and Method Overloading with an example program.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Method Overloading (Compile-Time Polymorphism)</h4>
+          <p><strong>Method overloading</strong> is when two or more methods in the <strong>same class</strong> have the <strong>same name</strong> but different parameters (different number, type, or order of parameters). Java decides which method to call at compile time based on the arguments provided. It is also called <strong>static polymorphism</strong>.</p>
+          <pre><span class="kw">class</span> <span class="cl">Calculator</span> {
+
+    <span class="cm">// Same method name 'add' with different parameters</span>
+    <span class="kw">int</span> <span class="fn">add</span>(<span class="ty">int</span> a, <span class="ty">int</span> b) {
+        <span class="kw">return</span> a + b;
+    }
+
+    <span class="kw">double</span> <span class="fn">add</span>(<span class="ty">double</span> a, <span class="ty">double</span> b) {  <span class="cm">// different data type</span>
+        <span class="kw">return</span> a + b;
+    }
+
+    <span class="kw">int</span> <span class="fn">add</span>(<span class="ty">int</span> a, <span class="ty">int</span> b, <span class="ty">int</span> c) {    <span class="cm">// different number of params</span>
+        <span class="kw">return</span> a + b + c;
+    }
+
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="cl">Calculator</span> c = <span class="kw">new</span> <span class="cl">Calculator</span>();
+        <span class="ty">System</span>.out.<span class="fn">println</span>(c.<span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>));          <span class="cm">// 8</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(c.<span class="fn">add</span>(<span class="num">2.5</span>, <span class="num">3.5</span>));      <span class="cm">// 6.0</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(c.<span class="fn">add</span>(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>));       <span class="cm">// 6</span>
+    }
+}</pre>
+
+          <h4>Method Overriding (Runtime Polymorphism)</h4>
+          <p><strong>Method overriding</strong> is when a <strong>child class</strong> provides its own implementation for a method that is already defined in its <strong>parent class</strong>. The method must have the same name, same return type, and same parameters. Java decides which version to call at runtime based on the object type. It is also called <strong>dynamic polymorphism</strong>.</p>
+          <pre><span class="kw">class</span> <span class="cl">Animal</span> {
+    <span class="kw">void</span> <span class="fn">sound</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Animal makes a sound"</span>);
+    }
+}
+
+<span class="kw">class</span> <span class="cl">Dog</span> <span class="kw2">extends</span> <span class="cl">Animal</span> {
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">sound</span>() {  <span class="cm">// overrides parent method</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Dog barks: Woof!"</span>);
+    }
+}
+
+<span class="kw">class</span> <span class="cl">Cat</span> <span class="kw2">extends</span> <span class="cl">Animal</span> {
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">sound</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Cat meows: Meow!"</span>);
+    }
+}
+
+<span class="kw">class</span> <span class="cl">Main</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="cl">Animal</span> a1 = <span class="kw">new</span> <span class="cl">Dog</span>();  <span class="cm">// parent ref, child object</span>
+        <span class="cl">Animal</span> a2 = <span class="kw">new</span> <span class="cl">Cat</span>();
+        a1.<span class="fn">sound</span>(); <span class="cm">// Dog barks: Woof!</span>
+        a2.<span class="fn">sound</span>(); <span class="cm">// Cat meows: Meow!</span>
+    }
+}</pre>
+
+          <pre><span class="cm">Overloading vs Overriding:
+Feature          | Overloading           | Overriding
+-----------------|-----------------------|------------------
+Where            | Same class            | Parent + Child class
+Parameters       | Must be different     | Must be same
+Return type      | Can differ            | Must be same
+Polymorphism     | Compile-time (static) | Runtime (dynamic)
+Keyword needed   | None                  | @Override (recommended)
+Inheritance      | Not required          | Required</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 4 ========== -->
+  <section id="unit4" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u4);">U4</div>
+      <div class="unit-info">
+        <h2>Inheritance, Polymorphism, Interface & Packages</h2>
+        <p>8 hrs · Extends · Multiple Inheritance · Abstract Class · Interface · Packages</p>
+      </div>
+    </div>
+
+    <!-- Inheritance + Multiple -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">Every Year 2022–2025</span>
+        <span class="q-title">Define Inheritance. Does Java support multiple inheritance? Justify with code example.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define Inheritance. Does java support multiple inheritance? If yes justify with code example. / How do you create multiple inheritance in java? Explain with code example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is Inheritance?</h4>
+          <p><strong>Inheritance</strong> is one of the four pillars of OOP. It allows a child class (subclass) to acquire the properties and behaviors (methods and fields) of a parent class (superclass) using the <code>extends</code> keyword. Inheritance promotes <strong>code reusability</strong> and establishes an "IS-A" relationship between classes. For example, "Dog IS-A Animal."</p>
+
+          <h4>Types of Inheritance in Java</h4>
+          <ul>
+            <li><strong>Single Inheritance:</strong> One child class inherits from one parent class.</li>
+            <li><strong>Multilevel Inheritance:</strong> A chain — A extends B, B extends C.</li>
+            <li><strong>Hierarchical Inheritance:</strong> Multiple child classes inherit from one parent.</li>
+            <li><strong>Multiple Inheritance (via Interface):</strong> One class implements multiple interfaces.</li>
+          </ul>
+
+          <h4>Does Java Support Multiple Inheritance?</h4>
+          <p>Java does <strong>NOT</strong> support multiple inheritance through classes (a class cannot extend two classes simultaneously). This is because it would cause the <strong>"Diamond Problem"</strong> — ambiguity about which parent's version of a method to use when two parents have the same method.</p>
+          <p>However, Java supports multiple inheritance <strong>through interfaces</strong>. A class can implement multiple interfaces, effectively achieving multiple inheritance without the diamond problem.</p>
+
+          <pre><span class="cm">// Interface 1</span>
+<span class="kw">interface</span> <span class="cl">Printable</span> {
+    <span class="kw">void</span> <span class="fn">print</span>();
+}
+
+<span class="cm">// Interface 2</span>
+<span class="kw">interface</span> <span class="cl">Showable</span> {
+    <span class="kw">void</span> <span class="fn">show</span>();
+}
+
+<span class="cm">// Multiple inheritance: implements TWO interfaces</span>
+<span class="kw">class</span> <span class="cl">Document</span> <span class="kw2">implements</span> <span class="cl">Printable</span>, <span class="cl">Showable</span> {
+
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">print</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Printing the document..."</span>);
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">show</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Showing the document..."</span>);
+    }
+
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="cl">Document</span> doc = <span class="kw">new</span> <span class="cl">Document</span>();
+        doc.<span class="fn">print</span>();  <span class="cm">// Printing the document...</span>
+        doc.<span class="fn">show</span>();   <span class="cm">// Showing the document...</span>
+    }
+}</pre>
+
+          <h4>Multilevel Inheritance Example</h4>
+          <pre><span class="kw">class</span> <span class="cl">Vehicle</span>   { <span class="kw">void</span> <span class="fn">move</span>()  { <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Vehicle moves"</span>); } }
+<span class="kw">class</span> <span class="cl">Car</span> <span class="kw2">extends</span> <span class="cl">Vehicle</span> { <span class="kw">void</span> <span class="fn">drive</span>() { <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Car drives"</span>); } }
+<span class="kw">class</span> <span class="cl">Sedan</span> <span class="kw2">extends</span> <span class="cl">Car</span>  { <span class="kw">void</span> <span class="fn">park</span>()  { <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Sedan parks"</span>); } }
+
+<span class="cm">// Sedan inherits from Car AND Vehicle (multilevel)</span>
+<span class="cl">Sedan</span> s = <span class="kw">new</span> <span class="cl">Sedan</span>();
+s.<span class="fn">move</span>(); s.<span class="fn">drive</span>(); s.<span class="fn">park</span>();</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always explicitly state "Java does NOT support multiple inheritance through classes due to the Diamond Problem, but achieves it through interfaces." This distinction earns key marks every year.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interface Shape -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2024</span>
+        <span class="q-title">Write a Java program to create an interface Shape with calculateArea(). Implement in Circle and Rectangle classes.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a java program to create an interface Shape with a method calculateArea(). Implement this interface in two classes: Circle and Rectangle. Display the area of each shape.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is an Interface?</h4>
+          <p>An <strong>interface</strong> in Java is a completely abstract class — it contains only method declarations (no method body) and constants. It defines what a class must do, but not how to do it. A class uses the <code>implements</code> keyword to implement an interface and must provide implementations for all methods. Interfaces enable abstraction and multiple inheritance in Java.</p>
+
+          <pre><span class="cm">// Step 1: Define the interface</span>
+<span class="kw">interface</span> <span class="cl">Shape</span> {
+    <span class="kw">double</span> <span class="fn">calculateArea</span>();  <span class="cm">// method declaration (no body)</span>
+}
+
+<span class="cm">// Step 2: Implement interface in Circle class</span>
+<span class="kw">class</span> <span class="cl">Circle</span> <span class="kw2">implements</span> <span class="cl">Shape</span> {
+    <span class="kw">private double</span> radius;
+
+    <span class="kw">public</span> <span class="fn">Circle</span>(<span class="ty">double</span> r) {
+        radius = r;
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">public double</span> <span class="fn">calculateArea</span>() {
+        <span class="kw">return</span> <span class="ty">Math</span>.PI * radius * radius;  <span class="cm">// π × r²</span>
+    }
+}
+
+<span class="cm">// Step 3: Implement interface in Rectangle class</span>
+<span class="kw">class</span> <span class="cl">Rectangle</span> <span class="kw2">implements</span> <span class="cl">Shape</span> {
+    <span class="kw">private double</span> length, width;
+
+    <span class="kw">public</span> <span class="fn">Rectangle</span>(<span class="ty">double</span> l, <span class="ty">double</span> w) {
+        length = l;
+        width  = w;
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">public double</span> <span class="fn">calculateArea</span>() {
+        <span class="kw">return</span> length * width;             <span class="cm">// l × w</span>
+    }
+}
+
+<span class="cm">// Step 4: Test all shapes</span>
+<span class="kw">public class</span> <span class="cl">ShapeDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cl">Shape</span> circle    = <span class="kw">new</span> <span class="cl">Circle</span>(<span class="num">7.0</span>);
+        <span class="cl">Shape</span> rectangle = <span class="kw">new</span> <span class="cl">Rectangle</span>(<span class="num">5.0</span>, <span class="num">4.0</span>);
+
+        <span class="ty">System</span>.out.<span class="fn">printf</span>(<span class="str">"Area of Circle    : %.2f%n"</span>, circle.<span class="fn">calculateArea</span>());
+        <span class="ty">System</span>.out.<span class="fn">printf</span>(<span class="str">"Area of Rectangle : %.2f%n"</span>, rectangle.<span class="fn">calculateArea</span>());
+    }
+}
+<span class="cm">/* Output:
+Area of Circle    : 153.94
+Area of Rectangle : 20.00  */</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> This exact program appeared in 2025. Know the interface keyword, implements keyword, and @Override annotation. Using Shape as the reference type (<code>Shape circle = new Circle(7)</code>) demonstrates polymorphism — bonus knowledge to mention.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abstract Class Motor -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 (OR option)</span>
+        <span class="q-title">Write a Java program with abstract class Motor. Inherit in Car and Bus with start_engine(), stop_engine() methods.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a java program with an abstract class Motor. Inherits this class from two other classes Car and Bus using the methods start_engine(), stop_engine() and display_engine() in both the classes.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is an Abstract Class?</h4>
+          <p>An <strong>abstract class</strong> is a class that cannot be instantiated (you cannot create an object of it directly). It is declared using the <code>abstract</code> keyword. It can have both abstract methods (no body — child must implement) and concrete methods (with body). Abstract classes define a common template for all subclasses.</p>
+          <p><strong>Difference — Abstract Class vs Interface:</strong> An abstract class can have instance variables, constructors, and concrete methods. An interface (traditional) can only have method signatures and constants.</p>
+
+          <pre><span class="cm">// Abstract class — cannot be instantiated</span>
+<span class="kw">abstract class</span> <span class="cl">Motor</span> {
+
+    <span class="cm">// Abstract methods — subclasses MUST implement these</span>
+    <span class="kw">abstract void</span> <span class="fn">start_engine</span>();
+    <span class="kw">abstract void</span> <span class="fn">stop_engine</span>();
+    <span class="kw">abstract void</span> <span class="fn">display_engine</span>();
+}
+
+<span class="cm">// Car class inherits Motor and provides implementations</span>
+<span class="kw">class</span> <span class="cl">Car</span> <span class="kw2">extends</span> <span class="cl">Motor</span> {
+
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">start_engine</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Car engine started - Vroom!"</span>);
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">stop_engine</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Car engine stopped."</span>);
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">display_engine</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Car: 2000cc 4-cylinder petrol engine"</span>);
+    }
+}
+
+<span class="cm">// Bus class inherits Motor and provides its own implementations</span>
+<span class="kw">class</span> <span class="cl">Bus</span> <span class="kw2">extends</span> <span class="cl">Motor</span> {
+
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">start_engine</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Bus engine started - Rumble!"</span>);
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">stop_engine</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Bus engine stopped."</span>);
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">void</span> <span class="fn">display_engine</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Bus: 5000cc V8 diesel engine"</span>);
+    }
+}
+
+<span class="kw">public class</span> <span class="cl">MotorDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cl">Car</span> car = <span class="kw">new</span> <span class="cl">Car</span>();
+        car.<span class="fn">start_engine</span>();
+        car.<span class="fn">display_engine</span>();
+        car.<span class="fn">stop_engine</span>();
+
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"---"</span>);
+
+        <span class="cl">Bus</span> bus = <span class="kw">new</span> <span class="cl">Bus</span>();
+        bus.<span class="fn">start_engine</span>();
+        bus.<span class="fn">display_engine</span>();
+        bus.<span class="fn">stop_engine</span>();
+    }
+}
+<span class="cm">/* Output:
+Car engine started - Vroom!
+Car: 2000cc 4-cylinder petrol engine
+Car engine stopped.
+---
+Bus engine started - Rumble!
+Bus: 5000cc V8 diesel engine
+Bus engine stopped.  */</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2024 Fall · Short Note</span>
+        <span class="q-title">Define Package and Interface. Write down the steps to create a package with code example.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define the uses of package and interface. Write down the steps to create a package with code example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a Package?</h4>
+          <p>A <strong>package</strong> in Java is a namespace that organizes a set of related classes and interfaces. It is like a folder for Java files. Packages prevent naming conflicts, provide access control, and make code easier to locate and manage. Java has built-in packages (java.lang, java.util, java.io) and you can create your own user-defined packages.</p>
+
+          <h4>Uses of Package</h4>
+          <ul>
+            <li>Organizes code into logical groups (e.g., all database classes in a "db" package).</li>
+            <li>Prevents naming conflicts — two classes can have the same name in different packages.</li>
+            <li>Provides access protection — package-level access control.</li>
+            <li>Easier to import and reuse in other programs.</li>
+          </ul>
+
+          <h4>Steps to Create and Use a Package</h4>
+          <pre><span class="cm">/* Step 1: Create the package
+   File: mypackage/Student.java */</span>
+
+<span class="kw">package</span> mypackage;   <span class="cm">// declares this file belongs to 'mypackage'</span>
+
+<span class="kw">public class</span> <span class="cl">Student</span> {
+    <span class="kw">public</span> <span class="ty">String</span> name;
+    <span class="kw">public int</span> rollNo;
+
+    <span class="kw">public</span> <span class="fn">Student</span>(<span class="ty">String</span> n, <span class="ty">int</span> r) {
+        name   = n;
+        rollNo = r;
+    }
+
+    <span class="kw">public void</span> <span class="fn">display</span>() {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Name: "</span> + name + <span class="str">" | Roll: "</span> + rollNo);
+    }
+}</pre>
+          <pre><span class="cm">/* Step 2: Compile the package class
+   From project root directory: */</span>
+javac mypackage/Student.java
+
+<span class="cm">/* Step 3: Use the package in another file
+   File: Main.java */</span>
+
+<span class="kw">import</span> mypackage.Student;  <span class="cm">// import the package</span>
+
+<span class="kw">public class</span> <span class="cl">Main</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="cl">Student</span> s = <span class="kw">new</span> <span class="cl">Student</span>(<span class="str">"Sita Poudel"</span>, <span class="num">101</span>);
+        s.<span class="fn">display</span>(); <span class="cm">// Name: Sita Poudel | Roll: 101</span>
+    }
+}
+
+<span class="cm">/* Step 4: Compile and run Main.java */</span>
+javac Main.java
+java Main</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 5 ========== -->
+  <section id="unit5" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u5);">U5</div>
+      <div class="unit-info">
+        <h2>Multithreading &amp; Java Collections</h2>
+        <p>6 hrs · Thread class · Runnable interface · Thread lifecycle · Collection Framework</p>
+      </div>
+    </div>
+
+    <!-- Multithreading -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">Every Year 2022–2025</span>
+        <span class="q-title">Why do we need multithreading? Explain with code: one thread by extending Thread class and another by implementing Runnable interface.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Why do we need multithreading programming? Explain with code example one thread by extending Thread class and another by implementing Runnable interface.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Why Do We Need Multithreading?</h4>
+          <p><strong>Multithreading</strong> is the ability of a program to execute two or more parts (threads) simultaneously. A <strong>thread</strong> is a lightweight, independent unit of execution within a program.</p>
+          <p>Without multithreading, a program executes tasks one after another (sequentially). If one task is slow (like downloading a file), the whole program freezes and waits. With multithreading, multiple tasks run concurrently, making programs faster and more responsive.</p>
+          <p><strong>Real-world uses:</strong> Web servers handle many requests simultaneously. Media players play audio while decoding video. Games update graphics while processing input — all at once.</p>
+
+          <h4>Method 1: Creating a Thread by Extending Thread Class</h4>
+          <p>Create a class that extends <code>java.lang.Thread</code> and override the <code>run()</code> method. Start the thread with <code>.start()</code>.</p>
+          <pre><span class="kw">class</span> <span class="cl">MyThread</span> <span class="kw2">extends</span> <span class="cl">Thread</span> {
+    <span class="kw">private</span> <span class="ty">String</span> threadName;
+
+    <span class="kw">public</span> <span class="fn">MyThread</span>(<span class="ty">String</span> name) {
+        threadName = name;
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">run</span>() {  <span class="cm">// contains task to execute</span>
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">3</span>; i++) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(threadName + <span class="str">": Count = "</span> + i);
+            <span class="kw">try</span> { <span class="cl">Thread</span>.<span class="fn">sleep</span>(<span class="num">200</span>); } <span class="cm">// pause 200ms</span>
+            <span class="kw">catch</span> (<span class="cl">InterruptedException</span> e) { e.<span class="fn">printStackTrace</span>(); }
+        }
+    }
+}</pre>
+
+          <h4>Method 2: Creating a Thread by Implementing Runnable Interface</h4>
+          <p>Create a class that implements <code>java.lang.Runnable</code> and override <code>run()</code>. Pass the object to a <code>Thread</code> constructor. This is the preferred approach because Java supports only single class inheritance — if your class already extends another class, you cannot extend Thread. Runnable solves this problem.</p>
+          <pre><span class="kw">class</span> <span class="cl">RunnableTask</span> <span class="kw2">implements</span> <span class="cl">Runnable</span> {
+    <span class="kw">private</span> <span class="ty">String</span> taskName;
+
+    <span class="kw">public</span> <span class="fn">RunnableTask</span>(<span class="ty">String</span> name) {
+        taskName = name;
+    }
+
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">run</span>() {
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">3</span>; i++) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(taskName + <span class="str">": Step = "</span> + i);
+            <span class="kw">try</span> { <span class="cl">Thread</span>.<span class="fn">sleep</span>(<span class="num">300</span>); }
+            <span class="kw">catch</span> (<span class="cl">InterruptedException</span> e) { e.<span class="fn">printStackTrace</span>(); }
+        }
+    }
+}</pre>
+
+          <h4>Running Both Threads Together</h4>
+          <pre><span class="kw">public class</span> <span class="cl">ThreadDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// Thread via extending Thread class</span>
+        <span class="cl">MyThread</span> t1 = <span class="kw">new</span> <span class="cl">MyThread</span>(<span class="str">"Thread-A"</span>);
+
+        <span class="cm">// Thread via Runnable interface</span>
+        <span class="cl">RunnableTask</span> task = <span class="kw">new</span> <span class="cl">RunnableTask</span>(<span class="str">"Thread-B"</span>);
+        <span class="cl">Thread</span> t2 = <span class="kw">new</span> <span class="cl">Thread</span>(task);
+
+        <span class="cm">// start() calls run() in a new thread</span>
+        t1.<span class="fn">start</span>();
+        t2.<span class="fn">start</span>();
+    }
+}
+<span class="cm">/* Possible Output (order may vary - concurrent!):
+Thread-A: Count = 1
+Thread-B: Step = 1
+Thread-A: Count = 2
+Thread-B: Step = 2
+Thread-A: Count = 3
+Thread-B: Step = 3   */</span></pre>
+
+          <h4>Thread Lifecycle (States)</h4>
+          <pre><span class="cm">New → Runnable → Running → Blocked/Waiting → Dead
+       ↑____________↓ (when CPU becomes available)</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> This question appears EVERY year. Always explain both methods — extending Thread AND implementing Runnable. Always mention WHY Runnable is preferred (because Java is single inheritance, Runnable lets class still extend another class). Include the lifecycle diagram.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Framework -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2024 Fall · 2023</span>
+        <span class="q-title">Define Collection Framework. Explain with code how you create a dynamic list and a unique list.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define collection framework. Explain with code example how you create a dynamic list and a unique list.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Java Collection Framework</h4>
+          <p>The <strong>Java Collection Framework (JCF)</strong> is a set of classes and interfaces in the <code>java.util</code> package that provides ready-made data structures for storing, retrieving, and manipulating groups of objects. Instead of writing your own data structures (like linked lists, sets, maps), you use these built-in classes.</p>
+          <p><strong>Key interfaces:</strong> List (ordered, allows duplicates), Set (unordered, no duplicates), Map (key-value pairs), Queue (FIFO order).</p>
+
+          <h4>ArrayList — Dynamic List (allows duplicates, maintains order)</h4>
+          <pre><span class="kw">import</span> java.util.ArrayList;
+
+<span class="kw">public class</span> <span class="cl">ArrayListDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// Dynamic list — size grows/shrinks automatically</span>
+        <span class="ty">ArrayList</span>&lt;<span class="ty">String</span>&gt; fruits = <span class="kw">new</span> <span class="ty">ArrayList</span>&lt;&gt;();
+
+        fruits.<span class="fn">add</span>(<span class="str">"Mango"</span>);      <span class="cm">// add elements</span>
+        fruits.<span class="fn">add</span>(<span class="str">"Banana"</span>);
+        fruits.<span class="fn">add</span>(<span class="str">"Apple"</span>);
+        fruits.<span class="fn">add</span>(<span class="str">"Mango"</span>);     <span class="cm">// duplicates ALLOWED</span>
+
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"List: "</span>   + fruits);       <span class="cm">// [Mango, Banana, Apple, Mango]</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Size: "</span>   + fruits.<span class="fn">size</span>()); <span class="cm">// 4</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Index 1: "</span>+ fruits.<span class="fn">get</span>(<span class="num">1</span>)); <span class="cm">// Banana</span>
+
+        fruits.<span class="fn">remove</span>(<span class="str">"Banana"</span>);  <span class="cm">// remove element</span>
+        fruits.<span class="fn">set</span>(<span class="num">0</span>, <span class="str">"Orange"</span>);  <span class="cm">// update element at index 0</span>
+
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Updated: "</span> + fruits);
+    }
+}</pre>
+
+          <h4>HashSet — Unique List (no duplicates, unordered)</h4>
+          <pre><span class="kw">import</span> java.util.HashSet;
+
+<span class="kw">public class</span> <span class="cl">HashSetDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// Unique set — automatically removes duplicates</span>
+        <span class="ty">HashSet</span>&lt;<span class="ty">String</span>&gt; cities = <span class="kw">new</span> <span class="ty">HashSet</span>&lt;&gt;();
+
+        cities.<span class="fn">add</span>(<span class="str">"Pokhara"</span>);
+        cities.<span class="fn">add</span>(<span class="str">"Kathmandu"</span>);
+        cities.<span class="fn">add</span>(<span class="str">"Butwal"</span>);
+        cities.<span class="fn">add</span>(<span class="str">"Pokhara"</span>);   <span class="cm">// duplicate — NOT added</span>
+
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Unique cities: "</span> + cities); <span class="cm">// [Pokhara, Kathmandu, Butwal]</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Contains Butwal? "</span> + cities.<span class="fn">contains</span>(<span class="str">"Butwal"</span>)); <span class="cm">// true</span>
+        cities.<span class="fn">remove</span>(<span class="str">"Butwal"</span>);
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"After remove: "</span>   + cities);
+    }
+}</pre>
+          <pre><span class="cm">ArrayList vs HashSet:
+Feature          | ArrayList         | HashSet
+-----------------|-------------------|------------------
+Duplicates       | Allowed           | Not allowed
+Order            | Insertion order   | No guaranteed order
+Access by index  | Yes (.get(i))     | No
+Use case         | Ordered list      | Unique elements</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 6 ========== -->
+  <section id="unit6" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u6);">U6</div>
+      <div class="unit-info">
+        <h2>Exception Handling, Java IO &amp; Streams</h2>
+        <p>7 hrs · try-catch-finally · User-defined exceptions · File reading/writing · Streams</p>
+      </div>
+    </div>
+
+    <!-- Exception Handling User-Defined -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">Every Year 2022–2025</span>
+        <span class="q-title">Define exception. Explain about creating your own (user-defined) exception classes in Java.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define exception. Explain about creating your own exception clauses. / Write a java program to create user defined exception to throw NegativeValueException if the user enters a negative value.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is an Exception?</h4>
+          <p>An <strong>exception</strong> is an unwanted event or error that disrupts the normal flow of a program during execution (runtime). Examples: dividing by zero, accessing a null object, reading a file that doesn't exist, entering invalid input. If not handled, the program crashes and terminates abruptly.</p>
+          <p><strong>Difference — Error vs Exception:</strong> Errors (like OutOfMemoryError) are serious problems in the JVM that the program cannot recover from. Exceptions are recoverable problems that can be handled gracefully using try-catch blocks.</p>
+
+          <h4>Exception Handling Keywords</h4>
+          <ul>
+            <li><strong>try:</strong> Contains code that might throw an exception.</li>
+            <li><strong>catch:</strong> Handles the exception if it occurs in the try block.</li>
+            <li><strong>finally:</strong> Always executes whether an exception occurred or not (for cleanup like closing files).</li>
+            <li><strong>throw:</strong> Manually throws an exception object.</li>
+            <li><strong>throws:</strong> Declares that a method might throw an exception.</li>
+          </ul>
+
+          <h4>User-Defined Exception — NegativeValueException</h4>
+          <p>To create a custom exception, extend the <code>Exception</code> class (or <code>RuntimeException</code>):</p>
+          <pre><span class="cm">// Step 1: Create custom exception class by extending Exception</span>
+<span class="kw">class</span> <span class="cl">NegativeValueException</span> <span class="kw2">extends</span> <span class="cl">Exception</span> {
+
+    <span class="kw">public</span> <span class="fn">NegativeValueException</span>(<span class="ty">String</span> message) {
+        <span class="kw">super</span>(message);  <span class="cm">// pass message to parent Exception class</span>
+    }
+}
+
+<span class="cm">// Step 2: Class that uses the custom exception</span>
+<span class="kw">class</span> <span class="cl">AgeValidator</span> {
+
+    <span class="kw">static void</span> <span class="fn">validateAge</span>(<span class="ty">int</span> age) <span class="kw">throws</span> <span class="cl">NegativeValueException</span> {
+        <span class="kw">if</span> (age &lt; <span class="num">0</span>) {
+            <span class="cm">// throw our custom exception</span>
+            <span class="kw">throw new</span> <span class="cl">NegativeValueException</span>(<span class="str">"Age cannot be negative! Entered: "</span> + age);
+        }
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Valid age: "</span> + age);
+    }
+}
+
+<span class="cm">// Step 3: Main class to test</span>
+<span class="kw">public class</span> <span class="cl">ExceptionDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="kw">try</span> {
+            <span class="cl">AgeValidator</span>.<span class="fn">validateAge</span>(<span class="num">25</span>);   <span class="cm">// valid</span>
+            <span class="cl">AgeValidator</span>.<span class="fn">validateAge</span>(-<span class="num">5</span>);   <span class="cm">// throws exception</span>
+        } <span class="kw">catch</span> (<span class="cl">NegativeValueException</span> e) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Exception caught: "</span> + e.<span class="fn">getMessage</span>());
+        } <span class="kw">finally</span> {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Validation process complete."</span>);
+        }
+    }
+}
+<span class="cm">/* Output:
+Valid age: 25
+Exception caught: Age cannot be negative! Entered: -5
+Validation process complete.  */</span></pre>
+
+          <h4>InsufficientFundException (Another Common Example)</h4>
+          <pre><span class="kw">class</span> <span class="cl">InsufficientFundException</span> <span class="kw2">extends</span> <span class="cl">Exception</span> {
+    <span class="kw">public</span> <span class="fn">InsufficientFundException</span>(<span class="ty">String</span> msg) { <span class="kw">super</span>(msg); }
+}
+
+<span class="kw">class</span> <span class="cl">Account</span> {
+    <span class="kw">double</span> balance = <span class="num">500</span>;
+
+    <span class="kw">void</span> <span class="fn">withdraw</span>(<span class="ty">double</span> amount) <span class="kw">throws</span> <span class="cl">InsufficientFundException</span> {
+        <span class="kw">if</span> (amount &gt; balance)
+            <span class="kw">throw new</span> <span class="cl">InsufficientFundException</span>(<span class="str">"Balance is less than "</span> + amount);
+        balance -= amount;
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Withdrawn: "</span> + amount);
+    }
+}</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> User-defined exception = class that extends Exception. Always use super(message) in constructor, throw keyword to raise it, and throws in method signature. This exact question appeared in 2022, 2023, 2024, and 2025 — perfect it!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File IO -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">Every Year 2022–2025</span>
+        <span class="q-title">Write a Java program to create a file sample.txt, write text to it, then read back the content.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a program in Java to create a file named sample.txt, write "Java Programming is Fun!!" to the file, and then read the content from sample.txt. Use appropriate file reading and writing classes.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Java File I/O</h4>
+          <p>Java provides the <code>java.io</code> package for reading and writing files. There are two main types of streams:</p>
+          <ul>
+            <li><strong>Byte Streams</strong> (FileInputStream / FileOutputStream): Used for binary data (images, audio).</li>
+            <li><strong>Character Streams</strong> (FileReader / FileWriter / BufferedReader): Used for text data. More efficient for text.</li>
+          </ul>
+          <p>Best practice: Use <strong>FileWriter</strong> for writing text and <strong>BufferedReader + FileReader</strong> for reading text. Always close the file after use (or use try-with-resources).</p>
+
+          <pre><span class="kw">import</span> java.io.*;
+
+<span class="kw">public class</span> <span class="cl">FileIODemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// ===== WRITE to file =====</span>
+        <span class="kw">try</span> {
+            <span class="cl">FileWriter</span> writer = <span class="kw">new</span> <span class="cl">FileWriter</span>(<span class="str">"sample.txt"</span>);
+            writer.<span class="fn">write</span>(<span class="str">"Java Programming is Fun!!\n"</span>);
+            writer.<span class="fn">write</span>(<span class="str">"File I/O in Java is easy.\n"</span>);
+            writer.<span class="fn">close</span>();  <span class="cm">// always close!</span>
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"File written successfully."</span>);
+
+        } <span class="kw">catch</span> (<span class="cl">IOException</span> e) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Write Error: "</span> + e.<span class="fn">getMessage</span>());
+        }
+
+        <span class="cm">// ===== READ from file =====</span>
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"\n--- Reading from sample.txt ---"</span>);
+        <span class="kw">try</span> {
+            <span class="cl">BufferedReader</span> reader = <span class="kw">new</span> <span class="cl">BufferedReader</span>(
+                                         <span class="kw">new</span> <span class="cl">FileReader</span>(<span class="str">"sample.txt"</span>));
+            <span class="ty">String</span> line;
+
+            <span class="cm">// readLine() returns null at end of file</span>
+            <span class="kw">while</span> ((line = reader.<span class="fn">readLine</span>()) != <span class="kw">null</span>) {
+                <span class="ty">System</span>.out.<span class="fn">println</span>(line);
+            }
+            reader.<span class="fn">close</span>();
+
+        } <span class="kw">catch</span> (<span class="cl">IOException</span> e) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Read Error: "</span> + e.<span class="fn">getMessage</span>());
+        }
+    }
+}
+<span class="cm">/* Output:
+File written successfully.
+
+--- Reading from sample.txt ---
+Java Programming is Fun!!
+File I/O in Java is easy.  */</span></pre>
+
+          <h4>Using try-with-resources (Modern Java)</h4>
+          <pre><span class="cm">// Automatically closes the file — no need to call close()</span>
+<span class="kw">try</span> (<span class="cl">FileWriter</span> fw = <span class="kw">new</span> <span class="cl">FileWriter</span>(<span class="str">"sample.txt"</span>)) {
+    fw.<span class="fn">write</span>(<span class="str">"Hello World"</span>);
+} <span class="kw">catch</span> (<span class="cl">IOException</span> e) {
+    e.<span class="fn">printStackTrace</span>();
+}</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> File I/O appeared in all 4 years (2022–2025). Use FileWriter to write, BufferedReader+FileReader to read. Always wrap in try-catch for IOException. Always call close() or use try-with-resources.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 7 ========== -->
+  <section id="unit7" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u7);">U7</div>
+      <div class="unit-info">
+        <h2>Java JDBC</h2>
+        <p>4 hrs · JDBC Introduction · JDBC Drivers · Connecting to Database · Querying</p>
+      </div>
+    </div>
+
+    <!-- JDBC -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">Every Year 2022–2025</span>
+        <span class="q-title">What is JDBC? Write steps to connect a Java application to a database and query data.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is JDBC Driver? Write steps to connect database from java application. / What is JDBC? How can we connect Java application to any database?</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is JDBC?</h4>
+          <p><strong>JDBC (Java Database Connectivity)</strong> is a Java API (Application Programming Interface) that allows Java programs to connect to and interact with relational databases (like MySQL, PostgreSQL, Oracle, SQLite). It provides a standard set of classes and interfaces in the <code>java.sql</code> package to perform database operations: connect, query, insert, update, and delete data.</p>
+
+          <h4>JDBC Drivers</h4>
+          <p>A <strong>JDBC Driver</strong> is a software component that enables Java to communicate with a specific database. There are 4 types:</p>
+          <ul>
+            <li><strong>Type 1 — JDBC-ODBC Bridge:</strong> Converts JDBC calls to ODBC. Slow, requires ODBC installed. (Obsolete)</li>
+            <li><strong>Type 2 — Native API Driver:</strong> Uses native database libraries. Platform-dependent.</li>
+            <li><strong>Type 3 — Network Protocol Driver:</strong> Communicates through middleware server. Flexible.</li>
+            <li><strong>Type 4 — Pure Java Driver (Thin Driver):</strong> Directly communicates with the database using Java. Most commonly used today. Example: mysql-connector-java.jar.</li>
+          </ul>
+
+          <h4>5 Steps to Connect Java to MySQL Database</h4>
+          <pre><span class="kw">import</span> java.sql.*;
+
+<span class="kw">public class</span> <span class="cl">JDBCDemo</span> {
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+
+        <span class="cm">// Step 1: Load the JDBC Driver</span>
+        <span class="kw">try</span> {
+            <span class="cl">Class</span>.<span class="fn">forName</span>(<span class="str">"com.mysql.cj.jdbc.Driver"</span>);
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Driver loaded successfully."</span>);
+
+            <span class="cm">// Step 2: Create Connection to Database</span>
+            <span class="cm">// URL format: jdbc:mysql://host:port/database_name</span>
+            <span class="ty">String</span> url  = <span class="str">"jdbc:mysql://localhost:3306/student_db"</span>;
+            <span class="ty">String</span> user = <span class="str">"root"</span>;
+            <span class="ty">String</span> pass = <span class="str">"password"</span>;
+
+            <span class="cl">Connection</span> con = <span class="cl">DriverManager</span>.<span class="fn">getConnection</span>(url, user, pass);
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Connected to database!"</span>);
+
+            <span class="cm">// Step 3: Create Statement</span>
+            <span class="cl">Statement</span> stmt = con.<span class="fn">createStatement</span>();
+
+            <span class="cm">// Step 4: Execute SQL Query</span>
+            <span class="ty">String</span> sql = <span class="str">"SELECT id, name, semester FROM tbl_students"</span>;
+            <span class="cl">ResultSet</span> rs = stmt.<span class="fn">executeQuery</span>(sql);
+
+            <span class="cm">// Step 5: Process Results (iterate ResultSet)</span>
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"ID\tNAME\t\tSEMESTER"</span>);
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"--\t----\t\t--------"</span>);
+            <span class="kw">while</span> (rs.<span class="fn">next</span>()) {
+                <span class="ty">int</span>    id   = rs.<span class="fn">getInt</span>(<span class="str">"id"</span>);
+                <span class="ty">String</span> name = rs.<span class="fn">getString</span>(<span class="str">"name"</span>);
+                <span class="ty">int</span>    sem  = rs.<span class="fn">getInt</span>(<span class="str">"semester"</span>);
+                <span class="ty">System</span>.out.<span class="fn">println</span>(id + <span class="str">"\t"</span> + name + <span class="str">"\t\t"</span> + sem);
+            }
+
+            <span class="cm">// Close all resources</span>
+            rs.<span class="fn">close</span>();
+            stmt.<span class="fn">close</span>();
+            con.<span class="fn">close</span>();
+
+        } <span class="kw">catch</span> (<span class="cl">ClassNotFoundException</span> e) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Driver not found: "</span> + e.<span class="fn">getMessage</span>());
+        } <span class="kw">catch</span> (<span class="cl">SQLException</span> e) {
+            <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"SQL Error: "</span> + e.<span class="fn">getMessage</span>());
+        }
+    }
+}</pre>
+
+          <h4>Insert Data using PreparedStatement</h4>
+          <pre><span class="cm">// PreparedStatement is safer (prevents SQL injection)</span>
+<span class="ty">String</span> insertSQL = <span class="str">"INSERT INTO tbl_students (name, semester) VALUES (?, ?)"</span>;
+<span class="cl">PreparedStatement</span> pstmt = con.<span class="fn">prepareStatement</span>(insertSQL);
+pstmt.<span class="fn">setString</span>(<span class="num">1</span>, <span class="str">"Ram Sharma"</span>);
+pstmt.<span class="fn">setInt</span>(<span class="num">2</span>, <span class="num">3</span>);
+pstmt.<span class="fn">executeUpdate</span>();
+<span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Student inserted!"</span>);</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> JDBC appeared in all 4 years — guaranteed question. Memorize the 5 steps: (1) Load Driver, (2) Create Connection, (3) Create Statement, (4) Execute Query, (5) Process ResultSet. Always close resources (rs → stmt → con). Mention Type 4 driver as the most common.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- ========== UNIT 8 ========== -->
+  <section id="unit8" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--u8);">U8</div>
+      <div class="unit-info">
+        <h2>JavaFX</h2>
+        <p>4 hrs · Introduction · Architecture · First JavaFX Application · Shapes &amp; Text</p>
+      </div>
+    </div>
+
+    <!-- JavaFX -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2024 Fall</span>
+        <span class="q-title">Write down the use of JavaFX with architecture diagram. Write code to display a greeting message in a JavaFX Application.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write down the use of JavaFX with architecture diagram. Write down the code to display a greeting message in your first JavaFX Application.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is JavaFX?</h4>
+          <p><strong>JavaFX</strong> is a modern Java framework for creating rich, interactive graphical user interface (GUI) applications. It is the successor to older Java GUI frameworks like AWT (Abstract Window Toolkit) and Swing. JavaFX provides better visuals, supports CSS styling, FXML layout files, animations, and 2D/3D graphics — making it suitable for building professional desktop applications.</p>
+
+          <h4>Uses of JavaFX</h4>
+          <ul>
+            <li>Building desktop applications with modern UIs (forms, menus, buttons, charts).</li>
+            <li>Creating 2D and 3D graphics applications.</li>
+            <li>Animations and visual effects.</li>
+            <li>Business applications with dashboards and graphs.</li>
+          </ul>
+
+          <h4>JavaFX Architecture</h4>
+          <pre><span class="cm">┌────────────────────────────────────────────────┐
+│              JavaFX Application                │
+├────────────────────────────────────────────────┤
+│  Stage (Window) — top-level container          │
+│    ↓                                           │
+│  Scene (Content area of the window)            │
+│    ↓                                           │
+│  Scene Graph (tree of nodes/controls)          │
+│    ├── Layout Panes (HBox, VBox, GridPane)     │
+│    │     ├── Button                            │
+│    │     ├── Label                             │
+│    │     └── TextField                         │
+│    └── Shapes (Circle, Rectangle, Line)        │
+├────────────────────────────────────────────────┤
+│  Glass Windowing Toolkit (native window mgmt)  │
+│  Quantum Toolkit (rendering pipeline)          │
+│  WebEngine, Media Engine, JavaFX APIs          │
+└────────────────────────────────────────────────┘
+
+Key Concepts:
+• Stage = The Window (JFrame equivalent)
+• Scene  = The content inside the window
+• Node   = Any element on the scene (button, label, shape)</span></pre>
+
+          <h4>First JavaFX Application — Display Greeting Message</h4>
+          <pre><span class="kw">import</span> javafx.application.Application;
+<span class="kw">import</span> javafx.scene.Scene;
+<span class="kw">import</span> javafx.scene.control.Label;
+<span class="kw">import</span> javafx.scene.control.Button;
+<span class="kw">import</span> javafx.scene.layout.VBox;
+<span class="kw">import</span> javafx.stage.Stage;
+
+<span class="kw">public class</span> <span class="cl">HelloJavaFX</span> <span class="kw2">extends</span> <span class="cl">Application</span> {
+
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">start</span>(<span class="cl">Stage</span> primaryStage) {
+
+        <span class="cm">// Create UI controls</span>
+        <span class="cl">Label</span>  label  = <span class="kw">new</span> <span class="cl">Label</span>(<span class="str">"Welcome to Pokhara University BCA!"</span>);
+        <span class="cl">Button</span> button = <span class="kw">new</span> <span class="cl">Button</span>(<span class="str">"Click Me"</span>);
+
+        <span class="cm">// Button action — show greeting in label</span>
+        button.<span class="fn">setOnAction</span>(e -&gt; {
+            label.<span class="fn">setText</span>(<span class="str">"Hello from JavaFX! 🎉"</span>);
+        });
+
+        <span class="cm">// Layout — VBox arranges items vertically</span>
+        <span class="cl">VBox</span> root = <span class="kw">new</span> <span class="cl">VBox</span>(<span class="num">20</span>);        <span class="cm">// 20px spacing</span>
+        root.<span class="fn">getChildren</span>().<span class="fn">addAll</span>(label, button);
+
+        <span class="cm">// Scene — content area with width=400, height=250</span>
+        <span class="cl">Scene</span> scene = <span class="kw">new</span> <span class="cl">Scene</span>(root, <span class="num">400</span>, <span class="num">250</span>);
+
+        <span class="cm">// Stage — set title and show window</span>
+        primaryStage.<span class="fn">setTitle</span>(<span class="str">"My First JavaFX App"</span>);
+        primaryStage.<span class="fn">setScene</span>(scene);
+        primaryStage.<span class="fn">show</span>();
+    }
+
+    <span class="kw">public static void</span> <span class="fn">main</span>(<span class="ty">String</span>[] args) {
+        <span class="fn">launch</span>(args);  <span class="cm">// launches the JavaFX application</span>
+    }
+}</pre>
+
+          <h4>JavaFX with Shapes (Line, Rectangle, Circle)</h4>
+          <pre><span class="kw">import</span> javafx.scene.shape.*;
+<span class="kw">import</span> javafx.scene.paint.Color;
+
+<span class="cm">// Inside start() method:</span>
+<span class="cl">Rectangle</span> rect   = <span class="kw">new</span> <span class="cl">Rectangle</span>(<span class="num">50</span>, <span class="num">50</span>, <span class="num">150</span>, <span class="num">80</span>);   <span class="cm">// x,y,w,h</span>
+rect.<span class="fn">setFill</span>(<span class="cl">Color</span>.BLUE);
+
+<span class="cl">Circle</span>    circle  = <span class="kw">new</span> <span class="cl">Circle</span>(<span class="num">250</span>, <span class="num">100</span>, <span class="num">50</span>);         <span class="cm">// cx,cy,radius</span>
+circle.<span class="fn">setFill</span>(<span class="cl">Color</span>.RED);
+
+<span class="cl">Line</span>      line    = <span class="kw">new</span> <span class="cl">Line</span>(<span class="num">0</span>, <span class="num">200</span>, <span class="num">400</span>, <span class="num">200</span>);       <span class="cm">// x1,y1,x2,y2</span>
+line.<span class="fn">setStroke</span>(<span class="cl">Color</span>.GREEN);
+
+<span class="cl">Pane</span> pane = <span class="kw">new</span> <span class="cl">Pane</span>();
+pane.<span class="fn">getChildren</span>().<span class="fn">addAll</span>(rect, circle, line);</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> JavaFX is new in the updated syllabus. Key structure: Application → Stage → Scene → Nodes. The class must extend Application and override start(). launch(args) starts it. Always draw the architecture diagram — Stage → Scene → Scene Graph → Nodes/Controls.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Q7 SHORT NOTES ========== -->
+  <hr class="div">
+  <section id="shortnotes" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:#4a5070;">Q7</div>
+      <div class="unit-info">
+        <h2>Short Notes — Q7 (Any Two, 2×5 = 10 Marks)</h2>
+        <p>Prepare all of these — pick any 2 in the exam</p>
+      </div>
+    </div>
+
+    <!-- Abstraction + Polymorphism -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">2025</span>
+        <span class="q-title">Short Note: Abstraction and Polymorphism</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Abstraction</h4>
+          <p><strong>Abstraction</strong> is the OOP concept of hiding complex implementation details and showing only the essential features or interface to the user. It is achieved in Java using <strong>abstract classes</strong> (partially abstract) and <strong>interfaces</strong> (fully abstract).</p>
+          <p><em>Real-world example:</em> When you use a TV remote, you just press buttons — you don't need to know the internal electronic circuitry. The complexity is hidden; only the essential interface (buttons) is exposed.</p>
+          <pre><span class="kw">abstract class</span> <span class="cl">Shape</span> {
+    <span class="kw">abstract double</span> <span class="fn">area</span>();     <span class="cm">// abstract — no body</span>
+    <span class="kw">void</span> <span class="fn">display</span>() { <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Shape area: "</span> + <span class="fn">area</span>()); }
+}
+<span class="kw">class</span> <span class="cl">Circle</span> <span class="kw2">extends</span> <span class="cl">Shape</span> {
+    <span class="kw">double</span> r;
+    <span class="fn">Circle</span>(<span class="ty">double</span> r) { <span class="kw">this</span>.r = r; }
+    <span class="kw">double</span> <span class="fn">area</span>() { <span class="kw">return</span> <span class="ty">Math</span>.PI * r * r; }
+}</pre>
+
+          <h4>Polymorphism</h4>
+          <p><strong>Polymorphism</strong> means "many forms." It allows one method name or interface to work with different types of objects or data. In Java, polymorphism is achieved through: <strong>Method Overloading</strong> (compile-time / same class, different params) and <strong>Method Overriding</strong> (runtime / parent-child, same signature).</p>
+          <p><em>Real-world example:</em> A "+" operator works for both numbers (addition) and strings (concatenation) — same operator, different behavior = polymorphism.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thread Lifecycle -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">2024 Fall · 2024 Spring</span>
+        <span class="q-title">Short Note: Thread Lifecycle</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Thread Lifecycle in Java</h4>
+          <p>A thread in Java passes through several states during its lifetime. These states are defined in the <code>Thread.State</code> enum.</p>
+          <pre><span class="cm">┌─────────────────────────────────────────────────────────┐
+│                   THREAD LIFECYCLE                      │
+│                                                         │
+│  new Thread() ──→ NEW                                   │
+│                     ↓  .start()                         │
+│                   RUNNABLE ←─────────────┐              │
+│                     ↓ (CPU assigned)     │              │
+│                   RUNNING               │ (back to      │
+│                  ↙      ↘               │  queue)       │
+│         BLOCKED/           DEAD         │              │
+│         WAITING  ──────────────────────→┘              │
+│         (sleep/wait/IO)                                 │
+└─────────────────────────────────────────────────────────┘</span></pre>
+
+          <ul>
+            <li><strong>NEW:</strong> Thread object created with <code>new Thread()</code> but <code>.start()</code> not yet called.</li>
+            <li><strong>RUNNABLE:</strong> <code>.start()</code> called. Thread is ready to run, waiting for CPU time.</li>
+            <li><strong>RUNNING:</strong> CPU has assigned time to this thread — <code>run()</code> is executing.</li>
+            <li><strong>BLOCKED/WAITING:</strong> Thread is waiting for I/O, waiting for a lock, or called <code>Thread.sleep()</code>. Returns to Runnable when condition is met.</li>
+            <li><strong>DEAD (TERMINATED):</strong> Thread has completed its <code>run()</code> method or was killed. Cannot be restarted.</li>
+          </ul>
+          <p>Key methods: <code>.start()</code> — starts thread. <code>.sleep(ms)</code> — pauses for milliseconds. <code>.join()</code> — waits for thread to complete. <code>.setPriority(n)</code> — sets priority (1–10). <code>.interrupt()</code> — interrupts a sleeping/waiting thread.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package Short Note -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">2025</span>
+        <span class="q-title">Short Note: Package</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Package in Java</h4>
+          <p>A <strong>package</strong> in Java is a group of similar classes and interfaces organized together in a directory structure (like folders). The <code>package</code> keyword is used to declare a package at the top of a Java source file.</p>
+          <p><strong>Two types:</strong></p>
+          <ul>
+            <li><strong>Built-in Packages:</strong> Provided by Java — java.lang (auto-imported), java.util (Scanner, ArrayList), java.io (FileReader, FileWriter), java.sql (JDBC classes), javafx.scene, etc.</li>
+            <li><strong>User-defined Packages:</strong> Created by the programmer to organize their own classes.</li>
+          </ul>
+          <p><strong>Advantages:</strong> Avoids naming conflicts (two classes with the same name can coexist in different packages). Groups related classes together. Provides access protection. Makes code easier to import and reuse.</p>
+          <pre><span class="cm">// Declaring a package (must be first line)</span>
+<span class="kw">package</span> com.university.bca;
+
+<span class="cm">// Importing a package</span>
+<span class="kw">import</span> java.util.ArrayList;    <span class="cm">// specific class</span>
+<span class="kw">import</span> java.util.*;            <span class="cm">// all classes in util</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Frameworks -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">2025</span>
+        <span class="q-title">Short Note: Collection Frameworks</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Java Collection Framework</h4>
+          <p>The <strong>Java Collection Framework (JCF)</strong> is a unified architecture in the <code>java.util</code> package that provides ready-made data structures and algorithms for storing and manipulating groups of objects. It avoids the need to write data structure code from scratch.</p>
+          <p><strong>Main Interfaces:</strong></p>
+          <ul>
+            <li><strong>List:</strong> Ordered, allows duplicates. Implementations: ArrayList (fast access), LinkedList (fast insert/delete), Vector (thread-safe).</li>
+            <li><strong>Set:</strong> Unordered, no duplicates. Implementations: HashSet (fastest), TreeSet (sorted), LinkedHashSet (insertion order).</li>
+            <li><strong>Map:</strong> Key-value pairs, no duplicate keys. Implementations: HashMap, TreeMap, LinkedHashMap.</li>
+            <li><strong>Queue:</strong> FIFO ordering. Implementations: LinkedList, PriorityQueue.</li>
+          </ul>
+          <pre><span class="ty">ArrayList</span>&lt;<span class="ty">Integer</span>&gt; list = <span class="kw">new</span> <span class="ty">ArrayList</span>&lt;&gt;();
+list.<span class="fn">add</span>(<span class="num">10</span>); list.<span class="fn">add</span>(<span class="num">20</span>); list.<span class="fn">add</span>(<span class="num">10</span>);  <span class="cm">// [10, 20, 10] - duplicates OK</span>
+
+<span class="ty">HashSet</span>&lt;<span class="ty">Integer</span>&gt; set = <span class="kw">new</span> <span class="ty">HashSet</span>&lt;&gt;();
+set.<span class="fn">add</span>(<span class="num">10</span>); set.<span class="fn">add</span>(<span class="num">20</span>); set.<span class="fn">add</span>(<span class="num">10</span>);   <span class="cm">// [10, 20] - no duplicates</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaFX Architecture Short Note -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">2024 Fall</span>
+        <span class="q-title">Short Note: JavaFX Architecture</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>JavaFX Architecture</h4>
+          <p><strong>JavaFX</strong> is a modern framework for building desktop GUIs in Java. Its architecture has several layers:</p>
+          <ul>
+            <li><strong>Stage:</strong> The top-level window of the application (like a JFrame in Swing). Represents the OS window.</li>
+            <li><strong>Scene:</strong> The content area inside the Stage. A Stage can have only one Scene at a time.</li>
+            <li><strong>Scene Graph:</strong> A tree structure of all UI elements (Nodes) in the Scene. Each Node can be a control (Button, Label), shape (Circle, Rectangle), or layout pane (VBox, HBox, GridPane).</li>
+            <li><strong>Glass Windowing Toolkit:</strong> Provides native windowing services (event handling, timers).</li>
+            <li><strong>Prism:</strong> The graphics rendering engine — renders 2D/3D graphics using hardware acceleration.</li>
+            <li><strong>Quantum Toolkit:</strong> Connects Prism and Glass, manages the rendering pipeline and threading.</li>
+          </ul>
+          <pre><span class="cm">Stage → Scene → Scene Graph
+                     ├── VBox (layout)
+                     │     ├── Label
+                     │     └── Button
+                     └── Circle (shape)</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finalize Method -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">2024 Fall</span>
+        <span class="q-title">Short Note: Use of finalize() method</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>finalize() Method in Java</h4>
+          <p>The <strong>finalize()</strong> method is a special method in Java that is called by the <strong>Garbage Collector</strong> just before an object is destroyed and its memory is reclaimed. It is defined in the <code>Object</code> class (the parent of all Java classes) and can be overridden to perform cleanup operations.</p>
+          <p><strong>Purpose:</strong> Used to release external resources (like file handles, database connections, network sockets) that won't be automatically cleaned up by the garbage collector before an object is destroyed.</p>
+          <pre><span class="kw">class</span> <span class="cl">ResourceHolder</span> {
+    <span class="ann">@Override</span>
+    <span class="kw">protected void</span> <span class="fn">finalize</span>() <span class="kw">throws</span> <span class="cl">Throwable</span> {
+        <span class="ty">System</span>.out.<span class="fn">println</span>(<span class="str">"Object is being destroyed. Releasing resources..."</span>);
+        <span class="cm">// close files, DB connections, etc. here</span>
+        <span class="kw">super</span>.<span class="fn">finalize</span>(); <span class="cm">// call parent finalize</span>
+    }
+}</pre>
+          <p><strong>Important Notes:</strong> finalize() is NOT guaranteed to be called — it depends on the JVM's garbage collector. It is called at most once per object. Since Java 9, finalize() has been deprecated because it causes unpredictable behavior. Modern Java uses <code>try-with-resources</code> and <code>AutoCloseable</code> interface instead for resource cleanup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL STRATEGY BOX -->
+  <div class="analysis-box" style="border-left-color:var(--accent3); margin-top:0;">
+    <h2 style="color:var(--accent3);">🎯 Final Exam Strategy — Must-Know Checklist</h2>
+    <div class="answer">
+      <p><strong>Top 10 Questions Guaranteed or Very Likely:</strong></p>
+      <ol>
+        <li>Platform Independence + JVM architecture + compile/run steps with diagram <em>(Q1a, 8 marks)</em></li>
+        <li>Strings + StringBuffer — differences with code examples <em>(Q2a, 8 marks)</em></li>
+        <li>Employee class — 2 constructors (default + parameterized) + displayInfo() <em>(Q2b, 7 marks)</em></li>
+        <li>Wrapper Classes + Autoboxing + Unboxing with examples <em>(Q2/3, 8 marks)</em></li>
+        <li>Inheritance types + Multiple inheritance via Interface (with code) <em>(Q3b, 8 marks)</em></li>
+        <li>Interface Shape → implement in Circle and Rectangle (calculateArea) <em>(Q3a, 7 marks)</em></li>
+        <li>Abstract class Motor → extend in Car and Bus <em>(Q3a OR option, 7 marks)</em></li>
+        <li>Multithreading — Thread class + Runnable interface both methods <em>(Q4a, 8 marks)</em></li>
+        <li>User-defined Exception (NegativeValue or InsufficientFund) <em>(Q4b, 7 marks)</em></li>
+        <li>File I/O — write to sample.txt, read back using FileWriter + BufferedReader <em>(Q5a, 7 marks)</em></li>
+        <li>JDBC — 5 steps to connect + query with complete code <em>(Q6a, 8 marks)</em></li>
+        <li>JavaFX — architecture + first application code <em>(Q6b, 7 marks)</em></li>
+      </ol>
+      <p style="margin-top:12px;"><strong>Best Short Notes to Prepare (Q7):</strong> Abstraction &amp; Polymorphism · Package · Collection Framework · Thread Lifecycle · JavaFX Architecture · finalize() method · JDBC Drivers</p>
+      <p style="margin-top:12px;"><strong>Code writing tips:</strong> Every Java program must have public class with matching filename. main() = public static void main(String[] args). Always import needed packages (java.io.*, java.sql.*, java.util.*). Always handle exceptions with try-catch. Close resources (files, DB connections). Use @Override annotation when overriding methods.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Pokhara University · BCA · Semester III · CMP215 · Object Oriented Programming using Java · 2024 Syllabus · Prepared for Final Exam
+</div>
+
+<script>
+function toggle(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+document.querySelectorAll('.unit-section .q-card:first-of-type .q-header').forEach(h => toggle(h));
+</script>
+</body>
+</html>
