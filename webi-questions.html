@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Technology I — Important Questions & Model Answers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --surface2: #1e2335;
+    --border: #2a3050;
+    --accent: #f0c040;
+    --accent2: #5bc8af;
+    --accent3: #e06c75;
+    --accent4: #61afef;
+    --text: #cdd6f4;
+    --text-dim: #7b8bbf;
+    --high: #e06c75;
+    --med: #f0c040;
+    --low: #5bc8af;
+    --code-bg: #12151f;
+    --unit1: #61afef;
+    --unit2: #98c379;
+    --unit3: #e5c07b;
+    --unit4: #c678dd;
+    --unit5: #56b6c2;
+    --unit6: #e06c75;
+    --unit8: #f0c040;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0a0d18 0%, #141824 50%, #0d1120 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(97,175,239,0.08) 0%, transparent 60%);
+  }
+  .header-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .header h1 span { color: var(--accent); }
+  .header-sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .header-meta {
+    margin-top: 20px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(240,192,64,0.12);
+    border: 1px solid rgba(240,192,64,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  /* NAV */
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; gap: 0; overflow-x: auto;
+  }
+  .nav a {
+    display: block; padding: 14px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 1px;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* LAYOUT */
+  .container { max-width: 1000px; margin: 0 auto; padding: 40px; }
+
+  /* ANALYSIS BOX */
+  .analysis-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .analysis-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .analysis-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 16px;
+  }
+  .analysis-card {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px 16px;
+  }
+  .analysis-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--accent2); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .analysis-card p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+  /* LEGEND */
+  .legend {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    margin-bottom: 32px; align-items: center;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* UNIT SECTION */
+  .unit-section { margin-bottom: 56px; }
+  .unit-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .unit-badge {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 600; color: #fff;
+  }
+  .unit-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: #fff;
+    margin-bottom: 4px;
+  }
+  .unit-info p {
+    font-size: 12px; color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .q-header {
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+  }
+  .q-header:hover { background: var(--surface2); }
+  .q-header.open { border-bottom-color: var(--border); }
+
+  .priority-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px;
+    padding: 3px 10px; border-radius: 20px;
+    text-transform: uppercase; font-weight: 600;
+    flex-shrink: 0;
+  }
+  .p-high { background: rgba(224,108,117,0.15); color: var(--high); border: 1px solid rgba(224,108,117,0.3); }
+  .p-med { background: rgba(240,192,64,0.12); color: var(--med); border: 1px solid rgba(240,192,64,0.3); }
+  .p-low { background: rgba(91,200,175,0.12); color: var(--low); border: 1px solid rgba(91,200,175,0.3); }
+
+  .marks-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--text-dim);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 3px 10px; border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .q-title {
+    flex: 1;
+    font-size: 14px; color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+  }
+  .toggle-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--text-dim);
+    flex-shrink: 0;
+  }
+  .year-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: var(--accent2);
+    background: rgba(91,200,175,0.1);
+    border: 1px solid rgba(91,200,175,0.2);
+    padding: 2px 8px; border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .q-body { padding: 24px 28px; display: none; }
+  .q-body.open { display: block; }
+
+  .q-text {
+    background: var(--surface2);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 14px; color: #e0e8ff;
+    font-style: italic;
+  }
+
+  .answer-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--accent2); text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .answer-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  .answer { font-size: 14px; line-height: 1.85; color: var(--text); }
+  .answer h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 1px; color: var(--accent);
+    text-transform: uppercase; margin: 18px 0 8px;
+  }
+  .answer p { margin-bottom: 10px; }
+  .answer ul, .answer ol { padding-left: 22px; margin-bottom: 10px; }
+  .answer li { margin-bottom: 5px; }
+  .answer strong { color: #e0e8ff; font-weight: 600; }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .kw { color: #c678dd; }
+  .str { color: #98c379; }
+  .cm { color: #5c6370; font-style: italic; }
+  .tag { color: #e06c75; }
+  .attr { color: #e5c07b; }
+  .val { color: #98c379; }
+  .fn { color: #61afef; }
+  .num { color: #d19a66; }
+  .prop { color: #56b6c2; }
+
+  .tip-box {
+    background: rgba(91,200,175,0.08);
+    border: 1px solid rgba(91,200,175,0.25);
+    border-radius: 6px; padding: 12px 16px;
+    margin-top: 14px; font-size: 13px;
+    color: var(--accent2);
+  }
+  .tip-box strong { color: #7de8d0; }
+
+  .divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-dim);
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 20px; }
+    .header { padding: 28px 20px; }
+    .header h1 { font-size: 1.8rem; }
+    .analysis-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-tag">Pokhara University · BCA · 3rd Semester</div>
+  <h1>Web Technology <span>I</span><br>Important Questions</h1>
+  <div class="header-sub">Deep Analysis: 2021–2025 Papers + New Syllabus (2024) · Model Answers for Full Marks</div>
+  <div class="header-meta">
+    <span class="meta-pill">NEW SYLLABUS 2024</span>
+    <span class="meta-pill">8 UNITS COVERED</span>
+    <span class="meta-pill">7 & 8 MARK ANSWERS</span>
+    <span class="meta-pill">EXAM PATTERNS ANALYZED</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#analysis">📊 Analysis</a>
+  <a href="#unit1">Unit I</a>
+  <a href="#unit2">Unit II</a>
+  <a href="#unit3">Unit III</a>
+  <a href="#unit4">Unit IV</a>
+  <a href="#unit5">Unit V</a>
+  <a href="#unit6">Unit VI</a>
+  <a href="#unit8">Unit VIII</a>
+</nav>
+
+<div class="container">
+
+  <!-- ANALYSIS SECTION -->
+  <section id="analysis" class="unit-section">
+    <div class="analysis-box">
+      <h2>📊 Exam Pattern Analysis (2021–2025)</h2>
+      <div class="answer" style="margin-bottom:16px;">
+        <p>The exam has <strong>7 questions</strong>. Q1–Q6 each have two parts (a = 8 marks, b = 7 marks). Q7 is "write short notes on any two" (2 × 5 = 10 marks). Total = 100 marks, 3 hours.</p>
+        <p><strong>⚠️ New Syllabus Alert:</strong> The syllabus was updated in late 2024. XML, DTD, SAX, XSL topics are REMOVED. New topics include: ES6+, Async/Await, Fetch, JSON, AJAX, React/Vue.js, User Stories, Wireframing, SEO.</p>
+      </div>
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <h4>Topics Asked Every Year (Must Study)</h4>
+          <p>CSS Selectors · Padding vs Margin · HTML Tables · HTML Lists · JavaScript Form Validation · jQuery · DOM · Protocols/HTTP</p>
+        </div>
+        <div class="analysis-card">
+          <h4>New High-Priority Topics (2025 Paper)</h4>
+          <p>HTTPS vs HTTP · Async/Await/Fetch · JavaScript Objects · User Stories · React & Vue.js · AJAX · Media Queries</p>
+        </div>
+        <div class="analysis-card">
+          <h4>Removed from New Syllabus</h4>
+          <p>XML · DTD · XSL/XSLT · SAX · XML Schema · Domain Name Hierarchy · Image Maps · Page Layout Issues</p>
+        </div>
+        <div class="analysis-card">
+          <h4>Question Distribution Pattern</h4>
+          <p>Q1→Unit I+II · Q2→Unit II · Q3→Unit III · Q4→Unit IV · Q5→Unit V · Q6→Unit VI+VIII · Q7→Any unit (short notes)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);">PRIORITY:</span>
+      <span class="legend-item"><span class="dot" style="background:var(--high)"></span> HIGH — Very likely to come</span>
+      <span class="legend-item"><span class="dot" style="background:var(--med)"></span> MEDIUM — Good chance</span>
+      <span class="legend-item"><span class="dot" style="background:var(--low)"></span> LOW — Study if time allows</span>
+    </div>
+  </section>
+
+  <!-- ==================== UNIT I ==================== -->
+  <section id="unit1" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit1);">U1</div>
+      <div class="unit-info">
+        <h2>Introduction to Web Technologies</h2>
+        <p>4 Hours · HTTP/HTTPS · DNS · Protocols · Client-Server · Scripting</p>
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2025 New</span>
+        <span class="q-title">Why is HTTPS more secure than HTTP? Explain HTTP request and response format in detail.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Why is HTTPS considered more secure than HTTP? Explain HTTP request and response format in details.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>HTTP vs HTTPS</h4>
+          <p><strong>HTTP (HyperText Transfer Protocol)</strong> is the foundation protocol used for communication between a web browser (client) and a web server. However, HTTP sends data as plain text, meaning anyone on the network can read or modify the data. This is a serious security risk.</p>
+          <p><strong>HTTPS (HyperText Transfer Protocol Secure)</strong> is the secure version of HTTP. It uses <strong>SSL/TLS (Secure Sockets Layer / Transport Layer Security)</strong> to encrypt all data sent between the client and server. This means even if someone intercepts the data, they cannot read it.</p>
+
+          <h4>Why HTTPS is More Secure</h4>
+          <ul>
+            <li><strong>Encryption:</strong> All data is encrypted using SSL/TLS, so sensitive information like passwords and credit card numbers cannot be stolen.</li>
+            <li><strong>Authentication:</strong> HTTPS uses digital certificates to verify that you are connected to the correct server and not a fake one (prevents man-in-the-middle attacks).</li>
+            <li><strong>Data Integrity:</strong> HTTPS ensures data is not modified or corrupted during transmission.</li>
+            <li><strong>Trust:</strong> Browsers show a padlock icon for HTTPS sites, showing users the connection is safe. HTTP sites are marked as "Not Secure".</li>
+          </ul>
+
+          <h4>HTTP Request Format</h4>
+          <p>When a browser wants to communicate with a server, it sends an HTTP Request. The request has three parts:</p>
+          <ul>
+            <li><strong>Request Line:</strong> Contains the HTTP method (GET, POST, PUT, DELETE), the path (URL), and the HTTP version.</li>
+            <li><strong>Request Headers:</strong> Contains additional information like Host, Content-Type, Accept, User-Agent, etc.</li>
+            <li><strong>Request Body (optional):</strong> Contains data sent to the server (used in POST/PUT requests).</li>
+          </ul>
+          <pre>GET /index.html HTTP/1.1
+Host: www.example.com
+Accept: text/html
+User-Agent: Mozilla/5.0
+
+<span class="cm">[ Body is empty for GET requests ]</span></pre>
+
+          <h4>HTTP Response Format</h4>
+          <p>The server replies with an HTTP Response, which also has three parts:</p>
+          <ul>
+            <li><strong>Status Line:</strong> Contains the HTTP version, a status code (200 = OK, 404 = Not Found, 500 = Server Error), and a reason phrase.</li>
+            <li><strong>Response Headers:</strong> Contains information like Content-Type, Content-Length, Date, Server, etc.</li>
+            <li><strong>Response Body:</strong> Contains the actual content (HTML page, image, JSON data, etc.).</li>
+          </ul>
+          <pre>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 348
+Date: Fri, 20 Mar 2026
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;Hello World&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always mention SSL/TLS encryption, the padlock icon, and give at least one example of HTTP method (GET/POST). Write the request/response format clearly with proper labels.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2022 · 2025</span>
+        <span class="q-title">What is a protocol? Explain different types of protocols used in the internet in detail.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is protocol? What are different protocols used in Internet? Explain any four of them in detail.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a Protocol?</h4>
+          <p>A <strong>protocol</strong> is a set of rules and standards that govern how data is transmitted and received over a network. Just like humans need a common language to communicate, computers need protocols to exchange information properly. Protocols define the format, timing, sequence, and error checking of data transmission.</p>
+
+          <h4>Different Types of Protocols Used in the Internet</h4>
+
+          <p><strong>1. HTTP (HyperText Transfer Protocol):</strong> HTTP is the foundation of data communication on the World Wide Web. It defines how web browsers request web pages from servers and how servers send those pages back. HTTP works on port 80. It is a stateless protocol, meaning each request is independent.</p>
+
+          <p><strong>2. HTTPS (HyperText Transfer Protocol Secure):</strong> HTTPS is the secure version of HTTP. It uses SSL/TLS encryption to protect data from being read by third parties. It is used for banking, shopping, and login pages. HTTPS works on port 443.</p>
+
+          <p><strong>3. FTP (File Transfer Protocol):</strong> FTP is used to transfer files between computers on a network. It allows users to upload files to a server or download files from a server. FTP uses port 21 for commands and port 20 for data transfer. It supports authentication with username and password.</p>
+
+          <p><strong>4. DNS (Domain Name System):</strong> DNS is a protocol that translates human-readable domain names (like www.google.com) into IP addresses (like 142.250.80.46) that computers can understand. It works like a phone book for the internet. Without DNS, users would have to remember IP addresses instead of website names.</p>
+
+          <p><strong>5. SMTP (Simple Mail Transfer Protocol):</strong> SMTP is used for sending email messages between servers. When you send an email, your email client uses SMTP to deliver the message to the mail server. SMTP works on port 25 or 587.</p>
+
+          <p><strong>6. TCP/IP (Transmission Control Protocol/Internet Protocol):</strong> TCP/IP is the most fundamental protocol of the internet. TCP ensures that data packets are delivered reliably, in order, and without errors. IP is responsible for addressing and routing packets to the correct destination.</p>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> If asked for "any four," choose HTTP, HTTPS, FTP, and DNS — these are the most important and easiest to explain. Always mention the port number for extra marks.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025</span>
+        <span class="q-title">What is DNS? Explain DNS and its hierarchy.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is DNS? Explain the DNS hierarchy with a suitable diagram/example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is DNS?</h4>
+          <p><strong>DNS (Domain Name System)</strong> is a hierarchical naming system used on the internet that translates human-readable domain names into IP addresses. When you type "www.google.com" in your browser, DNS converts it to an IP address like "142.250.80.46" so the browser can find the correct server. Without DNS, users would have to remember numerical IP addresses for every website they visit.</p>
+
+          <h4>DNS Hierarchy</h4>
+          <p>DNS is organized in a tree-like hierarchical structure from top to bottom:</p>
+          <ul>
+            <li><strong>Root Level (.):</strong> This is the topmost level of the DNS hierarchy. It is represented by a dot (.). All DNS queries start from here. The root servers direct queries to the appropriate Top-Level Domain servers.</li>
+            <li><strong>Top-Level Domain (TLD):</strong> These are the extensions at the end of domain names. Examples: .com (commercial), .org (organizations), .edu (education), .gov (government), .np (Nepal), .uk (United Kingdom). These are managed by ICANN.</li>
+            <li><strong>Second-Level Domain (SLD):</strong> This is the unique name registered by individuals or companies. For example, in "www.google.com", the word "google" is the second-level domain.</li>
+            <li><strong>Subdomain:</strong> This is an optional part added before the second-level domain. For example, "www" in "www.google.com" or "mail" in "mail.google.com".</li>
+          </ul>
+
+          <pre><span class="cm">DNS Hierarchy Example:</span>
+
+         . (Root)
+         |
+       .com (Top-Level Domain)
+         |
+      google (Second-Level Domain)
+         |
+       www (Subdomain)
+
+Full URL: www.google.com</pre>
+
+          <p>When a user types "www.google.com", the DNS resolution process works step by step: the browser first checks its local cache, then asks the ISP's DNS resolver, which contacts the root server, then the TLD (.com) server, then the Google DNS server, which finally returns the IP address of www.google.com.</p>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Draw or write the hierarchy clearly: Root → TLD → SLD → Subdomain. Give a real example like www.pu.edu.np to show a Nepal-based domain hierarchy.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2021 · 2022</span>
+        <span class="q-title">Differentiate between client-side and server-side scripting language with examples.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Difference between client side scripting and server side scripting language. Also make a highlight on what JavaScript can and cannot do.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Client-Side Scripting</h4>
+          <p>Client-side scripting refers to programs that run in the user's browser on their own computer. The code is downloaded from the server along with the webpage and executed locally. The server does not process the logic — the browser does.</p>
+          <p><strong>Examples:</strong> JavaScript, HTML, CSS, VBScript</p>
+          <p><strong>Advantages:</strong> Faster response (no server needed), reduces server load, works offline for basic tasks, provides immediate user feedback (form validation, animations).</p>
+
+          <h4>Server-Side Scripting</h4>
+          <p>Server-side scripting refers to programs that run on the web server. The user sends a request, the server processes the script, and only the final output (usually HTML) is sent back to the browser. The source code is hidden from the user.</p>
+          <p><strong>Examples:</strong> PHP, Python (Django/Flask), Node.js, Ruby on Rails, ASP.NET</p>
+          <p><strong>Advantages:</strong> Can access databases, handles security, can process user input safely, generates dynamic content for each user.</p>
+
+          <h4>Comparison Table</h4>
+          <pre>Feature           | Client-Side        | Server-Side
+------------------|--------------------|------------------
+Runs on           | User's Browser     | Web Server
+Speed             | Fast (no request)  | Slower (server trip)
+Access to DB      | No                 | Yes
+Security          | Less secure        | More secure
+Example           | JavaScript         | PHP, Node.js
+Source Visible    | Yes                | No</pre>
+
+          <h4>What JavaScript Can and Cannot Do</h4>
+          <p><strong>JavaScript CAN:</strong> Manipulate HTML/CSS (DOM), validate forms, respond to user events (click, hover), make AJAX requests, create animations, store data in cookies/local storage, and run in browsers without plugins.</p>
+          <p><strong>JavaScript CANNOT:</strong> Directly access databases, read/write files on the user's computer (for security), access hardware devices directly, or run outside the browser sandbox (unless using Node.js).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== UNIT II ==================== -->
+  <section id="unit2" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit2);">U2</div>
+      <div class="unit-info">
+        <h2>HTML</h2>
+        <p>8 Hours · Structure · Lists · Tables · Forms · Semantic HTML</p>
+      </div>
+    </div>
+
+    <!-- Q1 HTML Lists -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2021–2025 Every Year</span>
+        <span class="q-title">What is HTML? List out and explain different types of lists in HTML with examples.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is HTML? List out and explain different types of lists in HTML? OR: Define lists used in HTML5. Write down the three types of list with example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is HTML?</h4>
+          <p><strong>HTML (HyperText Markup Language)</strong> is the standard language used to create and structure web pages. It uses "tags" (elements enclosed in angle brackets like &lt;p&gt;, &lt;h1&gt;, &lt;div&gt;) to tell the browser how to display content. HTML describes the structure and meaning of web content, not its appearance (that is the job of CSS). Every webpage on the internet is built using HTML.</p>
+
+          <h4>Types of Lists in HTML</h4>
+          <p>HTML provides three types of lists for organizing content:</p>
+
+          <p><strong>1. Unordered List (&lt;ul&gt;):</strong> An unordered list displays items with bullet points. The items have no particular order or sequence. It uses the &lt;ul&gt; tag (unordered list) and each item is inside an &lt;li&gt; (list item) tag.</p>
+          <pre><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>JavaScript<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+<span class="cm">Output:
+• HTML
+• CSS
+• JavaScript</span></pre>
+
+          <p><strong>2. Ordered List (&lt;ol&gt;):</strong> An ordered list displays items in a numbered sequence. It is used when the order of items matters, such as step-by-step instructions. It uses the &lt;ol&gt; tag and items are inside &lt;li&gt; tags.</p>
+          <pre><span class="tag">&lt;ol&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Open your browser<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Type the URL<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Press Enter<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+<span class="cm">Output:
+1. Open your browser
+2. Type the URL
+3. Press Enter</span></pre>
+
+          <p><strong>3. Description List (&lt;dl&gt;):</strong> A description list (also called a definition list) is used to display items along with their descriptions or definitions. It uses the &lt;dl&gt; tag, &lt;dt&gt; for the term, and &lt;dd&gt; for the description.</p>
+          <pre><span class="tag">&lt;dl&gt;</span>
+  <span class="tag">&lt;dt&gt;</span>HTML<span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span>HyperText Markup Language<span class="tag">&lt;/dd&gt;</span>
+  <span class="tag">&lt;dt&gt;</span>CSS<span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span>Cascading Style Sheets<span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span></pre>
+
+          <p><strong>4. Nested List:</strong> A list inside another list is called a nested list. You can place any type of list inside another list item.</p>
+          <pre><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Fruits
+    <span class="tag">&lt;ul&gt;</span>
+      <span class="tag">&lt;li&gt;</span>Mango<span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li&gt;</span>Banana<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always write all three types (ul, ol, dl) with examples. The nested list is a bonus point. Remember: &lt;ul&gt; = bullets, &lt;ol&gt; = numbers, &lt;dl&gt; = definitions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 HTML Tables -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">Every Year</span>
+        <span class="q-title">Define HTML table with its important tags. Write the code for a complex table with merged rows/columns.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define table with its important tags. Write down the code to generate the given table (with merged cells).</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is an HTML Table?</h4>
+          <p>An <strong>HTML table</strong> is used to display data in rows and columns in a structured, grid format. Tables are created using several HTML tags that work together to define the structure of the table.</p>
+
+          <h4>Important Table Tags</h4>
+          <ul>
+            <li><strong>&lt;table&gt;:</strong> The main container tag that defines the table.</li>
+            <li><strong>&lt;tr&gt; (Table Row):</strong> Defines a row in the table.</li>
+            <li><strong>&lt;th&gt; (Table Header):</strong> Defines a header cell. Text is bold and centered by default.</li>
+            <li><strong>&lt;td&gt; (Table Data):</strong> Defines a regular data cell.</li>
+            <li><strong>&lt;thead&gt;:</strong> Groups the header rows of the table.</li>
+            <li><strong>&lt;tbody&gt;:</strong> Groups the body rows of the table.</li>
+            <li><strong>colspan:</strong> An attribute that allows a cell to span across multiple columns.</li>
+            <li><strong>rowspan:</strong> An attribute that allows a cell to span across multiple rows.</li>
+            <li><strong>border:</strong> Attribute to add borders to the table.</li>
+          </ul>
+
+          <h4>Example: Table with Merged Cells (rowspan and colspan)</h4>
+          <pre><span class="tag">&lt;table</span> <span class="attr">border</span>=<span class="val">"1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;th</span> <span class="attr">rowspan</span>=<span class="val">"2"</span><span class="tag">&gt;</span>Day<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;th</span> <span class="attr">colspan</span>=<span class="val">"2"</span><span class="tag">&gt;</span>Schedule<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;th</span> <span class="attr">rowspan</span>=<span class="val">"2"</span><span class="tag">&gt;</span>Topic<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Start<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;th&gt;</span>End<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Monday<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>8:00 AM<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>5:00 PM<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Introduction<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">rowspan</span>=<span class="val">"2"</span><span class="tag">&gt;</span>Tuesday<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>8:00 AM<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>11:00 AM<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Learn<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;</span>11:00 AM<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>2:00 PM<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Practice<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> In exams, a table diagram is given and you must recreate it in HTML. Always look for which cells span multiple rows (rowspan) or columns (colspan). Count the rows and columns carefully before writing the code.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HTML Forms -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2023 · 2025</span>
+        <span class="q-title">Explain the form method attribute. Write HTML to create a Registration Form.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Explain form method attribute. Write HTML to create a Registration Form with Name, Date of Birth, Email, Phone fields and a Register button.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>The Form Method Attribute</h4>
+          <p>The <strong>method</strong> attribute of the HTML &lt;form&gt; tag specifies how form data is sent to the server when the form is submitted. There are two main values:</p>
+          <ul>
+            <li><strong>GET:</strong> Form data is appended to the URL as a query string (e.g., page.php?name=John&email=john@example.com). Data is visible in the URL. Used for search forms, non-sensitive data. Has a size limit.</li>
+            <li><strong>POST:</strong> Form data is sent in the HTTP request body, not visible in the URL. Used for sensitive data (passwords, personal info), file uploads. No size limit.</li>
+          </ul>
+
+          <h4>HTML Registration Form</h4>
+          <pre><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Registration Form<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;h2&gt;</span>Registration Form<span class="tag">&lt;/h2&gt;</span>
+  <span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="val">"register.php"</span> <span class="attr">method</span>=<span class="val">"post"</span><span class="tag">&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="val">"name"</span><span class="tag">&gt;</span>Name:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span> <span class="attr">id</span>=<span class="val">"name"</span> <span class="attr">name</span>=<span class="val">"name"</span> 
+           <span class="attr">placeholder</span>=<span class="val">"Enter your name"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;br&gt;&lt;br&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="val">"dob"</span><span class="tag">&gt;</span>Date of Birth:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"date"</span> <span class="attr">id</span>=<span class="val">"dob"</span> <span class="attr">name</span>=<span class="val">"dob"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;br&gt;&lt;br&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="val">"email"</span><span class="tag">&gt;</span>Email:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"email"</span> <span class="attr">id</span>=<span class="val">"email"</span> <span class="attr">name</span>=<span class="val">"email"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;br&gt;&lt;br&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="val">"phone"</span><span class="tag">&gt;</span>Phone:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"tel"</span> <span class="attr">id</span>=<span class="val">"phone"</span> <span class="attr">name</span>=<span class="val">"phone"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;br&gt;&lt;br&gt;</span>
+
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"submit"</span> <span class="attr">value</span>=<span class="val">"Register"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- HTML Document Structure -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 · 2021</span>
+        <span class="q-title">What is HTML? Explain HTML document structure with an appropriate example.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is HTML? Explain HTML document structure with an appropriate example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is HTML?</h4>
+          <p><strong>HTML (HyperText Markup Language)</strong> is the standard language for creating web pages. The term "HyperText" refers to the ability to link pages together through hyperlinks. "Markup Language" means it uses special tags to annotate (mark up) content to tell the browser how to display it. HTML is not a programming language — it is a structure language that organizes content.</p>
+
+          <h4>HTML Document Structure</h4>
+          <p>Every HTML document follows a standard structure with specific required sections:</p>
+          <ul>
+            <li><strong>&lt;!DOCTYPE html&gt;:</strong> Declares the document type and HTML version. It tells the browser this is an HTML5 document. It always appears at the very top.</li>
+            <li><strong>&lt;html&gt;:</strong> The root element that wraps the entire HTML document. All other elements go inside this tag.</li>
+            <li><strong>&lt;head&gt;:</strong> Contains metadata (information about the document) that is NOT displayed on the page. This includes the page title, links to CSS files, character encoding settings, etc.</li>
+            <li><strong>&lt;title&gt;:</strong> Sets the title that appears in the browser tab or window title bar.</li>
+            <li><strong>&lt;body&gt;:</strong> Contains all the visible content of the webpage — text, images, links, tables, forms, etc.</li>
+          </ul>
+
+          <pre><span class="tag">&lt;!DOCTYPE html&gt;</span>          <span class="cm">← Document type declaration</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="val">"en"</span><span class="tag">&gt;</span>          <span class="cm">← Root element</span>
+
+<span class="tag">&lt;head&gt;</span>                   <span class="cm">← Metadata section</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>My Web Page<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>                   <span class="cm">← Visible content section</span>
+  <span class="tag">&lt;h1&gt;</span>Welcome to BCA<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span>This is my first webpage.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://pu.edu.np"</span><span class="tag">&gt;</span>Pokhara University<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== UNIT III ==================== -->
+  <section id="unit3" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit3);">U3</div>
+      <div class="unit-info">
+        <h2>CSS — Cascading Style Sheets</h2>
+        <p>8 Hours · Selectors · Box Model · Flexbox · Media Queries · Responsive Design</p>
+      </div>
+    </div>
+
+    <!-- CSS Selectors -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">Every Year 2021–2025</span>
+        <span class="q-title">Define CSS. Explain different types of selectors in CSS with examples.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define CSS. Explain different types of selectors in CSS with example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is CSS?</h4>
+          <p><strong>CSS (Cascading Style Sheets)</strong> is a stylesheet language used to describe the presentation and appearance of HTML documents. CSS controls the color, font, size, spacing, layout, and visual effects of web page elements. It separates the content (HTML) from the presentation (CSS), making code cleaner and easier to maintain. CSS is called "cascading" because multiple style rules can apply to the same element, and they cascade down following a priority order.</p>
+
+          <h4>Types of CSS Selectors</h4>
+          <p>A CSS selector is a pattern used to select the HTML element(s) you want to style.</p>
+
+          <p><strong>1. Universal Selector (*):</strong> Selects ALL elements on the page.</p>
+          <pre>* { margin: 0; padding: 0; }</pre>
+
+          <p><strong>2. Element/Type Selector:</strong> Selects all elements of a specific HTML tag.</p>
+          <pre>p { color: blue; font-size: 14px; }   <span class="cm">/* Styles all &lt;p&gt; tags */</span>
+h1 { color: red; }</pre>
+
+          <p><strong>3. Class Selector (.):</strong> Selects elements with a specific class attribute. A class can be used on multiple elements.</p>
+          <pre>.highlight { background-color: yellow; }
+<span class="cm">/* HTML: &lt;p class="highlight"&gt;This is highlighted&lt;/p&gt; */</span></pre>
+
+          <p><strong>4. ID Selector (#):</strong> Selects one unique element with a specific id attribute. An ID should be used only once per page.</p>
+          <pre>#header { background-color: navy; color: white; }
+<span class="cm">/* HTML: &lt;div id="header"&gt;My Header&lt;/div&gt; */</span></pre>
+
+          <p><strong>5. Descendant Selector:</strong> Selects elements that are inside another specific element.</p>
+          <pre>div p { color: green; }  <span class="cm">/* Selects &lt;p&gt; inside &lt;div&gt; only */</span></pre>
+
+          <p><strong>6. Pseudo-class Selector:</strong> Selects elements in a specific state (like when hovered).</p>
+          <pre>a:hover { color: red; }         <span class="cm">/* Link color on mouse hover */</span>
+button:active { opacity: 0.8; } <span class="cm">/* Button when clicked */</span></pre>
+
+          <p><strong>7. Grouping Selector:</strong> Applies the same style to multiple selectors separated by commas.</p>
+          <pre>h1, h2, h3 { font-family: Arial; color: #333; }</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> This question appears EVERY year. Always write at least 5 selectors with a code example for each. The most important ones are: element, class, ID, descendant, and pseudo-class.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS Box Model -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2021 · 2022 · 2025</span>
+        <span class="q-title">What is the CSS Box Model? Explain the role of padding, border, width, and margin with examples.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is CSS box model? Explain the role of padding, border, width, and margin with examples.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>The CSS Box Model</h4>
+          <p>The <strong>CSS Box Model</strong> is a fundamental concept in web design. It defines how every HTML element is rendered as a rectangular box. This box is made up of four layers (from inside to outside):</p>
+          <ol>
+            <li><strong>Content</strong> — The actual text or image inside the element.</li>
+            <li><strong>Padding</strong> — The space between the content and the border (inside the border).</li>
+            <li><strong>Border</strong> — A visible or invisible line surrounding the padding.</li>
+            <li><strong>Margin</strong> — The space outside the border, between this element and other elements.</li>
+          </ol>
+
+          <pre><span class="cm">┌─────────────────────────────────┐
+│           MARGIN                │
+│  ┌───────────────────────────┐  │
+│  │         BORDER            │  │
+│  │  ┌─────────────────────┐  │  │
+│  │  │      PADDING        │  │  │
+│  │  │  ┌───────────────┐  │  │  │
+│  │  │  │    CONTENT    │  │  │  │
+│  │  │  └───────────────┘  │  │  │
+│  │  └─────────────────────┘  │  │
+│  └───────────────────────────┘  │
+└─────────────────────────────────┘</span></pre>
+
+          <h4>Box Model Properties Explained</h4>
+
+          <p><strong>1. Width and Height:</strong> Define the size of the content area. By default, the total element size = width + padding + border + margin.</p>
+          <pre>div { width: 300px; height: 150px; }</pre>
+
+          <p><strong>2. Padding:</strong> The inner spacing between the content and the border. Padding is inside the element and has the same background color as the content. You can set it for all sides or individually.</p>
+          <pre>p {
+  padding: 20px;              <span class="cm">/* All four sides */</span>
+  padding-top: 10px;          <span class="cm">/* Top only */</span>
+  padding: 10px 20px;         <span class="cm">/* Top/Bottom Left/Right */</span>
+}</pre>
+
+          <p><strong>3. Border:</strong> The line surrounding the padding and content. You can control its width, style, and color.</p>
+          <pre>div {
+  border: 2px solid black;       <span class="cm">/* Width Style Color */</span>
+  border-radius: 10px;           <span class="cm">/* Rounded corners */</span>
+}</pre>
+
+          <p><strong>4. Margin:</strong> The outer spacing outside the border. Margin creates space between two different elements. Margins are always transparent.</p>
+          <pre>div {
+  margin: 30px;             <span class="cm">/* All sides */</span>
+  margin: auto;             <span class="cm">/* Centers the element */</span>
+  margin: 10px 20px 30px 40px; <span class="cm">/* top right bottom left */</span>
+}</pre>
+
+          <h4>Full Example</h4>
+          <pre>.box {
+  width: 200px;
+  height: 100px;
+  padding: 15px;
+  border: 3px solid blue;
+  margin: 20px;
+  background-color: lightblue;
+}
+<span class="cm">/* Total width = 200 + 15+15 (padding) + 3+3 (border) = 236px */</span></pre>
+
+          <p><strong>box-sizing: border-box</strong> — A modern CSS property that makes the width include padding and border, so the total size stays at exactly the declared width. This is now the standard in web development.</p>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always draw the box model diagram (Content → Padding → Border → Margin). This alone earns 3-4 marks. Then explain each property with a code example.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Media Queries -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2024 · 2025</span>
+        <span class="q-title">Explain the role of media queries in CSS. How do they help in designing web pages for different screen sizes?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Explain the role of media queries in CSS. How do media queries help in designing web pages for different screen sizes? Provide examples.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a Media Query?</h4>
+          <p>A <strong>media query</strong> is a CSS technique that applies different styles to a webpage depending on the device's screen size, orientation, or resolution. Media queries are the foundation of <strong>responsive web design</strong> — websites that automatically adjust their layout and appearance to look good on any device (desktop, tablet, mobile phone).</p>
+
+          <h4>Syntax of Media Query</h4>
+          <pre><span class="prop">@media</span> (condition) {
+  <span class="cm">/* CSS rules applied when condition is true */</span>
+  selector { property: value; }
+}</pre>
+
+          <h4>Common Media Query Breakpoints</h4>
+          <ul>
+            <li><strong>Mobile phones:</strong> max-width: 576px</li>
+            <li><strong>Tablets:</strong> max-width: 768px</li>
+            <li><strong>Laptops:</strong> max-width: 992px</li>
+            <li><strong>Desktops:</strong> max-width: 1200px</li>
+          </ul>
+
+          <h4>Examples</h4>
+
+          <p><strong>Example 1: Change background color based on screen size</strong></p>
+          <pre><span class="cm">/* Default style for desktop */</span>
+body { background-color: white; }
+
+<span class="cm">/* For tablets (768px and below) */</span>
+<span class="prop">@media</span> (max-width: 768px) {
+  body { background-color: lightyellow; }
+}
+
+<span class="cm">/* For mobile phones (480px and below) */</span>
+<span class="prop">@media</span> (max-width: 480px) {
+  body { background-color: lightblue; }
+}</pre>
+
+          <p><strong>Example 2: Responsive navigation (stack items on mobile)</strong></p>
+          <pre><span class="cm">/* Desktop: navigation items in a row */</span>
+nav ul { display: flex; flex-direction: row; }
+
+<span class="cm">/* Mobile: stack navigation items vertically */</span>
+<span class="prop">@media</span> (max-width: 600px) {
+  nav ul { display: flex; flex-direction: column; }
+  nav ul li { font-size: 14px; }
+  .sidebar { display: none; } <span class="cm">/* Hide sidebar on mobile */</span>
+}</pre>
+
+          <h4>Why Media Queries Are Important</h4>
+          <ul>
+            <li>More than 60% of internet traffic now comes from mobile devices, so responsive design is essential.</li>
+            <li>A single HTML/CSS codebase can serve all devices without separate websites.</li>
+            <li>Better user experience — content is readable and usable on any screen size.</li>
+            <li>Google gives preference to mobile-friendly websites in search rankings (SEO benefit).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Padding vs Margin -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2022 · 2023 · 2024</span>
+        <span class="q-title">Differentiate between Padding and Margin with examples. Explain CSS Properties.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Differentiate between Padding and Margin with example. Explain CSS Properties.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Padding vs Margin — Key Differences</h4>
+          <p><strong>Padding</strong> is the space between the content of an element and its border. It is inside the element. Padding takes the background color of the element.</p>
+          <p><strong>Margin</strong> is the space outside the border of an element. It creates space between two different elements. Margins are always transparent (no background color).</p>
+
+          <pre>Feature      | Padding                 | Margin
+-------------|-------------------------|-------------------------
+Location     | Inside the border       | Outside the border
+Background   | Shows element's color   | Always transparent
+Purpose      | Space inside element    | Space between elements
+Auto value   | Not supported           | margin: auto (centers element)
+Collapsing   | Does not collapse       | Vertical margins collapse</pre>
+
+          <pre><span class="cm">/* Example showing difference */</span>
+.box1 {
+  background-color: lightblue;
+  padding: 30px;   <span class="cm">/* Space inside - lightblue extends 30px */</span>
+  margin: 20px;    <span class="cm">/* Space outside - transparent gap */</span>
+  border: 2px solid black;
+}</pre>
+
+          <h4>CSS Properties Overview</h4>
+          <p>CSS has hundreds of properties. Some of the most important ones are:</p>
+          <ul>
+            <li><strong>color:</strong> Sets the text color. Example: color: red; color: #333;</li>
+            <li><strong>background-color:</strong> Sets background. Example: background-color: #fff;</li>
+            <li><strong>font-size:</strong> Sets text size. Example: font-size: 16px;</li>
+            <li><strong>font-family:</strong> Sets typeface. Example: font-family: Arial, sans-serif;</li>
+            <li><strong>font-weight:</strong> Sets boldness. Example: font-weight: bold;</li>
+            <li><strong>text-align:</strong> Aligns text. Example: text-align: center;</li>
+            <li><strong>display:</strong> Controls layout. Example: display: block; flex; inline; none;</li>
+            <li><strong>width/height:</strong> Sets dimensions. Example: width: 100%; height: 50px;</li>
+            <li><strong>border:</strong> Adds border. Example: border: 1px solid #ccc;</li>
+            <li><strong>border-radius:</strong> Rounds corners. Example: border-radius: 8px;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== UNIT IV ==================== -->
+  <section id="unit4" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit4);">U4</div>
+      <div class="unit-info">
+        <h2>JavaScript Basics</h2>
+        <p>8 Hours · Variables · Control Statements · Functions · DOM · Events · Form Validation</p>
+      </div>
+    </div>
+
+    <!-- JS Control Statements -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2022 · 2024 · 2025</span>
+        <span class="q-title">What is JavaScript? Describe its role in web development. Explain the various control statements with examples.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is JavaScript? Describe its role in web development. Also, explain the various control statements used in JavaScript with examples.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is JavaScript?</h4>
+          <p><strong>JavaScript (JS)</strong> is a lightweight, interpreted, client-side scripting language that makes web pages interactive and dynamic. It was created by Brendan Eich in 1995 and is one of the three core technologies of the web alongside HTML (structure) and CSS (style). JavaScript runs directly in the browser without needing to contact the server for every action.</p>
+
+          <h4>Role of JavaScript in Web Development</h4>
+          <ul>
+            <li><strong>Interactivity:</strong> Responds to user actions like clicks, hover, key presses, and form submissions.</li>
+            <li><strong>Form Validation:</strong> Validates user input before sending data to the server.</li>
+            <li><strong>DOM Manipulation:</strong> Can add, remove, or change HTML elements and CSS styles dynamically.</li>
+            <li><strong>Animations:</strong> Creates visual effects like sliders, popups, and transitions.</li>
+            <li><strong>AJAX:</strong> Fetches data from servers without reloading the page.</li>
+          </ul>
+
+          <h4>Control Statements in JavaScript</h4>
+          <p>Control statements determine the flow of execution of a program.</p>
+
+          <p><strong>1. if-else Statement:</strong> Executes code based on a condition.</p>
+          <pre><span class="kw">let</span> marks = <span class="num">75</span>;
+<span class="kw">if</span> (marks >= <span class="num">90</span>) {
+  console.log(<span class="str">"Grade A"</span>);
+} <span class="kw">else if</span> (marks >= <span class="num">80</span>) {
+  console.log(<span class="str">"Grade B"</span>);
+} <span class="kw">else if</span> (marks >= <span class="num">60</span>) {
+  console.log(<span class="str">"Grade C"</span>);
+} <span class="kw">else</span> {
+  console.log(<span class="str">"Fail"</span>);
+}
+<span class="cm">// Output: Grade C</span></pre>
+
+          <p><strong>2. switch Statement:</strong> Selects one of many code blocks to execute based on a value.</p>
+          <pre><span class="kw">let</span> day = <span class="num">1</span>;
+<span class="kw">switch</span>(day) {
+  <span class="kw">case</span> <span class="num">1</span>: console.log(<span class="str">"Monday"</span>); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">2</span>: console.log(<span class="str">"Tuesday"</span>); <span class="kw">break</span>;
+  <span class="kw">default</span>: console.log(<span class="str">"Other day"</span>);
+}</pre>
+
+          <p><strong>3. for Loop:</strong> Repeats code a fixed number of times.</p>
+          <pre><span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">1</span>; i <= <span class="num">5</span>; i++) {
+  console.log(<span class="str">"Number: "</span> + i);
+}
+<span class="cm">// Prints: Number: 1, Number: 2, ... Number: 5</span></pre>
+
+          <p><strong>4. while Loop:</strong> Repeats code as long as a condition is true.</p>
+          <pre><span class="kw">let</span> i = <span class="num">1</span>;
+<span class="kw">while</span> (i <= <span class="num">5</span>) {
+  console.log(i);
+  i++;
+}</pre>
+
+          <p><strong>5. do-while Loop:</strong> Similar to while, but executes the code block at least once before checking the condition.</p>
+          <pre><span class="kw">let</span> i = <span class="num">1</span>;
+<span class="kw">do</span> {
+  console.log(i);
+  i++;
+} <span class="kw">while</span> (i <= <span class="num">5</span>);</pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Write code examples for ALL control statements. The grade-based if-else example is very popular in exams. Always include break in switch statements.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Form Validation -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2022 · 2023 · 2024 · 2025</span>
+        <span class="q-title">Write JavaScript code to validate a form (Name, Email, Password, Contact fields).</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a JavaScript code to validate a form with: Name (should not be empty), Email (valid format), Password (minimum 8 characters, must include letters and numbers), Contact (should only contain numbers).</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Form Validation in JavaScript</h4>
+          <p>Form validation checks user input before submitting it to the server. This saves time, prevents bad data, and provides immediate feedback to the user.</p>
+          <pre><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;&lt;title&gt;</span>Form Validation<span class="tag">&lt;/title&gt;&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+
+<span class="tag">&lt;form</span> <span class="attr">onsubmit</span>=<span class="val">"return validateForm()"</span><span class="tag">&gt;</span>
+  Name:     <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span>  <span class="attr">id</span>=<span class="val">"name"</span><span class="tag">&gt;&lt;br&gt;&lt;br&gt;</span>
+  Email:    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span>  <span class="attr">id</span>=<span class="val">"email"</span><span class="tag">&gt;&lt;br&gt;&lt;br&gt;</span>
+  Password: <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"password"</span> <span class="attr">id</span>=<span class="val">"pass"</span><span class="tag">&gt;&lt;br&gt;&lt;br&gt;</span>
+  Contact:  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span>  <span class="attr">id</span>=<span class="val">"contact"</span><span class="tag">&gt;&lt;br&gt;&lt;br&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"submit"</span> <span class="attr">value</span>=<span class="val">"Register"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">function</span> <span class="fn">validateForm</span>() {
+  <span class="kw">let</span> name    = document.<span class="fn">getElementById</span>(<span class="str">"name"</span>).value;
+  <span class="kw">let</span> email   = document.<span class="fn">getElementById</span>(<span class="str">"email"</span>).value;
+  <span class="kw">let</span> pass    = document.<span class="fn">getElementById</span>(<span class="str">"pass"</span>).value;
+  <span class="kw">let</span> contact = document.<span class="fn">getElementById</span>(<span class="str">"contact"</span>).value;
+
+  <span class="cm">// 1. Name should not be empty</span>
+  <span class="kw">if</span> (name === <span class="str">""</span>) {
+    <span class="fn">alert</span>(<span class="str">"Name cannot be empty!"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="cm">// 2. Name should contain only alphabets</span>
+  <span class="kw">let</span> namePattern = /^[a-zA-Z ]+$/;
+  <span class="kw">if</span> (!namePattern.<span class="fn">test</span>(name)) {
+    <span class="fn">alert</span>(<span class="str">"Name should contain only alphabets!"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="cm">// 3. Email must be in valid format</span>
+  <span class="kw">let</span> emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  <span class="kw">if</span> (!emailPattern.<span class="fn">test</span>(email)) {
+    <span class="fn">alert</span>(<span class="str">"Enter a valid email address!"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="cm">// 4. Password: min 8 chars, must include letters and numbers</span>
+  <span class="kw">let</span> passPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+  <span class="kw">if</span> (!passPattern.<span class="fn">test</span>(pass)) {
+    <span class="fn">alert</span>(<span class="str">"Password must be 8+ chars with letters &amp; numbers!"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="cm">// 5. Contact should contain only numbers</span>
+  <span class="kw">let</span> contactPattern = /^[0-9]+$/;
+  <span class="kw">if</span> (!contactPattern.<span class="fn">test</span>(contact)) {
+    <span class="fn">alert</span>(<span class="str">"Contact should contain numbers only!"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="fn">alert</span>(<span class="str">"Form submitted successfully!"</span>);
+  <span class="kw">return true</span>;
+}
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> This is the most repeated coding question across all years. Always use <strong>getElementById</strong> to get values, and use <strong>return false</strong> to stop form submission. Know the basic regex patterns for email (/^[^\s@]+@[^\s@]+\.[^\s@]+$/) and numbers (/^[0-9]+$/).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOM -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2022 · 2023 · 2024</span>
+        <span class="q-title">What is DOM? Explain types of popup boxes used in JavaScript.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is DOM? Explain types of a popup boxes used in JavaScript.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is DOM?</h4>
+          <p>The <strong>DOM (Document Object Model)</strong> is a programming interface for web documents. When a browser loads an HTML page, it creates a tree-like structure called the DOM, where every HTML element becomes an object (node) that can be accessed and manipulated using JavaScript.</p>
+          <p>The DOM represents the page so that programs (JavaScript) can change the document structure, style, and content. Using the DOM, you can: find and change elements, add or delete elements, respond to events, and create dynamic content.</p>
+
+          <pre><span class="cm">DOM Tree for: &lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;World&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+
+document
+  └── html
+        └── body
+              ├── h1 → "Hello"
+              └── p  → "World"</span>
+
+<span class="cm">/* DOM manipulation examples */</span>
+document.<span class="fn">getElementById</span>(<span class="str">"title"</span>).innerHTML = <span class="str">"New Text"</span>;
+document.<span class="fn">querySelector</span>(<span class="str">".box"</span>).style.color = <span class="str">"red"</span>;</pre>
+
+          <h4>Types of Popup Boxes in JavaScript</h4>
+          <p>JavaScript provides three types of built-in dialog (popup) boxes:</p>
+
+          <p><strong>1. alert():</strong> Displays a message to the user with an OK button. Used for important notifications or warnings. Returns nothing (undefined).</p>
+          <pre><span class="fn">alert</span>(<span class="str">"Welcome to Web Technology!"</span>);
+<span class="cm">// Shows a popup with the message and an OK button.</span></pre>
+
+          <p><strong>2. confirm():</strong> Displays a message with two buttons: OK and Cancel. Used to ask the user for confirmation. Returns true if the user clicks OK, false if Cancel.</p>
+          <pre><span class="kw">let</span> result = <span class="fn">confirm</span>(<span class="str">"Are you sure you want to delete?"</span>);
+<span class="kw">if</span> (result === <span class="kw">true</span>) {
+  <span class="fn">alert</span>(<span class="str">"Deleted!"</span>);
+} <span class="kw">else</span> {
+  <span class="fn">alert</span>(<span class="str">"Cancelled!"</span>);
+}</pre>
+
+          <p><strong>3. prompt():</strong> Displays a dialog box with an input field where the user can type something. Used to get input from the user. Returns the entered text (string) or null if cancelled.</p>
+          <pre><span class="kw">let</span> name = <span class="fn">prompt</span>(<span class="str">"What is your name?"</span>);
+<span class="fn">alert</span>(<span class="str">"Hello, "</span> + name + <span class="str">"!"</span>);</pre>
+
+          <div class="tip-box"><strong>Summary:</strong> alert() = display message | confirm() = yes/no question | prompt() = get user input</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Functions -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2022 · 2025</span>
+        <span class="q-title">Define function with its types in JavaScript. Write JavaScript code to validate email and mobile number.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Define function with its type in JavaScript. Write down the JavaScript code to validate email and mobile number from user input form.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a Function?</h4>
+          <p>A <strong>function</strong> is a reusable block of code that performs a specific task. Functions help organize code, avoid repetition, and make programs easier to read and maintain. A function is defined once and can be called (executed) multiple times.</p>
+
+          <h4>Types of Functions in JavaScript</h4>
+
+          <p><strong>1. Named Function (Function Declaration):</strong></p>
+          <pre><span class="kw">function</span> <span class="fn">greet</span>(name) {
+  <span class="kw">return</span> <span class="str">"Hello, "</span> + name;
+}
+console.log(<span class="fn">greet</span>(<span class="str">"BCA"</span>)); <span class="cm">// Hello, BCA</span></pre>
+
+          <p><strong>2. Function Expression (Anonymous Function):</strong></p>
+          <pre><span class="kw">const</span> greet = <span class="kw">function</span>(name) {
+  <span class="kw">return</span> <span class="str">"Hello, "</span> + name;
+};</pre>
+
+          <p><strong>3. Arrow Function (ES6+):</strong></p>
+          <pre><span class="kw">const</span> <span class="fn">add</span> = (a, b) => a + b;
+console.log(<span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>)); <span class="cm">// 8</span></pre>
+
+          <p><strong>4. Self-Invoking Function (IIFE):</strong> A function that calls itself immediately after definition.</p>
+          <pre>(<span class="kw">function</span>() {
+  console.log(<span class="str">"I run immediately!"</span>);
+})();</pre>
+
+          <h4>Email and Mobile Validation Code</h4>
+          <pre><span class="kw">function</span> <span class="fn">validateContact</span>() {
+  <span class="kw">let</span> email  = document.<span class="fn">getElementById</span>(<span class="str">"email"</span>).value;
+  <span class="kw">let</span> mobile = document.<span class="fn">getElementById</span>(<span class="str">"mobile"</span>).value;
+
+  <span class="cm">// Email validation using Regular Expression</span>
+  <span class="kw">let</span> emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
+  <span class="kw">if</span> (!emailRegex.<span class="fn">test</span>(email)) {
+    <span class="fn">alert</span>(<span class="str">"Invalid email! Format: user@domain.com"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="cm">// Mobile: must be exactly 10 digits</span>
+  <span class="kw">let</span> mobileRegex = /^[0-9]{10}$/;
+  <span class="kw">if</span> (!mobileRegex.<span class="fn">test</span>(mobile)) {
+    <span class="fn">alert</span>(<span class="str">"Mobile must be exactly 10 digits!"</span>);
+    <span class="kw">return false</span>;
+  }
+
+  <span class="fn">alert</span>(<span class="str">"Validation successful!"</span>);
+  <span class="kw">return true</span>;
+}</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== UNIT V ==================== -->
+  <section id="unit5" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit5);">U5</div>
+      <div class="unit-info">
+        <h2>Advanced JavaScript Concepts</h2>
+        <p>6 Hours · ES6+ · Async/Await · Fetch · JSON · AJAX · Objects · Promises</p>
+      </div>
+    </div>
+
+    <!-- Async Fetch -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">2025 New — Expected</span>
+        <span class="q-title">What is asynchronous programming? Explain async and fetch with an example.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is asynchronous programming? Explain async and fetch with an example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is Asynchronous Programming?</h4>
+          <p>In normal (synchronous) programming, code executes line by line and the next line waits until the current one finishes. If one task takes a long time (like loading data from the internet), the entire program freezes and waits.</p>
+          <p><strong>Asynchronous programming</strong> solves this problem. It allows certain tasks to start and then run in the background while the rest of the code continues executing. When the background task finishes, it notifies the program. This is especially important for web development, where fetching data from APIs can take time.</p>
+
+          <h4>Promises</h4>
+          <p>A <strong>Promise</strong> is a JavaScript object that represents the eventual result of an asynchronous operation. It can be in one of three states: <strong>Pending</strong> (waiting), <strong>Fulfilled</strong> (success), or <strong>Rejected</strong> (error).</p>
+
+          <h4>async and await (ES6+)</h4>
+          <p><strong>async</strong> is a keyword placed before a function to indicate it is asynchronous. Such a function always returns a Promise. <strong>await</strong> is used inside an async function to pause execution until the Promise resolves. It makes asynchronous code look and behave like synchronous code, which is much easier to read.</p>
+
+          <h4>fetch() API</h4>
+          <p>The <strong>fetch()</strong> function is a modern built-in JavaScript method to make HTTP requests (get data from a server or API). It returns a Promise. It replaces the older XMLHttpRequest method.</p>
+
+          <pre><span class="cm">// Example: Fetch data from an API using async/await</span>
+
+<span class="kw">async function</span> <span class="fn">getUserData</span>() {
+  <span class="kw">try</span> {
+    <span class="cm">// fetch() sends HTTP GET request to the API</span>
+    <span class="kw">let</span> response = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"https://api.example.com/users/1"</span>);
+
+    <span class="cm">// Check if the request was successful</span>
+    <span class="kw">if</span> (!response.ok) {
+      <span class="kw">throw new</span> Error(<span class="str">"HTTP Error: "</span> + response.status);
+    }
+
+    <span class="cm">// Parse the response as JSON</span>
+    <span class="kw">let</span> data = <span class="kw">await</span> response.<span class="fn">json</span>();
+
+    <span class="cm">// Use the data</span>
+    console.log(<span class="str">"Name: "</span> + data.name);
+    console.log(<span class="str">"Email: "</span> + data.email);
+
+  } <span class="kw">catch</span> (error) {
+    <span class="cm">// Handle any errors</span>
+    console.log(<span class="str">"Error: "</span> + error.message);
+  }
+}
+
+<span class="cm">// Call the function</span>
+<span class="fn">getUserData</span>();
+
+<span class="cm">// The rest of the code runs immediately without waiting
+console.log("This runs while data is being fetched...");</span></pre>
+
+          <h4>How it Works Step by Step</h4>
+          <ol>
+            <li>getUserData() is called — it is async, so it runs in the background.</li>
+            <li>fetch() sends a request to the server and returns a Promise.</li>
+            <li>await pauses getUserData() until the response arrives.</li>
+            <li>response.json() converts the response to a JavaScript object.</li>
+            <li>The data is used and any error is caught by try-catch.</li>
+          </ol>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> This is a new topic in the 2024 syllabus and appeared in the 2025 paper. Always mention: Sync vs Async difference, Promise states, and write the async/await fetch example with try-catch.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Objects -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 New · Expected</span>
+        <span class="q-title">What is a JavaScript object? How do we add, modify or delete a property of an existing object?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is a JavaScript object? How do we add, modify or delete a property of an existing object? Explain with example.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a JavaScript Object?</h4>
+          <p>A <strong>JavaScript object</strong> is a collection of related data and functionality stored as <strong>key-value pairs</strong> (called properties and methods). Objects allow you to group related data together under one variable name, making code organized and easier to manage. Objects represent real-world things like a student, a product, or a user.</p>
+
+          <h4>Creating an Object</h4>
+          <pre><span class="cm">// Object literal syntax (most common)</span>
+<span class="kw">let</span> student = {
+  name: <span class="str">"Ram Sharma"</span>,
+  age: <span class="num">20</span>,
+  college: <span class="str">"Pokhara University"</span>,
+  <span class="fn">greet</span>: <span class="kw">function</span>() {          <span class="cm">// This is a method</span>
+    <span class="kw">return</span> <span class="str">"Hello, I am "</span> + <span class="kw">this</span>.name;
+  }
+};
+
+<span class="cm">// Accessing properties</span>
+console.log(student.name);        <span class="cm">// Ram Sharma</span>
+console.log(student[<span class="str">"age"</span>]);    <span class="cm">// 20</span>
+console.log(student.<span class="fn">greet</span>());   <span class="cm">// Hello, I am Ram Sharma</span></pre>
+
+          <h4>Adding a New Property</h4>
+          <pre><span class="cm">// Add a new property 'email' to the existing student object</span>
+student.email = <span class="str">"ram@pu.edu.np"</span>;
+console.log(student.email); <span class="cm">// ram@pu.edu.np</span></pre>
+
+          <h4>Modifying an Existing Property</h4>
+          <pre><span class="cm">// Change the age property</span>
+student.age = <span class="num">21</span>;
+student[<span class="str">"college"</span>] = <span class="str">"Pokhara University BCA"</span>;
+console.log(student.age); <span class="cm">// 21</span></pre>
+
+          <h4>Deleting a Property</h4>
+          <pre><span class="cm">// Remove the 'college' property from the object</span>
+<span class="kw">delete</span> student.college;
+console.log(student.college); <span class="cm">// undefined (property is gone)</span></pre>
+
+          <h4>ES6+ Object Features</h4>
+          <pre><span class="cm">// Shorthand property (ES6)</span>
+<span class="kw">let</span> name = <span class="str">"Sita"</span>, age = <span class="num">22</span>;
+<span class="kw">let</span> person = { name, age }; <span class="cm">// same as { name: name, age: age }</span>
+
+<span class="cm">// Destructuring</span>
+<span class="kw">let</span> { name: studentName, age: studentAge } = student;
+console.log(studentName); <span class="cm">// Ram Sharma</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- AJAX -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks (Short Note)</span>
+        <span class="year-tag">2025 New</span>
+        <span class="q-title">Short Note: AJAX</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a short note on AJAX.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>AJAX (Asynchronous JavaScript and XML)</h4>
+          <p><strong>AJAX</strong> is a web development technique that allows a webpage to communicate with a server and update parts of the page — <strong>without reloading the entire page</strong>. Despite the name, AJAX now works with JSON (not just XML) as the data format.</p>
+
+          <p><strong>How AJAX Works:</strong></p>
+          <ol>
+            <li>An event occurs in the browser (user clicks a button).</li>
+            <li>JavaScript creates an HTTP request and sends it to the server.</li>
+            <li>The server processes the request and sends back data.</li>
+            <li>JavaScript receives the data and updates only the part of the page that needs to change.</li>
+          </ol>
+
+          <p><strong>Real-world examples of AJAX:</strong> Google search suggestions that appear as you type, Facebook "Like" button without page reload, Gmail loading new emails in the background, online shopping cart updates.</p>
+
+          <pre><span class="cm">// Modern AJAX using fetch API</span>
+<span class="fn">fetch</span>(<span class="str">"/api/getUser?id=1"</span>)
+  .<span class="fn">then</span>(response => response.<span class="fn">json</span>())
+  .<span class="fn">then</span>(data => {
+    document.<span class="fn">getElementById</span>(<span class="str">"result"</span>).innerHTML = data.name;
+  })
+  .<span class="fn">catch</span>(error => console.log(error));</pre>
+
+          <p><strong>Advantages:</strong> Better user experience (no page reloads), faster interaction, reduced bandwidth usage, only the changed data is transferred.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== UNIT VI ==================== -->
+  <section id="unit6" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit6);">U6</div>
+      <div class="unit-info">
+        <h2>JS Frameworks and Libraries</h2>
+        <p>5 Hours · jQuery · React · Angular · Vue.js</p>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">8 Marks</span>
+        <span class="year-tag">Every Year 2021–2025</span>
+        <span class="q-title">Why do we use jQuery? Write jQuery script to display "Hello BCA" when user clicks on a button.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Why do we use jQuery? Write jQuery script to display "Hello BCA" when user clicks on a button.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is jQuery?</h4>
+          <p><strong>jQuery</strong> is a fast, lightweight, and feature-rich JavaScript library. It was created by John Resig in 2006. jQuery's motto is <em>"write less, do more"</em>. It simplifies many complex JavaScript tasks with shorter, simpler syntax.</p>
+
+          <h4>Why Do We Use jQuery?</h4>
+          <ul>
+            <li><strong>Simplicity:</strong> A task that requires 10 lines in plain JavaScript can often be done in 1-2 lines with jQuery.</li>
+            <li><strong>Cross-browser compatibility:</strong> jQuery automatically handles differences between browsers (Chrome, Firefox, Safari, IE) so your code works everywhere.</li>
+            <li><strong>DOM Manipulation:</strong> Easily find, change, add, or remove HTML elements and CSS.</li>
+            <li><strong>Event Handling:</strong> Attach events (click, hover, keypress) to elements easily.</li>
+            <li><strong>AJAX Support:</strong> Makes it easy to send and receive data from a server without page reloads.</li>
+            <li><strong>Animations:</strong> Built-in methods for show/hide, fadeIn/fadeOut, slideUp/slideDown effects.</li>
+            <li><strong>Plugin Ecosystem:</strong> Thousands of free jQuery plugins are available for sliders, calendars, and more.</li>
+          </ul>
+
+          <h4>Comparison: Plain JS vs jQuery</h4>
+          <pre><span class="cm">// Plain JavaScript — change text color</span>
+document.<span class="fn">getElementById</span>(<span class="str">"myDiv"</span>).style.color = <span class="str">"red"</span>;
+
+<span class="cm">// jQuery — same thing, shorter</span>
+$(<span class="str">"#myDiv"</span>).<span class="fn">css</span>(<span class="str">"color"</span>, <span class="str">"red"</span>);</pre>
+
+          <h4>jQuery: Display "Hello BCA" on Button Click</h4>
+          <pre><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;title&gt;</span>jQuery Example<span class="tag">&lt;/title&gt;</span>
+  <span class="cm">&lt;!-- Include jQuery from CDN --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="val">"https://code.jquery.com/jquery-3.6.0.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="attr">id</span>=<span class="val">"btn"</span><span class="tag">&gt;</span>Click Me<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;p</span> <span class="attr">id</span>=<span class="val">"message"</span><span class="tag">&gt;&lt;/p&gt;</span>
+
+  <span class="tag">&lt;script&gt;</span>
+    <span class="cm">// $(document).ready() ensures HTML is fully loaded first</span>
+    $(document).<span class="fn">ready</span>(<span class="kw">function</span>() {
+
+      <span class="cm">// When button with id="btn" is clicked...</span>
+      $(<span class="str">"#btn"</span>).<span class="fn">click</span>(<span class="kw">function</span>() {
+
+        <span class="cm">// Set the text of the paragraph</span>
+        $(<span class="str">"#message"</span>).<span class="fn">text</span>(<span class="str">"Hello BCA!"</span>);
+
+        <span class="cm">// Optional: also change color</span>
+        $(<span class="str">"#message"</span>).<span class="fn">css</span>(<span class="str">"color"</span>, <span class="str">"blue"</span>);
+        $(<span class="str">"#message"</span>).<span class="fn">css</span>(<span class="str">"font-size"</span>, <span class="str">"24px"</span>);
+      });
+    });
+  <span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre>
+
+          <h4>Other Common jQuery Methods</h4>
+          <ul>
+            <li><strong>.hide() / .show():</strong> Hide or show elements.</li>
+            <li><strong>.fadeIn() / .fadeOut():</strong> Fade elements in or out.</li>
+            <li><strong>.append():</strong> Add content inside an element.</li>
+            <li><strong>.val():</strong> Get or set the value of form inputs.</li>
+            <li><strong>.addClass() / .removeClass():</strong> Add or remove CSS classes.</li>
+          </ul>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> jQuery is asked EVERY single year. Always include the CDN link, the $(document).ready() wrapper, and use .click() for the event. This question is worth full marks if you include the code correctly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- React Vue Short Note -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks (Short Note)</span>
+        <span class="year-tag">2025 New Paper</span>
+        <span class="q-title">Short Note: React and Vue.js</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write short notes on React and Vue.js.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>React</h4>
+          <p><strong>React</strong> (also called React.js) is an open-source JavaScript library developed by Facebook (Meta) in 2013. It is used for building fast, interactive user interfaces (UIs) for web applications. React uses a <strong>component-based architecture</strong> — the UI is broken into small, reusable pieces called components (like a Header component, a Button component, etc.).</p>
+          <p><strong>Key Features of React:</strong></p>
+          <ul>
+            <li><strong>Virtual DOM:</strong> React uses a virtual DOM to update only the changed parts of the real DOM, making it very fast.</li>
+            <li><strong>JSX:</strong> A special syntax that allows HTML-like code inside JavaScript files.</li>
+            <li><strong>One-way data binding:</strong> Data flows in one direction from parent to child components.</li>
+            <li><strong>Used by:</strong> Facebook, Instagram, Netflix, Airbnb.</li>
+          </ul>
+
+          <h4>Vue.js</h4>
+          <p><strong>Vue.js</strong> is a progressive JavaScript framework created by Evan You in 2014. It is designed to be easy to learn and to integrate with existing projects. Vue.js is known for being lightweight, flexible, and beginner-friendly.</p>
+          <p><strong>Key Features of Vue.js:</strong></p>
+          <ul>
+            <li><strong>Two-way data binding (v-model):</strong> Changes in the UI automatically update the data and vice versa.</li>
+            <li><strong>Directives:</strong> Special HTML attributes like v-if, v-for, v-bind for controlling the DOM.</li>
+            <li><strong>Component-based:</strong> Similar to React, Vue also uses reusable components.</li>
+            <li><strong>Lightweight:</strong> Vue.js is smaller in size than React and Angular.</li>
+          </ul>
+
+          <div class="tip-box"><strong>React vs Vue.js in brief:</strong> React (by Facebook) = popular, virtual DOM, JSX, larger ecosystem. Vue.js (by Evan You) = easier to learn, two-way binding, smaller size. Both are component-based frameworks for building modern web UIs.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== UNIT VIII ==================== -->
+  <section id="unit8" class="unit-section">
+    <div class="unit-header">
+      <div class="unit-badge" style="background:var(--unit8);">U8</div>
+      <div class="unit-info">
+        <h2>Web Design Concepts — UI/UX</h2>
+        <p>6 Hours · User Stories · Wireframing · Responsive Design · Typography · SEO</p>
+      </div>
+    </div>
+
+    <!-- User Stories -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">7 Marks</span>
+        <span class="year-tag">2025 New Paper</span>
+        <span class="q-title">Why are user stories more important during web development? Create one user story for an e-commerce website.</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Why user stories are more important during web development? Create one user story for a sample e-commerce website home page.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>What is a User Story?</h4>
+          <p>A <strong>user story</strong> is a short, simple description of a feature or requirement written from the perspective of the user (end user or customer). It focuses on what the user needs and why, rather than how it should be technically implemented. User stories are a key tool in Agile software development.</p>
+
+          <p><strong>Standard Format of a User Story:</strong><br>
+          <em>"As a [type of user], I want to [action/goal] so that [benefit/reason]."</em></p>
+
+          <h4>Why Are User Stories Important in Web Development?</h4>
+          <ul>
+            <li><strong>User-Centered Design:</strong> User stories keep the focus on what the actual user needs, not what developers think they need. This leads to more useful products.</li>
+            <li><strong>Clear Communication:</strong> They provide a common language between developers, designers, and clients, avoiding misunderstandings.</li>
+            <li><strong>Prioritization:</strong> User stories help teams prioritize features based on user value and business impact.</li>
+            <li><strong>Testable:</strong> Each user story can be easily converted into test cases to verify the feature works as expected.</li>
+            <li><strong>Small and Manageable:</strong> Large projects are broken into small user stories, making them easier to plan, develop, and deliver.</li>
+            <li><strong>Flexibility:</strong> User stories can be changed or added as requirements evolve during development.</li>
+          </ul>
+
+          <h4>User Stories for an E-Commerce Website Home Page</h4>
+          <pre><span class="cm">User Story 1 (Customer - Browsing):
+"As a customer, I want to see featured products on the
+home page so that I can quickly find popular items to buy."
+
+Acceptance Criteria:
+- Home page displays at least 8 featured products
+- Each product shows an image, name, and price
+- Clicking a product takes me to its detail page
+
+---
+
+User Story 2 (Customer - Searching):
+"As a customer, I want to search for products by name
+so that I can quickly find what I am looking for."
+
+Acceptance Criteria:
+- A search bar is visible on the home page
+- Search results appear within 2 seconds
+- Results are relevant to the keyword typed
+
+---
+
+User Story 3 (New User - Registration):
+"As a new user, I want to create an account easily
+so that I can save my orders and shipping details."
+
+Acceptance Criteria:
+- Register button is clearly visible on the home page
+- Registration form has Name, Email, Password fields
+- User receives a confirmation email after registration</span></pre>
+
+          <div class="tip-box"><strong>Exam Tip:</strong> Always write user stories in the exact format: "As a [user], I want to [goal] so that [benefit]." Write at least 2-3 user stories with acceptance criteria for full marks. This is a new topic from the 2024 syllabus.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DNS short note -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-high">HIGH</span>
+        <span class="marks-badge">5 Marks (Short Note)</span>
+        <span class="year-tag">2021 · 2025</span>
+        <span class="q-title">Short Note: DNS</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a short note on DNS.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>DNS (Domain Name System)</h4>
+          <p><strong>DNS (Domain Name System)</strong> is often called the "phone book of the internet." It is a hierarchical system that translates human-readable domain names (like www.google.com) into machine-readable IP addresses (like 142.250.80.46) that computers use to identify each other on a network.</p>
+
+          <p>When you type a URL in a browser, a process called <strong>DNS resolution</strong> happens:</p>
+          <ol>
+            <li>Browser checks its local <strong>cache</strong> first.</li>
+            <li>If not found, asks the <strong>ISP's DNS Resolver</strong>.</li>
+            <li>Resolver contacts the <strong>Root DNS Server</strong>.</li>
+            <li>Root server directs to the <strong>TLD Server</strong> (e.g., .com server).</li>
+            <li>TLD server directs to the <strong>Authoritative DNS Server</strong> (e.g., Google's server).</li>
+            <li>The IP address is returned to the browser.</li>
+          </ol>
+
+          <p><strong>DNS Hierarchy:</strong> Root (.) → Top-Level Domain (.com, .org, .np) → Second-Level Domain (google) → Subdomain (www)</p>
+
+          <p><strong>Importance of DNS:</strong> Without DNS, users would have to memorize IP addresses for every website. DNS makes the internet user-friendly and scalable.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">5 Marks (Short Note)</span>
+        <span class="year-tag">2024 · 2025</span>
+        <span class="q-title">Short Note: Typography in Web Design</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a short note on Typography.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>Typography in Web Design</h4>
+          <p><strong>Typography</strong> is the art and technique of arranging text in a visually appealing and readable way. In web design, typography involves selecting fonts, sizes, spacing, and line heights to communicate content clearly and effectively.</p>
+
+          <p><strong>Key Typography Concepts:</strong></p>
+          <ul>
+            <li><strong>Font Family:</strong> The typeface used (e.g., Arial, Times New Roman, Roboto). Serif fonts (with small strokes) are formal; Sans-serif fonts are modern and clean.</li>
+            <li><strong>Font Size:</strong> The size of the text. Generally, body text is 14-16px, headings are larger.</li>
+            <li><strong>Font Weight:</strong> How bold or light the text is (normal, bold, 100–900).</li>
+            <li><strong>Line Height:</strong> The vertical space between lines of text. Good line-height (1.5–1.8) improves readability.</li>
+            <li><strong>Letter Spacing (Tracking):</strong> Space between individual letters.</li>
+            <li><strong>Text Alignment:</strong> How text is positioned — left, right, center, or justify.</li>
+            <li><strong>Color Contrast:</strong> Good contrast between text and background is essential for readability and accessibility.</li>
+          </ul>
+
+          <p><strong>Why Typography Matters:</strong> Good typography makes content easier to read, establishes visual hierarchy (what to read first), creates mood and personality for a brand, and improves the overall user experience of a website.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div class="q-card">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="priority-badge p-med">MEDIUM</span>
+        <span class="marks-badge">5 Marks</span>
+        <span class="year-tag">New Syllabus 2024</span>
+        <span class="q-title">Short Note: SEO (Search Engine Optimization)</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Write a short note on SEO.</div>
+        <div class="answer-label">Model Answer</div>
+        <div class="answer">
+          <h4>SEO (Search Engine Optimization)</h4>
+          <p><strong>SEO (Search Engine Optimization)</strong> is the practice of improving a website so that it appears higher in search engine results pages (like Google, Bing) when users search for relevant keywords. The higher a website ranks, the more visitors it gets without paid advertising (organic traffic).</p>
+
+          <p><strong>Types of SEO:</strong></p>
+          <ul>
+            <li><strong>On-Page SEO:</strong> Optimizing the content and HTML of individual pages — using proper keywords, meta tags, headings (H1, H2), image alt text, and a fast loading speed.</li>
+            <li><strong>Off-Page SEO:</strong> Building the website's reputation through backlinks (other websites linking to yours), social media activity, and brand mentions.</li>
+            <li><strong>Technical SEO:</strong> Improving the technical aspects of the website — mobile-friendliness, HTTPS security, fast loading (Core Web Vitals), proper URL structure, and XML sitemaps.</li>
+          </ul>
+
+          <p><strong>Important SEO HTML Elements:</strong></p>
+          <pre><span class="tag">&lt;title&gt;</span>Best BCA College in Nepal<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="val">"description"</span> <span class="attr">content</span>=<span class="val">"Join the best BCA program..."</span><span class="tag">&gt;</span>
+<span class="tag">&lt;h1&gt;</span>Welcome to Pokhara University BCA<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"logo.png"</span> <span class="attr">alt</span>=<span class="val">"PU BCA Logo"</span><span class="tag">&gt;</span></pre>
+
+          <p><strong>Why SEO Matters:</strong> Websites that rank on the first page of Google receive over 90% of search traffic. SEO is essential for any business or organization wanting to be found online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL TIPS BOX -->
+  <div class="analysis-box" style="border-left-color: var(--accent3); margin-top: 0;">
+    <h2 style="color:var(--accent3);">🎯 Final Exam Strategy — Last Week Tips</h2>
+    <div class="answer">
+      <p><strong>Must-Prepare Questions (Highly likely in this exam):</strong></p>
+      <ol>
+        <li>HTTPS vs HTTP + HTTP Request/Response format <em>(Unit I, 8 marks)</em></li>
+        <li>HTML Lists — all three types with examples <em>(Unit II, 7 marks)</em></li>
+        <li>HTML Table with merged cells — given a diagram, write the code <em>(Unit II, 8 marks)</em></li>
+        <li>CSS Selectors — at least 5 types with examples <em>(Unit III, 7-8 marks)</em></li>
+        <li>CSS Box Model with diagram <em>(Unit III, 8 marks)</em></li>
+        <li>JavaScript Form Validation (name, email, password, contact) <em>(Unit IV, 8 marks)</em></li>
+        <li>JavaScript Control Statements with examples <em>(Unit IV, 7-8 marks)</em></li>
+        <li>Async/Await and Fetch <em>(Unit V, 8 marks — NEW, appeared 2025)</em></li>
+        <li>jQuery — why we use it + "Hello BCA" click example <em>(Unit VI, 8 marks)</em></li>
+        <li>User Stories for e-commerce <em>(Unit VIII, 7 marks — NEW, appeared 2025)</em></li>
+      </ol>
+      <p style="margin-top:12px;"><strong>Short Note Topics (Q7 — pick 2 from 3):</strong> AJAX · DNS · React & Vue.js · DOM · Typography</p>
+      <p style="margin-top:12px;"><strong>Writing Tips:</strong> Write headings clearly. Always include a code example. Draw the CSS Box Model diagram. For tables, count rowspan/colspan carefully. Begin each answer by defining the key term. Finish with a summary or tip box-style conclusion sentence.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Pokhara University · BCA · Web Technology I · New Syllabus 2024 · Prepared for Final Exam ·  All answers designed for 7 & 8 mark questions
+</div>
+
+<script>
+function toggle(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  const icon = header.querySelector('.toggle-icon');
+  icon.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+// Auto-open first question of each unit
+document.querySelectorAll('.unit-section .q-card:first-of-type .q-header').forEach(h => {
+  toggle(h);
+});
+</script>
+</body>
+</html>
