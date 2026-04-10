@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEB Grade 12 Computer Science — Final Exam Guide 2082</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #1c2333;
+  --border: #30363d;
+  --accent: #f78166;
+  --accent2: #58a6ff;
+  --accent3: #56d364;
+  --accent4: #e3b341;
+  --accent5: #bc8cff;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-dim: #6e7681;
+  --red: #ff7b72;
+  --green: #3fb950;
+  --yellow: #d29922;
+  --blue: #388bfd;
+  --purple: #bc8cff;
+  --orange: #f0883e;
+  --star-filled: #f0883e;
+  --star-empty: #30363d;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Sora', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.7;
+  min-height:100vh;
+}
+/* ========== HEADER ========== */
+.hero {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1a2332 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 20px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute;
+  top:-80px; left:50%;
+  transform:translateX(-50%);
+  width:600px; height:300px;
+  background: radial-gradient(ellipse, rgba(88,166,255,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-badge {
+  display:inline-block;
+  background: rgba(247,129,102,0.15);
+  border:1px solid rgba(247,129,102,0.4);
+  color:var(--accent);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:4px 14px;
+  border-radius:20px;
+  margin-bottom:16px;
+}
+.hero h1 {
+  font-size:clamp(22px,5vw,38px);
+  font-weight:800;
+  line-height:1.2;
+  margin-bottom:10px;
+  background: linear-gradient(135deg, #e6edf3 0%, #58a6ff 60%, #bc8cff 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub {
+  color:var(--text-muted);
+  font-size:14px;
+  margin-bottom:20px;
+}
+.hero-meta {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+.meta-pill {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:5px 14px;
+  font-size:12px;
+  color:var(--text-muted);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.meta-pill span { color:var(--accent2); font-weight:600; }
+
+/* ========== EXAM PATTERN BANNER ========== */
+.pattern-bar {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:0;
+  max-width:600px;
+  margin:0 auto 24px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.pb-item {
+  flex:1;
+  min-width:90px;
+  padding:12px 8px;
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+}
+.pb-item:nth-child(1){background:rgba(88,166,255,0.15);border-right:1px solid var(--border);}
+.pb-item:nth-child(2){background:rgba(247,129,102,0.15);border-right:1px solid var(--border);}
+.pb-item:nth-child(3){background:rgba(86,211,100,0.15);}
+.pb-label{font-size:10px;color:var(--text-muted);margin-bottom:4px;letter-spacing:0.5px;text-transform:uppercase;}
+.pb-val{font-size:18px;font-weight:800;color:var(--text);}
+.pb-desc{color:var(--text-muted);font-size:10px;margin-top:2px;}
+
+/* ========== NAV ========== */
+.sticky-nav {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(13,17,23,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:0 12px;
+  overflow-x:auto;
+  white-space:nowrap;
+  scrollbar-width:none;
+}
+.sticky-nav::-webkit-scrollbar{display:none;}
+.nav-inner {
+  display:inline-flex;
+  gap:2px;
+  padding:8px 0;
+}
+.nav-btn {
+  background:none;
+  border:none;
+  color:var(--text-muted);
+  font-family:'Sora',sans-serif;
+  font-size:12px;
+  font-weight:500;
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:all 0.2s;
+  white-space:nowrap;
+}
+.nav-btn:hover,.nav-btn.active{background:var(--surface2);color:var(--text);}
+.nav-btn.active{color:var(--accent2);}
+
+/* ========== MAIN LAYOUT ========== */
+.container { max-width:900px; margin:0 auto; padding:24px 14px 60px; }
+
+/* ========== UNIT CARDS ========== */
+.unit-section { margin-bottom:40px; }
+.unit-header {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--border);
+}
+.unit-num {
+  width:42px; height:42px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:800;
+  flex-shrink:0;
+}
+.unit-title { flex:1; }
+.unit-title h2 { font-size:18px; font-weight:700; line-height:1.3; }
+.unit-title .unit-subtitle { font-size:12px; color:var(--text-muted); margin-top:2px; }
+.importance-badge {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  flex-shrink:0;
+}
+.stars { display:flex; gap:2px; }
+.star { font-size:14px; }
+.imp-label { font-size:10px; color:var(--text-muted); margin-top:2px; text-align:right; }
+
+/* UNIT COLORS */
+.u1 .unit-num { background:rgba(88,166,255,0.2); color:#58a6ff; }
+.u2 .unit-num { background:rgba(86,211,100,0.2); color:#56d364; }
+.u3 .unit-num { background:rgba(247,129,102,0.2); color:#f78166; }
+.u4 .unit-num { background:rgba(227,179,65,0.2); color:#e3b341; }
+.u5 .unit-num { background:rgba(188,140,255,0.2); color:#bc8cff; }
+.u6 .unit-num { background:rgba(240,136,62,0.2); color:#f0883e; }
+.u7 .unit-num { background:rgba(63,185,80,0.2); color:#3fb950; }
+
+/* ========== Q CARDS ========== */
+.q-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-bottom:14px;
+  overflow:hidden;
+  transition:border-color 0.2s;
+}
+.q-card:hover{border-color:#444c56;}
+.q-head {
+  padding:14px 16px;
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  user-select:none;
+}
+.q-type-tag {
+  flex-shrink:0;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  padding:3px 8px;
+  border-radius:6px;
+  margin-top:3px;
+}
+.tag-long{background:rgba(247,129,102,0.2);color:#f78166;border:1px solid rgba(247,129,102,0.3);}
+.tag-short{background:rgba(88,166,255,0.2);color:#58a6ff;border:1px solid rgba(88,166,255,0.3);}
+.tag-mcq{background:rgba(86,211,100,0.2);color:#56d364;border:1px solid rgba(86,211,100,0.3);}
+.tag-code{background:rgba(188,140,255,0.2);color:#bc8cff;border:1px solid rgba(188,140,255,0.3);}
+.tag-both{background:rgba(227,179,65,0.2);color:#e3b341;border:1px solid rgba(227,179,65,0.3);}
+
+.q-text { flex:1; font-size:14px; font-weight:500; color:var(--text); line-height:1.5; }
+.q-meta { display:flex; align-items:center; gap:8px; margin-top:4px; flex-wrap:wrap; }
+.q-marks { font-size:11px; color:var(--text-muted); }
+.q-freq {
+  font-size:10px;
+  padding:2px 7px;
+  border-radius:10px;
+  font-weight:600;
+}
+.freq-hot{background:rgba(255,123,114,0.2);color:#ff7b72;}
+.freq-warm{background:rgba(240,136,62,0.2);color:#f0883e;}
+.freq-cool{background:rgba(88,166,255,0.2);color:#58a6ff;}
+.q-toggle { color:var(--text-dim); font-size:16px; flex-shrink:0; transition:transform 0.3s; }
+.q-toggle.open{transform:rotate(180deg);}
+
+.q-body {
+  display:none;
+  padding:0 16px 16px;
+  border-top:1px solid var(--border);
+}
+.q-body.visible{display:block;}
+.answer-label {
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent3);
+  margin:12px 0 8px;
+}
+.answer-text { font-size:13.5px; color:#cdd6e3; line-height:1.75; }
+.answer-text p { margin-bottom:10px; }
+.answer-text ul, .answer-text ol { padding-left:20px; margin-bottom:10px; }
+.answer-text li { margin-bottom:5px; }
+.answer-text strong { color:var(--text); font-weight:600; }
+.answer-text em { color:var(--accent4); font-style:normal; font-weight:500; }
+
+/* CODE BLOCKS */
+.code-block {
+  background:#0d1117;
+  border:1px solid #30363d;
+  border-radius:8px;
+  padding:14px 16px;
+  margin:10px 0;
+  font-family:'JetBrains Mono', monospace;
+  font-size:12.5px;
+  line-height:1.6;
+  color:#e6edf3;
+  overflow-x:auto;
+  white-space:pre;
+}
+.code-label {
+  font-size:10px;
+  font-weight:600;
+  color:var(--purple);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+/* MCQ OPTION HIGHLIGHT */
+.mcq-option {
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:6px;
+  margin:4px 0;
+  font-size:13px;
+}
+.mcq-option.correct{background:rgba(63,185,80,0.15);border:1px solid rgba(63,185,80,0.3);}
+.mcq-option.wrong{background:rgba(255,123,114,0.05);opacity:0.7;}
+.opt-letter{font-weight:700;flex-shrink:0;width:20px;}
+.correct .opt-letter{color:#3fb950;}
+.correct-icon{color:#3fb950;flex-shrink:0;}
+
+/* DIAGRAM */
+.diagram {
+  background:#0d1117;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  margin:10px 0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  line-height:1.8;
+  color:#8b949e;
+}
+.diagram strong{color:var(--accent2);}
+
+/* TABLE */
+.comp-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:12.5px;
+  margin:10px 0;
+}
+.comp-table th {
+  background:var(--surface2);
+  color:var(--text);
+  font-weight:600;
+  padding:8px 12px;
+  text-align:left;
+  border:1px solid var(--border);
+  font-size:12px;
+}
+.comp-table td {
+  padding:7px 12px;
+  border:1px solid var(--border);
+  color:#cdd6e3;
+  vertical-align:top;
+}
+.comp-table tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+/* TIPS BOX */
+.tip-box {
+  background:rgba(88,166,255,0.08);
+  border:1px solid rgba(88,166,255,0.25);
+  border-left:3px solid var(--accent2);
+  border-radius:8px;
+  padding:12px 14px;
+  margin:10px 0;
+  font-size:13px;
+  color:#cdd6e3;
+}
+.tip-box .tip-head{color:var(--accent2);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+
+.warn-box {
+  background:rgba(247,129,102,0.08);
+  border:1px solid rgba(247,129,102,0.25);
+  border-left:3px solid var(--accent);
+  border-radius:8px;
+  padding:12px 14px;
+  margin:10px 0;
+  font-size:13px;
+  color:#cdd6e3;
+}
+.warn-box .tip-head{color:var(--accent);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+
+/* ========== SUMMARY SECTION ========== */
+.summary-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:12px;
+  margin:20px 0;
+}
+.s-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+  text-align:center;
+}
+.s-card .s-num{font-size:28px;font-weight:800;line-height:1;}
+.s-card .s-label{font-size:11px;color:var(--text-muted);margin-top:4px;}
+
+/* MCQ QUICK REF */
+.mcq-ref-list { list-style:none; }
+.mcq-ref-list li {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:8px 10px;
+  border-radius:8px;
+  margin-bottom:6px;
+  background:var(--surface2);
+  font-size:13px;
+}
+.mcq-ref-list li .ans{
+  min-width:24px;
+  height:24px;
+  border-radius:50%;
+  background:var(--accent3);
+  color:#0d1117;
+  font-weight:800;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  text-align:center;
+  padding:24px;
+  color:var(--text-dim);
+  font-size:12px;
+  border-top:1px solid var(--border);
+  margin-top:40px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:600px){
+  .hero h1{font-size:22px;}
+  .unit-title h2{font-size:16px;}
+  .comp-table{font-size:11px;}
+  .comp-table th,.comp-table td{padding:5px 7px;}
+  .code-block{font-size:11px;}
+  .pb-val{font-size:15px;}
+}
+
+/* Scroll reveal animation */
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.unit-section{animation:fadeUp 0.5s ease forwards;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📚 Final Exam Preparation 2082</div>
+  <h1>NEB Grade 12 Computer Science<br>Complete Study Guide</h1>
+  <p class="hero-sub">Sub. Code: 4281'D' · Sudurpashchim Pradesh · Reg. starts 78, 79, 80, 81</p>
+  <div class="hero-meta">
+    <div class="meta-pill">⏱ Time: <span>2 Hours</span></div>
+    <div class="meta-pill">📝 Full Marks: <span>50</span></div>
+    <div class="meta-pill">📅 Exam Year: <span>2082 (2025)</span></div>
+    <div class="meta-pill">📊 Based on: <span>2079–2082 Papers</span></div>
+  </div>
+  <div class="pattern-bar">
+    <div class="pb-item">
+      <div class="pb-label">Group A · MCQ</div>
+      <div class="pb-val">9</div>
+      <div class="pb-desc">Questions × 1 = 9 Marks</div>
+    </div>
+    <div class="pb-item">
+      <div class="pb-label">Group B · Short</div>
+      <div class="pb-val">5</div>
+      <div class="pb-desc">Questions × 5 = 25 Marks</div>
+    </div>
+    <div class="pb-item">
+      <div class="pb-label">Group C · Long</div>
+      <div class="pb-val">2</div>
+      <div class="pb-desc">Questions × 8 = 16 Marks</div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="scrollTo('#mcq-ref')">🎯 MCQ Keys</button>
+    <button class="nav-btn" onclick="scrollTo('#unit1')">1. DBMS</button>
+    <button class="nav-btn" onclick="scrollTo('#unit2')">2. Networking</button>
+    <button class="nav-btn" onclick="scrollTo('#unit3')">3. Web Tech</button>
+    <button class="nav-btn" onclick="scrollTo('#unit4')">4. C Programming</button>
+    <button class="nav-btn" onclick="scrollTo('#unit5')">5. OOP</button>
+    <button class="nav-btn" onclick="scrollTo('#unit6')">6. SDLC</button>
+    <button class="nav-btn" onclick="scrollTo('#unit7')">7. Recent Trends</button>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- MCQ QUICK REFERENCE -->
+<div id="mcq-ref" class="unit-section">
+  <div class="unit-header">
+    <div class="unit-num" style="background:rgba(86,211,100,0.2);color:#56d364;font-size:20px;">🎯</div>
+    <div class="unit-title">
+      <h2>MCQ Quick Reference — Most Repeated Answers</h2>
+      <div class="unit-subtitle">Group A · 9 questions × 1 mark · Based on 4 years of exam pattern</div>
+    </div>
+  </div>
+  <div class="tip-box">
+    <div class="tip-head">⚡ Exam Strategy</div>
+    In the 2081 exam, MCQs were given 30 minutes AFTER starting the written exam. Use that time wisely on Groups B and C first, then come back to MCQs.
+  </div>
+  <ul class="mcq-ref-list">
+    <li><div class="ans">A</div><div><strong>Purpose of Primary Key</strong> — To uniquely identify each record in a table. (2082, 2079)</div></li>
+    <li><div class="ans">B</div><div><strong>SQL command to ADD a new column</strong> — <em>ALTER TABLE</em> (not CREATE, not UPDATE). (2082)</div></li>
+    <li><div class="ans">C</div><div><strong>Secure communication protocol</strong> — <em>HTTPS</em> (not HTTP, not FTP, not Telnet). (2082)</div></li>
+    <li><div class="ans">A</div><div><strong>For loop syntax in JavaScript</strong> — <em>for (var i=0; i&lt;5; i++) {}</em> (2082, 2081)</div></li>
+    <li><div class="ans">C</div><div><strong>Invalid PHP variable name</strong> — <em>$1name</em> (variables cannot start with a digit). (2082)</div></li>
+    <li><div class="ans">C</div><div><strong>OOP — emphasis on data</strong> — Object-Oriented Programming. (2082, 2079 model)</div></li>
+    <li><div class="ans">C</div><div><strong>Technical feasibility</strong> — Evaluates whether system can be built with available technology. (2082, 2081)</div></li>
+    <li><div class="ans">D</div><div><strong>NOT a cloud service type</strong> — <em>Hardware as a Service (HaaS)</em>. Cloud has IaaS, PaaS, SaaS. (2082)</div></li>
+    <li><div class="ans">B</div><div><strong>Distributed DB better for geographically dispersed users</strong> — Distributed database system. (2081)</div></li>
+    <li><div class="ans">D</div><div><strong>Public IPv4 address</strong> — <em>203.0.113.10</em>. Private ranges: 192.168.x.x, 172.16.x.x, 10.x.x.x. (2081)</div></li>
+    <li><div class="ans">A</div><div><strong>PHP function for SQL queries (mysqli)</strong> — <em>mysqli_query()</em>. (2081)</div></li>
+    <li><div class="ans">B</div><div><strong>Correct syntax: struct in C</strong> — <em>struct &lt;name&gt; { }</em>. (2081)</div></li>
+    <li><div class="ans">B</div><div><strong>Address operator in C (pointer)</strong> — <em>&amp;</em> (ampersand). Star (*) is indirection. (2081)</div></li>
+    <li><div class="ans">A</div><div><strong>OOP feature for code reuse / inheriting properties</strong> — <em>Inheritance</em>. (2081, 2079)</div></li>
+    <li><div class="ans">A</div><div><strong>Waterfall model — linear progression of phases</strong> — Waterfall model. (2081)</div></li>
+    <li><div class="ans">B</div><div><strong>Second letter in SQL LIKE query</strong> — <em>LIKE "_A%"</em> (underscore = one any char). (2079 model)</div></li>
+    <li><div class="ans">B</div><div><strong>192.168.1 is an incorrect IP</strong> — Only 3 octets (needs 4). (2079 model)</div></li>
+    <li><div class="ans">C</div><div><strong>PHP is a server-side scripting language</strong> — PHP (not JavaScript, not jQuery). (2079 model)</div></li>
+    <li><div class="ans">C</div><div><strong>PHP concatenate $x with $y</strong> — <em>$x.$y</em> (dot operator). (2079 model)</div></li>
+    <li><div class="ans">A</div><div><strong>Correct SQL SELECT statement</strong> — <em>Select * from emp where eopid = 103;</em>. (2081)</div></li>
+    <li><div class="ans">C</div><div><strong>Variable declaration in JavaScript</strong> — <em>var or let</em>. (2079 model)</div></li>
+    <li><div class="ans">B</div><div><strong>Economic feasibility</strong> — Concerned with cost-benefit analysis. (2079 model)</div></li>
+  </ul>
+</div>
+
+<!-- UNIT 1: DBMS -->
+<div id="unit1" class="unit-section u1">
+  <div class="unit-header">
+    <div class="unit-num">1</div>
+    <div class="unit-title">
+      <h2>Database Management System (DBMS)</h2>
+      <div class="unit-subtitle">Always Q10 (Short Answer, 5 marks) + MCQ questions every year</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="imp-label">HIGHEST PRIORITY</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        What are DDL and DML? Write any 3 differences between DDL and DML with examples of each.
+        <div class="q-meta">
+          <span class="q-marks">📌 [3+2] = 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>DDL (Data Definition Language)</strong> — Commands used to define/create the structure of a database (tables, schemas). DDL does not deal with actual data.</p>
+        <p><strong>DML (Data Manipulation Language)</strong> — Commands used to manipulate/manage actual data inside the tables.</p>
+        <table class="comp-table">
+          <tr><th>Basis</th><th>DDL</th><th>DML</th></tr>
+          <tr><td>Full Form</td><td>Data Definition Language</td><td>Data Manipulation Language</td></tr>
+          <tr><td>Purpose</td><td>Defines or changes structure of database objects</td><td>Inserts, updates, deletes, retrieves data</td></tr>
+          <tr><td>Works On</td><td>Schema / structure</td><td>Data / records in tables</td></tr>
+          <tr><td>Auto Commit</td><td>Yes, changes are permanent immediately</td><td>No, can be rolled back</td></tr>
+          <tr><td>Examples</td><td>CREATE, ALTER, DROP, TRUNCATE</td><td>SELECT, INSERT, UPDATE, DELETE</td></tr>
+        </table>
+        <p><strong>DDL Example:</strong></p>
+        <div class="code-block">CREATE TABLE Student (
+  roll_no INT PRIMARY KEY,
+  name VARCHAR(50),
+  marks FLOAT
+);</div>
+        <p><strong>DML Example:</strong></p>
+        <div class="code-block">INSERT INTO Student VALUES (1, 'Ram', 85.5);
+SELECT * FROM Student WHERE marks > 50;
+UPDATE Student SET marks = 90 WHERE roll_no = 1;
+DELETE FROM Student WHERE roll_no = 1;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        What is Normalization? Explain 2NF and 3NF with examples.
+        <div class="q-meta">
+          <span class="q-marks">📌 [2+3] = 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082, 2081, 2079, 2079 model</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>Normalization</strong> is the process of organizing a database to reduce data redundancy (repetition) and improve data integrity (accuracy). It involves dividing large tables into smaller ones and defining relationships between them.</p>
+        <p><strong>2NF (Second Normal Form):</strong></p>
+        <ul>
+          <li>A table must already be in 1NF (each cell has single value, no repeating groups).</li>
+          <li>Every non-key attribute must be <em>fully functionally dependent</em> on the entire primary key (no partial dependency).</li>
+          <li>Partial dependency occurs in composite primary keys: if an attribute depends on only part of the key, it violates 2NF.</li>
+        </ul>
+        <p><strong>Example (violates 2NF):</strong></p>
+        <div class="code-block">Order(OrderID, ProductID, ProductName, Quantity)
+-- ProductName depends only on ProductID (partial dependency!)
+-- This violates 2NF</div>
+        <p><strong>After 2NF conversion:</strong></p>
+        <div class="code-block">Order(OrderID, ProductID, Quantity)   -- primary key: OrderID+ProductID
+Product(ProductID, ProductName)       -- separated</div>
+        <p><strong>3NF (Third Normal Form):</strong></p>
+        <ul>
+          <li>A table must already be in 2NF.</li>
+          <li>There must be <em>no transitive dependency</em>: non-key attributes must not depend on other non-key attributes.</li>
+        </ul>
+        <p><strong>Example (violates 3NF):</strong></p>
+        <div class="code-block">Student(RollNo, Name, ZipCode, City)
+-- City depends on ZipCode (which is not the primary key)
+-- This is a transitive dependency!</div>
+        <p><strong>After 3NF conversion:</strong></p>
+        <div class="code-block">Student(RollNo, Name, ZipCode)
+Location(ZipCode, City)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        Evaluate the advantages of DBMS compared to traditional file-based data storage.
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2081</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>DBMS (Database Management System)</strong> is software that manages, stores, and retrieves data efficiently. Here are 5 key advantages over traditional file-based systems:</p>
+        <ul>
+          <li><strong>Reduced Data Redundancy:</strong> DBMS stores data in a centralized location so the same data is not repeated in multiple files. File systems often store the same student info in different files.</li>
+          <li><strong>Data Consistency:</strong> When data is updated in one place, it reflects everywhere. In file systems, the same data in multiple files may become inconsistent.</li>
+          <li><strong>Data Security:</strong> DBMS provides access control — only authorized users can view or modify specific data. File systems have limited security.</li>
+          <li><strong>Easy Data Access:</strong> Using SQL queries, data can be retrieved quickly. In file systems, complex programming is needed to search data.</li>
+          <li><strong>Data Integrity:</strong> DBMS enforces rules like primary key, foreign key, and constraints to keep data accurate and valid.</li>
+          <li><strong>Multi-user Access:</strong> Many users can access the database simultaneously (with concurrency control). File systems do not support this well.</li>
+          <li><strong>Backup and Recovery:</strong> DBMS has built-in tools for automatic backup and data recovery in case of failure.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4: Centralized vs Distributed -->
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        Differentiate between Centralized and Distributed Database System. Which is preferred by banks and why?
+        <div class="q-meta">
+          <span class="q-marks">📌 [1+4] = 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2079 model, 2079</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <table class="comp-table">
+          <tr><th>Basis</th><th>Centralized Database</th><th>Distributed Database</th></tr>
+          <tr><td>Location</td><td>Stored at one central location/server</td><td>Stored across multiple locations/servers</td></tr>
+          <tr><td>Access</td><td>All users access one central server</td><td>Users can access nearest local server</td></tr>
+          <tr><td>Performance</td><td>Can be slow if many users access at once</td><td>Better for geographically spread users</td></tr>
+          <tr><td>Security</td><td>Easier to secure (one point)</td><td>More complex security needed</td></tr>
+          <tr><td>Cost</td><td>Lower setup cost</td><td>Higher setup and maintenance cost</td></tr>
+          <tr><td>Failure</td><td>Single point of failure — entire system down</td><td>If one node fails, others still work</td></tr>
+          <tr><td>Example</td><td>Small office database</td><td>Bank ATM network across Nepal</td></tr>
+        </table>
+        <p><strong>Banks prefer Centralized Database</strong> because:</p>
+        <ul>
+          <li>Better data <em>consistency</em> — all transactions are processed at one location, ensuring account balance is always accurate.</li>
+          <li>Stronger <em>security</em> — only one system to protect; easier to monitor.</li>
+          <li>Better <em>backup and recovery</em> from a single central location.</li>
+          <li><em>ACID properties</em> (Atomicity, Consistency, Isolation, Durability) are easier to maintain.</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-head">💡 Remember</div>
+          Note: Modern banks use a hybrid approach, but for exam purposes, answer "Centralized" for banks (as per 2079 model question pattern).
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 2: NETWORKING -->
+<div id="unit2" class="unit-section u2">
+  <div class="unit-header">
+    <div class="unit-num">2</div>
+    <div class="unit-title">
+      <h2>Data Communication and Networking</h2>
+      <div class="unit-subtitle">Always Q15 (Long Answer, 8 marks) + MCQ every year</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="imp-label">HIGHEST PRIORITY</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-long">LONG</span>
+      <div class="q-text">
+        What is Transmission Medium? Explain its major types with advantages and disadvantages.
+        <div class="q-meta">
+          <span class="q-marks">📌 [2+6] = 8 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082 Q15</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>Transmission Medium</strong> is the physical path through which data (signals) travel from one device to another in a network. It is also called communication channel or data link.</p>
+        <p>Transmission media is divided into two main types: <em>Guided (Wired)</em> and <em>Unguided (Wireless)</em>.</p>
+        <p><strong>A. Guided (Wired) Media</strong></p>
+        <p><strong>1. Twisted Pair Cable</strong> — Two copper wires twisted together to reduce interference.</p>
+        <ul>
+          <li>Types: UTP (Unshielded) and STP (Shielded)</li>
+          <li>✅ Cheap, easy to install, widely used in LAN</li>
+          <li>❌ Short range, susceptible to electromagnetic interference</li>
+        </ul>
+        <p><strong>2. Coaxial Cable</strong> — Central copper wire surrounded by insulation, metallic shield, and outer cover.</p>
+        <ul>
+          <li>✅ Better shielding than twisted pair, good bandwidth</li>
+          <li>❌ More expensive, less flexible</li>
+        </ul>
+        <p><strong>3. Fiber Optic Cable</strong> — Uses light pulses through glass/plastic fiber to transmit data.</p>
+        <ul>
+          <li>✅ Very high speed, immune to EMI, long distances, very secure</li>
+          <li>❌ Very expensive, difficult to install and maintain</li>
+        </ul>
+        <p><strong>B. Unguided (Wireless) Media</strong></p>
+        <p><strong>1. Radio Waves</strong> — Electromagnetic waves in frequency range 3 kHz to 1 GHz. Used in AM/FM radio, mobile networks.</p>
+        <ul>
+          <li>✅ Long range, can pass through walls, easy to install</li>
+          <li>❌ Susceptible to interference, security issues</li>
+        </ul>
+        <p><strong>2. Microwave</strong> — High-frequency waves (above 1 GHz). Used in point-to-point communication.</p>
+        <ul>
+          <li>✅ High bandwidth, no cable needed</li>
+          <li>❌ Requires line-of-sight, affected by weather</li>
+        </ul>
+        <p><strong>3. Infrared</strong> — Short-range communication using infrared light (TV remote, IR ports).</p>
+        <ul>
+          <li>✅ No license needed, cheap</li>
+          <li>❌ Very short range, cannot pass through walls</li>
+        </ul>
+        <p><strong>4. Satellite</strong> — Uses orbiting satellites to relay signals over large distances.</p>
+        <ul>
+          <li>✅ Global coverage, good for remote areas</li>
+          <li>❌ Very expensive, signal delay (latency), weather dependent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-long">LONG</span>
+      <div class="q-text">
+        How does Star topology differ from Bus topology? What is the difference between Star and Ring topology with pros and cons? Which cable is best for LAN?
+        <div class="q-meta">
+          <span class="q-marks">📌 [5+3] / 8 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2081, 2079, 2079 model Q15</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <div class="diagram">
+<strong>STAR TOPOLOGY</strong>
+         [PC1]
+           |
+[PC2]---[HUB/SWITCH]---[PC3]
+           |
+         [PC4]
+
+<strong>BUS TOPOLOGY</strong>
+[PC1]--[PC2]--[PC3]--[PC4]
+  |________________________|
+       (single backbone)
+
+<strong>RING TOPOLOGY</strong>
+    [PC1]--[PC2]
+      |          |
+    [PC4]--[PC3]
+</div>
+        <table class="comp-table">
+          <tr><th>Basis</th><th>Star Topology</th><th>Bus Topology</th><th>Ring Topology</th></tr>
+          <tr><td>Connection</td><td>All devices connect to central hub/switch</td><td>All devices on one main cable</td><td>Each device connected to next, forming a circle</td></tr>
+          <tr><td>Cable</td><td>More cable needed (one per device)</td><td>Least cable used</td><td>Moderate cable</td></tr>
+          <tr><td>Failure</td><td>If hub fails, all fail. One device failure has no effect</td><td>If backbone fails, all fail</td><td>If one device fails, entire ring fails</td></tr>
+          <tr><td>Performance</td><td>High — no collision with switches</td><td>Low — collision likely</td><td>Moderate</td></tr>
+          <tr><td>Fault detection</td><td>Easy to detect and isolate</td><td>Difficult</td><td>Difficult</td></tr>
+          <tr><td>Cost</td><td>Higher (needs hub/switch)</td><td>Cheapest</td><td>Moderate</td></tr>
+          <tr><td>Scalability</td><td>Easy to add/remove</td><td>Difficult</td><td>Difficult</td></tr>
+          <tr><td>Use</td><td>Most modern LANs</td><td>Old small networks</td><td>Token Ring networks</td></tr>
+        </table>
+        <p><strong>Best Cable for LAN: Twisted Pair Cable (UTP Cat5e/Cat6)</strong></p>
+        <ul>
+          <li>Cheap and easy to install</li>
+          <li>Supports high speed (up to 1 Gbps)</li>
+          <li>Widely compatible with network devices</li>
+          <li>For higher performance, Fiber Optic is used in backbone LAN</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-mcq">MCQ</span>
+      <div class="q-text">
+        IP Address — Public vs Private ranges (MCQ topic every year)
+        <div class="q-meta">
+          <span class="q-marks">📌 1 mark</span>
+          <span class="q-freq freq-hot">🔥 Appeared every year</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Key Facts to Remember</div>
+      <div class="answer-text">
+        <p><strong>Private IP Ranges (NOT public):</strong></p>
+        <ul>
+          <li>10.0.0.0 – 10.255.255.255 (Class A)</li>
+          <li>172.16.0.0 – 172.31.255.255 (Class B)</li>
+          <li>192.168.0.0 – 192.168.255.255 (Class C)</li>
+        </ul>
+        <p><strong>Public IP — exam favorite: 203.0.113.10</strong> ✅ This is a valid public IP.</p>
+        <div class="warn-box">
+          <div class="tip-head">⚠️ Watch Out</div>
+          192.168.1.1 → Private (NOT public)<br>
+          172.16.10.1 → Private (NOT public)<br>
+          10.10.10.10 → Private (NOT public)<br>
+          192.168.1 → INVALID (only 3 octets)
+        </div>
+        <p><strong>IPv4 format:</strong> Four numbers 0–255 separated by dots. Example: 192.168.0.1</p>
+        <p>An IP with only 3 parts like 192.168.1 is <strong>incorrect/invalid</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 3: WEB TECHNOLOGY -->
+<div id="unit3" class="unit-section u3">
+  <div class="unit-header">
+    <div class="unit-num">3</div>
+    <div class="unit-title">
+      <h2>Web Technology II — JavaScript &amp; PHP</h2>
+      <div class="unit-subtitle">Always Q11 (Short Answer, 5 marks) — programs and DB connectivity</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="imp-label">HIGHEST PRIORITY</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-code">CODE</span>
+      <div class="q-text">
+        Write JavaScript code to input three numbers and find the smallest number among them.
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082 Q11</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <div class="code-label">JavaScript Program</div>
+        <div class="code-block">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Find Smallest Number&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+  var a = parseInt(prompt("Enter first number:"));
+  var b = parseInt(prompt("Enter second number:"));
+  var c = parseInt(prompt("Enter third number:"));
+
+  var smallest;
+
+  if (a &lt; b &amp;&amp; a &lt; c) {
+    smallest = a;
+  } else if (b &lt; a &amp;&amp; b &lt; c) {
+    smallest = b;
+  } else {
+    smallest = c;
+  }
+
+  document.write("The smallest number is: " + smallest);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+        <div class="tip-box">
+          <div class="tip-head">💡 Alternative: Using Math.min()</div>
+          <div class="code-block">var smallest = Math.min(a, b, c);
+document.write("Smallest: " + smallest);</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-code">CODE</span>
+      <div class="q-text">
+        Write a JavaScript function that checks if a number is even or odd and prints the result.
+        <div class="q-meta">
+          <span class="q-marks">📌 [1+4] = 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2081 Q11</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p>A <strong>function</strong> in JavaScript is a reusable block of code that performs a specific task. It is defined with the <em>function</em> keyword.</p>
+        <div class="code-label">JavaScript Even/Odd Function</div>
+        <div class="code-block">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Even or Odd&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+  function checkEvenOdd(num) {
+    if (num % 2 == 0) {
+      document.write(num + " is EVEN");
+    } else {
+      document.write(num + " is ODD");
+    }
+  }
+
+  var n = parseInt(prompt("Enter a number:"));
+  checkEvenOdd(n);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-code">CODE</span>
+      <div class="q-text">
+        Write a JavaScript program to find the factorial of a given number.
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2079 Q11</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <div class="code-block">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Factorial&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+  function factorial(n) {
+    var result = 1;
+    for (var i = 1; i &lt;= n; i++) {
+      result = result * i;
+    }
+    return result;
+  }
+
+  var num = parseInt(prompt("Enter a number:"));
+  var ans = factorial(num);
+  document.write("Factorial of " + num + " = " + ans);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-code">CODE</span>
+      <div class="q-text">
+        Write a PHP script to connect to a MySQL database. What is the purpose of mysqli_connect() function?
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082, 2081 Q11</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>mysqli_connect()</strong> is a PHP function used to establish a connection between a PHP script and a MySQL database server.</p>
+        <p><strong>Syntax:</strong> <code>mysqli_connect(host, username, password, database_name)</code></p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+          <li><em>host</em> — Server address (usually "localhost")</li>
+          <li><em>username</em> — Database user (usually "root")</li>
+          <li><em>password</em> — Database password (empty "" for localhost)</li>
+          <li><em>database_name</em> — Name of the database to use</li>
+        </ul>
+        <div class="code-label">PHP MySQL Connection Script</div>
+        <div class="code-block">&lt;?php
+  // Step 1: Connect to database
+  $conn = mysqli_connect("localhost", "root", "", "school");
+
+  // Step 2: Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+  echo "Connection successful!";
+
+  // Step 3: Write SQL query
+  $sql = "SELECT * FROM students";
+
+  // Step 4: Execute query
+  $result = mysqli_query($conn, $sql);
+
+  // Step 5: Fetch and display data
+  while ($row = mysqli_fetch_array($result)) {
+    echo $row['name'] . " - " . $row['marks'] . "&lt;br&gt;";
+  }
+
+  // Step 6: Close connection
+  mysqli_close($conn);
+?&gt;</div>
+        <div class="tip-box">
+          <div class="tip-head">💡 Key Functions to Remember</div>
+          mysqli_connect() — Connect to DB<br>
+          mysqli_query() — Run SQL query<br>
+          mysqli_fetch_array() — Get one row of results<br>
+          mysqli_close() — Close connection<br>
+          mysqli_connect_error() — Get error message
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-code">CODE</span>
+      <div class="q-text">
+        Write JavaScript code to swap/exchange the values of any two variables.
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-warm">Appeared 2079 model Q11</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <div class="code-block">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Swap Variables&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+  var x = parseInt(prompt("Enter value of x:"));
+  var y = parseInt(prompt("Enter value of y:"));
+
+  document.write("Before swap: x = " + x + ", y = " + y + "&lt;br&gt;");
+
+  // Swapping using temp variable
+  var temp = x;
+  x = y;
+  y = temp;
+
+  document.write("After swap: x = " + x + ", y = " + y);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHP MCQ Concepts -->
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-mcq">MCQ</span>
+      <div class="q-text">
+        PHP Variable Rules &amp; JS For Loop — Exam MCQ Concepts
+        <div class="q-meta">
+          <span class="q-marks">📌 1 mark each</span>
+          <span class="q-freq freq-hot">🔥 Every year in MCQ</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Key Facts</div>
+      <div class="answer-text">
+        <p><strong>PHP Variable Rules:</strong></p>
+        <ul>
+          <li>All PHP variables start with <em>$</em> sign.</li>
+          <li>Can contain letters, numbers, underscores.</li>
+          <li>❌ CANNOT start with a number: <strong>$1name is INVALID</strong></li>
+          <li>✅ Valid: $name, $_name, $name123, $Name</li>
+          <li>PHP concatenation uses <strong>dot (.)</strong>: $x.$y (NOT $x+$y)</li>
+        </ul>
+        <p><strong>JavaScript For Loop — Correct Syntax:</strong></p>
+        <div class="code-block">// CORRECT (using var):
+for (var i = 0; i &lt; 5; i++) { }
+
+// Also CORRECT (without var - but NEB prefers var):
+for (i = 0; i &lt; 5; i++) { }
+
+// WRONG — missing initialization:
+for (var i &lt; 5; i++) { }  ❌</div>
+        <p><strong>JavaScript variable declaration:</strong> Use <em>var</em> or <em>let</em> (not int, float, or char like in C).</p>
+        <p><strong>PHP is server-side</strong> scripting. JavaScript is client-side.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 4: C PROGRAMMING -->
+<div id="unit4" class="unit-section u4">
+  <div class="unit-header">
+    <div class="unit-num">4</div>
+    <div class="unit-title">
+      <h2>Programming in C — Functions, Structures, Pointers &amp; Files</h2>
+      <div class="unit-subtitle">Always Q16 (Long Answer, 8 marks) — structures and file handling</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="imp-label">HIGHEST PRIORITY</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-long">LONG</span>
+      <div class="q-text">
+        Write a C program using Array and Structure to read account_number, name, and address of 10 customers and display them.
+        <div class="q-meta">
+          <span class="q-marks">📌 8 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082 Q16</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p>A <strong>structure</strong> in C is a user-defined data type that groups different data types together under one name. An array of structures stores multiple records.</p>
+        <div class="code-block">#include &lt;stdio.h&gt;
+
+struct Customer {
+    int account_number;
+    char name[50];
+    char address[100];
+};
+
+int main() {
+    struct Customer c[10];
+    int i;
+
+    // Input data for 10 customers
+    for (i = 0; i &lt; 10; i++) {
+        printf("\nEnter details for Customer %d:\n", i+1);
+        printf("Account Number: ");
+        scanf("%d", &amp;c[i].account_number);
+        printf("Name: ");
+        scanf(" %[^\n]s", c[i].name);
+        printf("Address: ");
+        scanf(" %[^\n]s", c[i].address);
+    }
+
+    // Display all customers
+    printf("\n\n--- Customer Details ---\n");
+    printf("%-5s %-15s %-20s %s\n",
+           "S.N.", "Acc. No.", "Name", "Address");
+    printf("--------------------------------------------------\n");
+
+    for (i = 0; i &lt; 10; i++) {
+        printf("%-5d %-15d %-20s %s\n",
+               i+1, c[i].account_number,
+               c[i].name, c[i].address);
+    }
+
+    return 0;
+}</div>
+        <div class="tip-box">
+          <div class="tip-head">📝 Structure Syntax (MCQ important)</div>
+          struct &lt;name&gt; { members }; — Correct syntax<br>
+          Access member: c[i].account_number (dot operator)<br>
+          Array of structure: struct Customer c[10];
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-long">LONG</span>
+      <div class="q-text">
+        What are the components of a function in C? Describe Call-by-Value and Call-by-Reference with examples.
+        <div class="q-meta">
+          <span class="q-marks">📌 [4+4] = 8 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082 Q16 OR</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>Components of a Function in C:</strong></p>
+        <ul>
+          <li><strong>Function Prototype (Declaration):</strong> Declares the function before it is used. <em>int add(int a, int b);</em></li>
+          <li><strong>Function Definition:</strong> Actual body/code of the function.</li>
+          <li><strong>Function Call:</strong> Where you invoke/use the function.</li>
+          <li><strong>Return Type:</strong> Data type of value returned (int, float, void).</li>
+          <li><strong>Parameters:</strong> Input values passed to the function.</li>
+        </ul>
+        <p><strong>Call-by-Value:</strong> A copy of the argument is passed. Changes inside the function do NOT affect the original value.</p>
+        <div class="code-block">// CALL BY VALUE
+#include &lt;stdio.h&gt;
+
+void change(int x) {   // x is a copy
+    x = x + 10;
+    printf("Inside function: x = %d\n", x);
+}
+
+int main() {
+    int a = 5;
+    change(a);
+    printf("Outside function: a = %d\n", a);
+    // Output: Inside = 15, Outside = 5 (unchanged!)
+    return 0;
+}</div>
+        <p><strong>Call-by-Reference:</strong> The address of the variable is passed using pointers. Changes inside the function DO affect the original variable.</p>
+        <div class="code-block">// CALL BY REFERENCE
+#include &lt;stdio.h&gt;
+
+void change(int *x) {   // pointer receives address
+    *x = *x + 10;       // changes original value
+    printf("Inside function: x = %d\n", *x);
+}
+
+int main() {
+    int a = 5;
+    change(&amp;a);          // pass address of a
+    printf("Outside function: a = %d\n", a);
+    // Output: Inside = 15, Outside = 15 (changed!)
+    return 0;
+}</div>
+        <table class="comp-table">
+          <tr><th>Call by Value</th><th>Call by Reference</th></tr>
+          <tr><td>Copy of data is passed</td><td>Address (pointer) is passed</td></tr>
+          <tr><td>Original value NOT changed</td><td>Original value IS changed</td></tr>
+          <tr><td>Uses normal variables</td><td>Uses pointers (*)</td></tr>
+          <tr><td>Safer, no side effects</td><td>Efficient for large data</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-long">LONG</span>
+      <div class="q-text">
+        Write a C program using structure to store details of 5 books (title, author, publisher, price) and print them.
+        <div class="q-meta">
+          <span class="q-marks">📌 8 marks</span>
+          <span class="q-freq freq-warm">Appeared 2081 Q16</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <div class="code-block">#include &lt;stdio.h&gt;
+
+struct Book {
+    char title[100];
+    char author[50];
+    char publisher[50];
+    float price;
+};
+
+int main() {
+    struct Book b[5];
+    int i;
+
+    for (i = 0; i &lt; 5; i++) {
+        printf("\nEnter Book %d details:\n", i+1);
+        printf("Title: ");
+        scanf(" %[^\n]s", b[i].title);
+        printf("Author: ");
+        scanf(" %[^\n]s", b[i].author);
+        printf("Publisher: ");
+        scanf(" %[^\n]s", b[i].publisher);
+        printf("Price: ");
+        scanf("%f", &amp;b[i].price);
+    }
+
+    printf("\n--- Book Details ---\n");
+    for (i = 0; i &lt; 5; i++) {
+        printf("\nBook %d:\n", i+1);
+        printf("  Title     : %s\n", b[i].title);
+        printf("  Author    : %s\n", b[i].author);
+        printf("  Publisher : %s\n", b[i].publisher);
+        printf("  Price     : Rs. %.2f\n", b[i].price);
+    }
+    return 0;
+}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-long">LONG</span>
+      <div class="q-text">
+        Discuss binary file handling in C. Explain putw() and getw() functions with examples.
+        <div class="q-meta">
+          <span class="q-marks">📌 8 marks</span>
+          <span class="q-freq freq-warm">Appeared 2081 Q16 OR</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>File Handling in C</strong> allows programs to store and retrieve data permanently on disk. A <em>binary file</em> stores data in machine-readable (binary) format, not as readable text.</p>
+        <p><strong>putw()</strong> — Writes an integer value to a binary file.<br>
+        <strong>Syntax:</strong> putw(integer_value, file_pointer);</p>
+        <p><strong>getw()</strong> — Reads an integer value from a binary file.<br>
+        <strong>Syntax:</strong> getw(file_pointer); // returns the integer</p>
+        <div class="code-block">#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *fp;
+    int i, num;
+
+    // Writing integers using putw()
+    fp = fopen("numbers.dat", "wb");  // wb = write binary
+    if (fp == NULL) {
+        printf("Cannot open file!\n");
+        return 1;
+    }
+    for (i = 1; i &lt;= 5; i++) {
+        putw(i * 10, fp);   // Writes: 10, 20, 30, 40, 50
+    }
+    fclose(fp);
+
+    // Reading integers using getw()
+    fp = fopen("numbers.dat", "rb");  // rb = read binary
+    printf("Numbers read from file:\n");
+    while ((num = getw(fp)) != EOF) {
+        printf("%d\n", num);
+    }
+    fclose(fp);
+
+    return 0;
+}</div>
+        <table class="comp-table">
+          <tr><th>Function</th><th>Purpose</th><th>Mode</th></tr>
+          <tr><td>putw()</td><td>Write integer to binary file</td><td>"wb"</td></tr>
+          <tr><td>getw()</td><td>Read integer from binary file</td><td>"rb"</td></tr>
+          <tr><td>putc()/fputc()</td><td>Write character to file</td><td>"w"</td></tr>
+          <tr><td>getc()/fgetc()</td><td>Read character from file</td><td>"r"</td></tr>
+          <tr><td>fprintf()</td><td>Write formatted data</td><td>"w"</td></tr>
+          <tr><td>fscanf()</td><td>Read formatted data</td><td>"r"</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 5: OOP -->
+<div id="unit5" class="unit-section u5">
+  <div class="unit-header">
+    <div class="unit-num">5</div>
+    <div class="unit-title">
+      <h2>Object-Oriented Programming (OOP)</h2>
+      <div class="unit-subtitle">Always Q12 (Short Answer, 5 marks) — class, object, inheritance</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="imp-label">HIGHEST PRIORITY</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        Write short notes on Class and Inheritance in OOP with examples.
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks (2.5+2.5)</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082, 2081, 2079 Q12</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>Class:</strong> A class is a blueprint or template for creating objects. It defines what data (attributes) and what behaviors (methods/functions) objects of that type will have. A class itself doesn't use memory until an object is created from it.</p>
+        <p><strong>Object:</strong> An object is a real-world instance created from a class. It has its own values for the attributes defined in the class.</p>
+        <p><strong>Real-world example:</strong> "Car" is a class. "Honda City with number BA-1-KH-2345" is an object.</p>
+        <div class="diagram">
+CLASS: Animal
+  Attributes: name, sound, legs
+  Methods: eat(), sleep(), makeSound()
+
+OBJECT 1: Dog → name="Rex", sound="Bark", legs=4
+OBJECT 2: Cat → name="Kitty", sound="Meow", legs=4</div>
+        <p><strong>Inheritance:</strong> Inheritance is an OOP feature where a new class (child/derived class) automatically gets all the properties and methods of an existing class (parent/base class). It promotes <em>code reusability</em>.</p>
+        <ul>
+          <li>The child class can use all features of the parent class.</li>
+          <li>The child class can also add its own new features.</li>
+          <li>Keyword used (in most languages): <em>extends</em></li>
+        </ul>
+        <div class="diagram">
+BASE CLASS (Parent): Animal
+  - name
+  - eat()
+  - sleep()
+       ↓  (inherits all above)
+DERIVED CLASS (Child): Dog
+  - name (inherited)
+  - eat() (inherited)
+  - sleep() (inherited)
+  - bark() (NEW — added by Dog)</div>
+        <p><strong>Types of Inheritance:</strong> Single, Multiple, Multilevel, Hierarchical, Hybrid.</p>
+        <div class="tip-box">
+          <div class="tip-head">💡 Key OOP Terms for MCQ</div>
+          Encapsulation — hiding data (private members)<br>
+          Polymorphism — same function, different behavior<br>
+          Abstraction — hiding complexity, showing only what's needed<br>
+          Inheritance — code reusability, parent-child relationship
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        Compare OOP (Object-Oriented) and Procedural (Procedure-Oriented) Programming.
+        <div class="q-meta">
+          <span class="q-marks">📌 [2+3] or 5 marks</span>
+          <span class="q-freq freq-warm">Appeared 2079 Q12, 2079 model Q12</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <table class="comp-table">
+          <tr><th>Basis</th><th>Procedural Programming</th><th>Object-Oriented Programming</th></tr>
+          <tr><td>Focus</td><td>Focus on <em>procedures/functions</em></td><td>Focus on <em>data/objects</em></td></tr>
+          <tr><td>Approach</td><td>Top-down approach</td><td>Bottom-up approach</td></tr>
+          <tr><td>Data Security</td><td>Data is shared (less secure)</td><td>Data is hidden (encapsulation)</td></tr>
+          <tr><td>Code Reuse</td><td>Limited — functions can be reused</td><td>High — through inheritance</td></tr>
+          <tr><td>Real-World Modeling</td><td>Difficult</td><td>Easy — models real-world entities</td></tr>
+          <tr><td>Maintenance</td><td>Difficult for large programs</td><td>Easier — modular design</td></tr>
+          <tr><td>Examples</td><td>C, Pascal, FORTRAN</td><td>C++, Java, Python</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 6: SDLC -->
+<div id="unit6" class="unit-section u6">
+  <div class="unit-header">
+    <div class="unit-num">6</div>
+    <div class="unit-title">
+      <h2>Software Process Model (SDLC)</h2>
+      <div class="unit-subtitle">Always Q13 (Short Answer, 5 marks) — SDLC, requirement gathering, feasibility</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐</div>
+      <div class="imp-label">VERY HIGH PRIORITY</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        What is Requirement Gathering? Explain different Requirement Gathering methods.
+        <div class="q-meta">
+          <span class="q-marks">📌 [1+4] = 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082, 2081, 2079 Q13</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>Requirement Gathering</strong> (also called Requirement Elicitation) is the process of collecting, understanding, and documenting what a software system should do — what features, functions, and constraints it must have. It is the first and most important step in the SDLC analysis phase.</p>
+        <p><strong>Methods of Requirement Gathering:</strong></p>
+        <p><strong>1. Interview:</strong> Direct one-on-one or group conversation with stakeholders (users, managers) to understand their needs and expectations. Can be formal (structured) or informal (unstructured).</p>
+        <p><strong>2. Questionnaire / Survey:</strong> A written set of questions given to users to collect information. Useful when many users need to be consulted but direct interviews are not possible. Cost-effective for large groups.</p>
+        <p><strong>3. Observation:</strong> The analyst directly watches how users currently work and what problems they face. Helps identify unstated requirements and practical issues.</p>
+        <p><strong>4. Document Analysis:</strong> Reviewing existing documents, reports, forms, and records related to the current system. Helps understand the existing workflow and data used.</p>
+        <p><strong>5. Brainstorming:</strong> A group meeting where participants freely suggest ideas and solutions. Used to explore many possible requirements quickly.</p>
+        <p><strong>6. Prototyping:</strong> Building a quick, rough version (prototype) of the system to show users. Users give feedback, and requirements are refined based on it.</p>
+        <p><strong>7. JAD (Joint Application Development):</strong> Structured workshop where users, managers, and developers work together to define requirements collaboratively.</p>
+        <div class="tip-box">
+          <div class="tip-head">💡 Remember for 5 marks: Name 4–5 methods with 1-line explanation each</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        Write any five qualities of good software.
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-warm">Appeared 2079 model Q13</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p>A good quality software should have the following characteristics:</p>
+        <ul>
+          <li><strong>Correctness:</strong> Software should perform exactly what the user requires. All functions should work correctly without bugs.</li>
+          <li><strong>Reliability:</strong> Software should work consistently without failure over time. It should produce correct results every time it runs.</li>
+          <li><strong>Efficiency:</strong> Software should use minimum resources (memory, processing power) while giving maximum performance.</li>
+          <li><strong>Usability / User-friendly:</strong> Software should be easy to learn and use. The interface should be simple and intuitive for all users.</li>
+          <li><strong>Maintainability:</strong> It should be easy to modify, update, and fix bugs in the software after it is deployed.</li>
+          <li><strong>Portability:</strong> Software should work on different hardware and operating systems without major changes.</li>
+          <li><strong>Scalability:</strong> Software should be able to handle increased workload (more users, more data) without losing performance.</li>
+          <li><strong>Security:</strong> Software should protect data from unauthorized access and attacks.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-mcq">MCQ</span>
+      <div class="q-text">
+        SDLC Models — Waterfall, Agile, Prototype, RAD (MCQ every year)
+        <div class="q-meta">
+          <span class="q-marks">📌 1 mark</span>
+          <span class="q-freq freq-hot">🔥 Every year in MCQ</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Key Facts</div>
+      <div class="answer-text">
+        <table class="comp-table">
+          <tr><th>Model</th><th>Key Feature (remember this for MCQ)</th></tr>
+          <tr><td><strong>Waterfall</strong></td><td>Linear, sequential phases (Req → Design → Code → Test → Deploy). No going back. ✅ Most common MCQ answer for "linear progression"</td></tr>
+          <tr><td><strong>Prototype</strong></td><td>Build quick model first, show to user, get feedback, refine. Good when requirements are unclear.</td></tr>
+          <tr><td><strong>Agile</strong></td><td>Iterative, flexible, small cycles called "sprints". Client involved throughout.</td></tr>
+          <tr><td><strong>Spiral</strong></td><td>Combines Waterfall + Prototype + risk analysis. Risk-driven model.</td></tr>
+          <tr><td><strong>RAD</strong></td><td>Rapid Application Development — very fast development using components.</td></tr>
+        </table>
+        <p><strong>Feasibility Study Types:</strong></p>
+        <ul>
+          <li><em>Technical Feasibility</em> — Can we build it with available technology? (2082, 2081 MCQ answer)</li>
+          <li><em>Economic Feasibility</em> — Is it cost-effective? (cost-benefit analysis) (2079 model MCQ answer)</li>
+          <li><em>Operational Feasibility</em> — Will users accept and use it?</li>
+          <li><em>Schedule Feasibility</em> — Can it be completed on time?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 7: RECENT TRENDS -->
+<div id="unit7" class="unit-section u7">
+  <div class="unit-header">
+    <div class="unit-num">7</div>
+    <div class="unit-title">
+      <h2>Recent Trends in ICT — AI, Cloud, Big Data, IoT</h2>
+      <div class="unit-subtitle">Always Q14 (Short Answer, 5 marks) — AI in education asked every year!</div>
+    </div>
+    <div class="importance-badge">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="imp-label">HIGHEST PRIORITY</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        What is AI? Explain application areas of AI in education with five examples.
+        <div class="q-meta">
+          <span class="q-marks">📌 [1+4] = 5 marks</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082, 2081, 2079 Q14 — EVERY YEAR!</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>AI (Artificial Intelligence)</strong> is a branch of computer science that focuses on creating machines and software that can simulate human intelligence — such as learning, reasoning, problem-solving, understanding language, and making decisions.</p>
+        <p><strong>Five Applications of AI in Education:</strong></p>
+        <p><strong>1. Personalized Learning:</strong> AI analyzes each student's learning style, speed, and weak areas to create customized lessons and exercises. Example: Duolingo adjusts difficulty based on student performance.</p>
+        <p><strong>2. Intelligent Tutoring Systems (ITS):</strong> AI-powered tutors that give one-on-one guidance to students, explain concepts, and provide hints when students are stuck — like having a personal teacher available 24/7. Example: Khan Academy's AI tutor.</p>
+        <p><strong>3. Automated Grading and Assessment:</strong> AI can automatically grade multiple-choice tests, essays, and programming assignments. It saves teachers time and provides instant feedback to students. Example: Turnitin for plagiarism checking.</p>
+        <p><strong>4. Smart Content Creation:</strong> AI tools can generate study notes, summaries, quizzes, and educational videos from textbook content. Example: AI-generated flashcards and practice questions.</p>
+        <p><strong>5. Early Warning Systems:</strong> AI monitors student behavior, attendance, and grades to identify students at risk of failing early, so teachers can intervene and provide extra support before it is too late.</p>
+        <p><strong>Other examples:</strong> Virtual classrooms, Language translation tools, Chatbots for student queries, Adaptive testing.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-short">SHORT</span>
+      <div class="q-text">
+        Explain mobile computing with its advantages and disadvantages. / What is mobile computing?
+        <div class="q-meta">
+          <span class="q-marks">📌 5 marks</span>
+          <span class="q-freq freq-warm">Appeared 2079 model Q14</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Model Answer</div>
+      <div class="answer-text">
+        <p><strong>Mobile Computing</strong> is a technology that allows users to access data, information, and applications from anywhere at any time using portable wireless devices such as smartphones, tablets, and laptops. It does not require a fixed location or wired connection.</p>
+        <p><strong>Key components:</strong> Mobile Device (hardware), Mobile Communication (WiFi, 4G/5G), Mobile Software (apps, OS)</p>
+        <p><strong>Advantages:</strong></p>
+        <ul>
+          <li>Accessibility — work from anywhere, anytime</li>
+          <li>Real-time communication and data access</li>
+          <li>Increased productivity — work while traveling</li>
+          <li>Location-based services (GPS, maps, navigation)</li>
+          <li>Cost-effective communication (WhatsApp, email)</li>
+        </ul>
+        <p><strong>Disadvantages:</strong></p>
+        <ul>
+          <li>Security risks — data theft, hacking on public WiFi</li>
+          <li>Short battery life</li>
+          <li>Limited screen size and processing power</li>
+          <li>Network dependency — poor signal = no work</li>
+          <li>Privacy concerns — location tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head" onclick="toggle(this)">
+      <span class="q-type-tag tag-mcq">MCQ</span>
+      <div class="q-text">
+        Cloud Computing Services — IaaS, PaaS, SaaS (MCQ in 2082)
+        <div class="q-meta">
+          <span class="q-marks">📌 1 mark</span>
+          <span class="q-freq freq-hot">🔥 Appeared 2082 MCQ Q9</span>
+        </div>
+      </div>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-label">✅ Key Facts</div>
+      <div class="answer-text">
+        <p>The three real types of cloud computing services are:</p>
+        <ul>
+          <li><strong>IaaS (Infrastructure as a Service)</strong> — Provides virtual hardware: servers, storage, networking. Example: AWS EC2, Google Cloud.</li>
+          <li><strong>PaaS (Platform as a Service)</strong> — Provides platform for developers to build apps without managing hardware. Example: Google App Engine, Heroku.</li>
+          <li><strong>SaaS (Software as a Service)</strong> — Provides ready-to-use software over internet. Example: Gmail, Google Docs, Microsoft 365.</li>
+        </ul>
+        <div class="warn-box">
+          <div class="tip-head">⚠️ MCQ Answer</div>
+          <strong>"HaaS (Hardware as a Service)"</strong> is NOT a real type of cloud computing service. The correct answer is D) HaaS in the 2082 MCQ — it is the "NOT a type" option.
+        </div>
+        <p><strong>Other Recent Trends to know:</strong></p>
+        <ul>
+          <li><em>Big Data</em> — Extremely large datasets that need special tools (Hadoop) to process</li>
+          <li><em>IoT (Internet of Things)</em> — Physical devices connected to internet (smart home, sensors)</li>
+          <li><em>Virtual Reality (VR)</em> — Immersive simulated environment</li>
+          <li><em>Robotics</em> — Machines that perform tasks autonomously</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM TIPS -->
+<div class="unit-section">
+  <div class="unit-header">
+    <div class="unit-num" style="background:rgba(88,166,255,0.2);color:#58a6ff;font-size:20px;">💡</div>
+    <div class="unit-title">
+      <h2>Last-Minute Exam Strategy &amp; Tips</h2>
+      <div class="unit-subtitle">From analysis of 4 years of NEB exam patterns</div>
+    </div>
+  </div>
+  <div class="tip-box">
+    <div class="tip-head">⏰ Time Management (2 hours = 120 minutes)</div>
+    MCQs given AFTER 30 min → Start with Group C (Long, 8 marks each) → Group B (Short, 5 marks each) → MCQs last.<br>
+    Suggested: Group C = 40 min · Group B = 45 min · MCQ = 15 min · Review = 20 min
+  </div>
+  <div class="tip-box">
+    <div class="tip-head">📋 Guaranteed Questions (appear every single year)</div>
+    ✅ Q10: DBMS — Normalization OR DDL vs DML OR Centralized vs Distributed<br>
+    ✅ Q11: JavaScript program OR PHP database connectivity<br>
+    ✅ Q12: OOP — Class + Object + Inheritance<br>
+    ✅ Q13: SDLC — Requirement Gathering OR Software Quality<br>
+    ✅ Q14: AI Applications in Education<br>
+    ✅ Q15: Network Topology (Star vs Bus/Ring) OR Transmission Medium<br>
+    ✅ Q16: C Structure with Array OR File Handling (putw/getw)
+  </div>
+  <div class="warn-box">
+    <div class="tip-head">⚠️ Common Mistakes to Avoid</div>
+    ❌ Don't write SQL in UPPERCASE as a rule — but DO write keywords in uppercase for clarity<br>
+    ❌ Don't confuse $x.$y (PHP concat) with $x+$y (addition)<br>
+    ❌ Don't confuse Inheritance (code reuse) with Polymorphism (same function, different behavior)<br>
+    ❌ Don't confuse Technical Feasibility (can we build it?) with Economic (is it affordable?)<br>
+    ❌ In C structures: Access with DOT (.) operator for variables, ARROW (->) for pointers
+  </div>
+  <div class="tip-box">
+    <div class="tip-head">✍️ Answer Writing Tips</div>
+    • Start every short answer with a definition (1 sentence = 1 mark)<br>
+    • Use tables for comparisons — examiners love them<br>
+    • Write C programs with proper #include and main() function<br>
+    • In 5-mark questions, aim for 5 clear points, each in a separate line/bullet<br>
+    • For diagram questions, draw clearly with labels — a rough but labeled diagram gets full marks
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  NEB Grade 12 Computer Science · Sub. Code 4281'D' · Sudurpashchim Pradesh<br>
+  Based on Official Curriculum 2076 &amp; Past Papers 2079–2082 · Full Marks: 50
+</div>
+
+<script>
+function toggle(head) {
+  const body = head.nextElementSibling;
+  const arrow = head.querySelector('.q-toggle');
+  body.classList.toggle('visible');
+  arrow.classList.toggle('open');
+}
+
+function scrollTo(id) {
+  const el = document.querySelector(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+}
+
+// Highlight active nav on scroll
+window.addEventListener('scroll', () => {
+  const sections = ['#mcq-ref','#unit1','#unit2','#unit3','#unit4','#unit5','#unit6','#unit7'];
+  const btns = document.querySelectorAll('.nav-btn');
+  let current = 0;
+  sections.forEach((s, i) => {
+    const el = document.querySelector(s);
+    if (el && window.scrollY >= el.offsetTop - 100) current = i;
+  });
+  btns.forEach((b, i) => b.classList.toggle('active', i === current));
+});
+</script>
+</body>
+</html>
