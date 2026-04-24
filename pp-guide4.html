@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Project Proposal Writing Guide — Complete Format</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --gold: #f0b429;
+    --gold2: #ffd700;
+    --teal: #3fb950;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --red: #ff7b72;
+    --orange: #ffa657;
+    --pink: #f778ba;
+    --section1: #58a6ff;
+    --section2: #ffa657;
+    --section3: #3fb950;
+    --section4: #ff7b72;
+    --section5: #bc8cff;
+    --section6: #3fbdff;
+    --section7: #f0b429;
+    --section8: #56d364;
+    --section9: #f778ba;
+    --section10: #ff7b72;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(88,166,255,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(240,180,41,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 40% at 10% 60%, rgba(188,140,255,0.07) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,180,41,0.12);
+    border: 1px solid rgba(240,180,41,0.3);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 48px;
+    animation: fadeUp 0.6s ease 0.2s both;
+    font-weight: 300;
+  }
+
+  .hero-sections {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .hero-pill {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+    opacity: 0.85;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* LAYOUT */
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 40px 0;
+    border-right: 1px solid var(--border);
+    scrollbar-width: none;
+  }
+
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 24px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+
+  .nav-item.active {
+    border-left-color: var(--gold);
+    background: rgba(240,180,41,0.06);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    padding: 60px 64px 120px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.5s ease;
+  }
+
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .section-meta { flex: 1; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  .section-desc {
+    margin-top: 12px;
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 600px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: rgba(240,180,41,0.3); }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .card-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* WHAT TO INCLUDE */
+  .include-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .include-item:last-child { border-bottom: none; }
+
+  .include-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .include-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .include-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* EXAMPLE BOX */
+  .example-box {
+    background: rgba(88,166,255,0.04);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .example-box::before {
+    content: 'EXAMPLE';
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(88,166,255,0.5);
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .example-box p { font-size: 14px; line-height: 1.8; color: var(--text); }
+  .example-box strong { color: var(--blue); }
+
+  /* TEMPLATE BOX */
+  .template-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+  }
+
+  .template-box .placeholder { color: var(--orange); font-style: italic; }
+  .template-box .keyword { color: var(--teal); font-weight: 500; }
+
+  /* TIP BOX */
+  .tip-box {
+    background: rgba(240,180,41,0.06);
+    border: 1px solid rgba(240,180,41,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .tip-icon { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .tip-box p { font-size: 13px; color: #c9a227; line-height: 1.6; }
+  .tip-box strong { color: var(--gold); }
+
+  /* WARNING */
+  .warn-box {
+    background: rgba(255,123,114,0.06);
+    border: 1px solid rgba(255,123,114,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .warn-box p { font-size: 13px; color: #ff9492; line-height: 1.6; }
+
+  /* SMART TABLE */
+  .smart-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+
+  .smart-table th {
+    background: var(--bg3);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .smart-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .smart-table tr:last-child td { border-bottom: none; }
+  .smart-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* MOSCOW TABLE */
+  .moscow-row { display: flex; gap: 10px; margin-bottom: 10px; }
+
+  .moscow-badge {
+    min-width: 100px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .moscow-content {
+    flex: 1;
+    background: var(--bg3);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* TIMELINE */
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    margin-bottom: 4px;
+    align-items: center;
+  }
+
+  .timeline-week {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    text-align: right;
+  }
+
+  .timeline-bar-wrap {
+    height: 28px;
+    background: var(--bg3);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .timeline-bar {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* COST TABLE */
+  .cost-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+
+  .cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    font-size: 14px;
+  }
+
+  .cost-row:last-child { border-bottom: none; font-weight: 600; }
+  .cost-label { color: var(--muted); }
+  .cost-value { font-family: 'DM Mono', monospace; color: var(--teal); }
+  .cost-total .cost-label { color: var(--text); }
+  .cost-total .cost-value { color: var(--gold); font-size: 16px; }
+
+  /* DIAGRAM TYPES */
+  .diagram-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.2s;
+  }
+
+  .diagram-card:hover { border-color: rgba(63,189,255,0.4); transform: translateY(-2px); }
+
+  .diagram-card .d-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .diagram-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .diagram-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .diagram-card .d-includes {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .d-tag {
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.06);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.4);
+    font-size: 14px;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(63,185,80,0.15);
+    border: 1px solid rgba(63,185,80,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--teal);
+  }
+
+  /* REFERENCE */
+  .ref-example {
+    background: var(--bg3);
+    border-left: 3px solid var(--purple);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+  }
+
+  .ref-type {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  /* SUBSECTION */
+  .subsection-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 32px;
+    font-family: 'DM Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .subsection-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* FOOTER / SUMMARY */
+  .summary-banner {
+    background: linear-gradient(135deg, rgba(240,180,41,0.08) 0%, rgba(88,166,255,0.06) 100%);
+    border: 1px solid rgba(240,180,41,0.2);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .summary-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .summary-num {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .summary-num .n { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; }
+  .summary-num .l { font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--blue));
+    z-index: 1000;
+    transition: width 0.1s;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 20px 12px 50px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 12px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+    /* Hero section improvements */
+    .hero {
+      min-height: auto;
+      padding: 40px 12px 60px;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 8vw, 42px);
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      padding: 0 4px;
+    }
+
+    .hero-sections {
+      gap: 6px;
+      padding: 0 4px;
+    }
+
+    .hero-pill {
+      font-size: 9px;
+      padding: 4px 8px;
+    }
+
+    /* Section improvements */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(20px, 5vw, 28px);
+    }
+
+    .section-desc {
+      font-size: 13px;
+    }
+
+    /* Card improvements */
+    .card {
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+    }
+
+    .card-title {
+      font-size: 11px;
+    }
+
+    /* Include items */
+    .include-item {
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .include-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
+
+    .include-body h4 {
+      font-size: 15px;
+    }
+
+    .include-body p {
+      font-size: 13px;
+    }
+
+    /* Example and template boxes */
+    .example-box {
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .example-box p {
+      font-size: 13px;
+    }
+
+    .template-box {
+      padding: 16px;
+      font-size: 12px;
+      overflow-x: auto;
+      word-break: break-word;
+    }
+
+    /* Tables */
+    .smart-table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-left: -12px;
+      margin-right: -12px;
+      width: calc(100% + 24px);
+    }
+
+    .smart-table th,
+    .smart-table td {
+      padding: 8px 10px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* Constrain content width */
+    .card,
+    .example-box,
+    .template-box,
+    .tip-box,
+    .warn-box {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* Main content constraint */
+    .main {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* MoSCoW badges */
+    .moscow-row {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .moscow-badge {
+      min-width: auto;
+      width: 100%;
+    }
+
+    /* Timeline */
+    .timeline-row {
+      grid-template-columns: 60px 1fr;
+      gap: 10px;
+    }
+
+    .timeline-week {
+      font-size: 10px;
+    }
+
+    .timeline-bar-wrap {
+      height: 24px;
+    }
+
+    .timeline-bar {
+      font-size: 9px;
+      padding: 0 6px;
+    }
+
+    /* Cost cards */
+    .cost-card {
+      padding: 16px;
+    }
+
+    .cost-row {
+      font-size: 13px;
+      padding: 8px 0;
+    }
+
+    /* Diagram cards */
+    .diagram-card {
+      padding: 20px;
+    }
+
+    .diagram-card .d-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    .diagram-card h4 {
+      font-size: 14px;
+    }
+
+    .diagram-card p {
+      font-size: 12px;
+    }
+
+    .d-tag {
+      font-size: 10px;
+      padding: 2px 8px;
+    }
+
+    /* Checklist */
+    .checklist li {
+      font-size: 13px;
+      padding: 8px 0;
+      gap: 10px;
+    }
+
+    /* Summary banner */
+    .summary-banner {
+      padding: 32px 20px;
+      margin-top: 60px;
+    }
+
+    .summary-banner h2 {
+      font-size: 28px;
+    }
+
+    .summary-num {
+      padding: 14px 10px;
+    }
+
+    .summary-num .n {
+      font-size: 24px;
+    }
+
+    .summary-num .l {
+      font-size: 9px;
+    }
+
+    /* Subsection labels */
+    .subsection-label {
+      font-size: 9px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    /* Tip and warning boxes */
+    .tip-box, .warn-box {
+      padding: 14px 16px;
+      gap: 10px;
+    }
+
+    .tip-box p, .warn-box p {
+      font-size: 12px;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      bottom: 24px;
+    }
+
+    .scroll-line {
+      height: 30px;
+    }
+
+    /* Reference examples */
+    .ref-example {
+      padding: 14px 16px;
+      font-size: 11px;
+    }
+
+    /* Grid layouts on mobile */
+    .grid-2 > div,
+    .grid-3 > div {
+      margin-bottom: 0;
+    }
+
+    /* Section 8 Gantt chart table */
+    .card[style*="overflow-x:auto"] {
+      margin-left: -16px;
+      margin-right: -16px;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+
+    /* Better touch targets for nav */
+    .nav-item {
+      padding: 12px 20px;
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 28px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+    }
+
+    .hero-badge {
+      font-size: 10px;
+      padding: 5px 12px;
+    }
+
+    .section-title {
+      font-size: 24px;
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-num .n {
+      font-size: 20px;
+    }
+
+    .summary-num .l {
+      font-size: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .include-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+      border-radius: 12px;
+    }
+  }
+
+  /* Ensure smooth scrolling on iOS */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent text zoom on iOS */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      -webkit-text-size-adjust: none;
+    }
+  }
+
+  /* COLOR HELPERS */
+  .c-blue { color: var(--section1); }
+  .c-orange { color: var(--section2); }
+  .c-green { color: var(--section3); }
+  .c-red { color: var(--section4); }
+  .c-purple { color: var(--section5); }
+  .c-teal { color: var(--section6); }
+  .c-gold { color: var(--section7); }
+  .c-mint { color: var(--section8); }
+  .c-pink { color: var(--section9); }
+
+  .bg-blue { background: rgba(88,166,255,0.12); }
+  .bg-orange { background: rgba(255,166,87,0.12); }
+  .bg-green { background: rgba(63,185,80,0.12); }
+  .bg-red { background: rgba(255,123,114,0.12); }
+  .bg-purple { background: rgba(188,140,255,0.12); }
+  .bg-teal { background: rgba(63,189,255,0.12); }
+  .bg-gold { background: rgba(240,180,41,0.12); }
+
+  /* ANCHOR OFFSET */
+  .section-anchor { scroll-margin-top: 40px; }
+
+  @media (max-width: 900px) {
+    .section-anchor { scroll-margin-top: 80px; }
+  }
+
+  /* MOBILE NAV BUTTON */
+  .mobile-nav-btn {
+    display: none;
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s;
+  }
+
+  .mobile-nav-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-nav-btn:hover {
+    background: var(--bg3);
+    border-color: var(--gold);
+  }
+
+  /* MOBILE NAV MENU */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 1000;
+    padding: 80px 20px 40px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-nav.active {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-nav-close {
+    width: 36px;
+    height: 36px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .mobile-nav-close:hover {
+    background: var(--bg3);
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .mobile-nav-item {
+    display: block;
+    padding: 16px 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .mobile-nav-item:hover {
+    background: var(--bg2);
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .mobile-nav-item.active {
+    background: rgba(240,180,41,0.1);
+    color: var(--gold);
+    border-color: rgba(240,180,41,0.3);
+  }
+
+  /* Show mobile nav on small screens */
+  @media (max-width: 900px) {
+    .mobile-nav-btn {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: block;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- MOBILE NAV BUTTON -->
+<button class="mobile-nav-btn" id="mobileNavBtn" aria-label="Toggle navigation">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- MOBILE NAV MENU -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <span style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600">10 Sections</span>
+    <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  </div>
+  <a class="mobile-nav-item" href="#s1">1. Introduction</a>
+  <a class="mobile-nav-item" href="#s2">2. Aim & Scope</a>
+  <a class="mobile-nav-item" href="#s3">3. Objectives</a>
+  <a class="mobile-nav-item" href="#s4">4. Problem & Solution</a>
+  <a class="mobile-nav-item" href="#s5">5. Requirements</a>
+  <a class="mobile-nav-item" href="#s6">6. Design</a>
+  <a class="mobile-nav-item" href="#s7">7. Cost Estimation</a>
+  <a class="mobile-nav-item" href="#s8">8. Timeline</a>
+  <a class="mobile-nav-item" href="#s9">9. Conclusion</a>
+  <a class="mobile-nav-item" href="#s10">10. References</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📄 Academic Writing Guide</div>
+  <h1>Project <span>Proposal</span><br>Format</h1>
+  <p class="hero-sub">A complete, step-by-step guide to writing a professional software project proposal — all 10 sections explained with examples and templates.</p>
+  <div class="hero-sections">
+    <span class="hero-pill" style="color:#58a6ff;border-color:rgba(88,166,255,0.3)">1. Introduction</span>
+    <span class="hero-pill" style="color:#ffa657;border-color:rgba(255,166,87,0.3)">2. Aim & Scope</span>
+    <span class="hero-pill" style="color:#3fb950;border-color:rgba(63,185,80,0.3)">3. Objectives</span>
+    <span class="hero-pill" style="color:#ff7b72;border-color:rgba(255,123,114,0.3)">4. Problem & Solution</span>
+    <span class="hero-pill" style="color:#bc8cff;border-color:rgba(188,140,255,0.3)">5. Requirements</span>
+    <span class="hero-pill" style="color:#3fbdff;border-color:rgba(63,189,255,0.3)">6. Design</span>
+    <span class="hero-pill" style="color:#f0b429;border-color:rgba(240,180,41,0.3)">7. Cost</span>
+    <span class="hero-pill" style="color:#56d364;border-color:rgba(86,211,100,0.3)">8. Timeline</span>
+    <span class="hero-pill" style="color:#f778ba;border-color:rgba(247,120,186,0.3)">9. Conclusion</span>
+    <span class="hero-pill" style="color:#ff7b72;border-color:rgba(255,123,114,0.3)">10. References</span>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR NAV -->
+  <nav class="sidebar">
+    <div class="sidebar-title">10 Sections</div>
+    <a class="nav-item" href="#s1">
+      <span class="nav-num bg-blue c-blue">1</span> Introduction
+    </a>
+    <a class="nav-item" href="#s2">
+      <span class="nav-num bg-orange c-orange">2</span> Aim & Scope
+    </a>
+    <a class="nav-item" href="#s3">
+      <span class="nav-num bg-green c-green">3</span> Objectives
+    </a>
+    <a class="nav-item" href="#s4">
+      <span class="nav-num bg-red c-red">4</span> Problem & Solution
+    </a>
+    <a class="nav-item" href="#s5">
+      <span class="nav-num bg-purple c-purple">5</span> Requirements
+    </a>
+    <a class="nav-item" href="#s6">
+      <span class="nav-num bg-teal c-teal">6</span> Design
+    </a>
+    <a class="nav-item" href="#s7">
+      <span class="nav-num bg-gold c-gold">7</span> Cost Estimation
+    </a>
+    <a class="nav-item" href="#s8">
+      <span class="nav-num bg-green c-mint">8</span> Timeline
+    </a>
+    <a class="nav-item" href="#s9">
+      <span class="nav-num bg-red c-pink">9</span> Conclusion
+    </a>
+    <a class="nav-item" href="#s10">
+      <span class="nav-num bg-red c-red">10</span> References
+    </a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- ─────────── SECTION 1: INTRODUCTION ─────────── -->
+    <div class="section section-anchor" id="s1">
+      <div class="section-header">
+        <div class="section-icon bg-blue" style="color:#58a6ff">📋</div>
+        <div class="section-meta">
+          <div class="section-label c-blue">Section 01</div>
+          <div class="section-title">Introduction</div>
+          <div class="section-desc">Set the stage. Tell the reader what your project is about, why it matters, and what problem it addresses.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-blue"><span class="card-dot" style="background:#58a6ff"></span>What is the Introduction?</div>
+        <p style="font-size:14px;line-height:1.8;color:#c9d1d9">The Introduction is the <strong style="color:#58a6ff">first impression</strong> of your entire proposal. It gives the reader the background context, the domain of your project, a hint of the problem, and why your project is important. Think of it as the "bigger picture" opening.</p>
+      </div>
+
+      <div class="subsection-label">What to Include — 4 Key Elements</div>
+
+      <div class="card">
+        <div class="include-item">
+          <div class="include-icon bg-blue" style="color:#58a6ff; font-size:18px">🌐</div>
+          <div class="include-body">
+            <h4>A — Background Context</h4>
+            <p>Describe the industry or domain your project belongs to (e.g., education sector, healthcare, e-commerce). Explain the current state of the field — what technology or process currently exists. This gives the reader a foundation to understand your project's relevance.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-icon bg-red" style="color:#ff7b72; font-size:18px">❗</div>
+          <div class="include-body">
+            <h4>B — Problem Hint</h4>
+            <p>Briefly mention the core problem your project is trying to solve. Don't go into full detail here — save that for Section 4. Just a short, punchy mention that makes the reader curious and engaged.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-icon bg-green" style="color:#3fb950; font-size:18px">🚀</div>
+          <div class="include-body">
+            <h4>C — Project Name + Purpose</h4>
+            <p>State the name of your application/system and write one clear sentence about what it does. This is your "one-liner" — make it memorable and precise.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-icon bg-purple" style="color:#bc8cff; font-size:18px">🎯</div>
+          <div class="include-body">
+            <h4>D — Target Impact</h4>
+            <p>Who benefits from this project? How will it impact them? Mention the specific user groups (students, teachers, doctors, shopkeepers, etc.) and the improvement it brings to their lives or work.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <p><strong>MeroAttendance — Student Attendance App:</strong><br><br>
+        "Student attendance tracking is a <strong>critical management task</strong> in the education sector. In Nepal, colleges still rely on daily manual attendance systems that waste valuable class time. <strong>MeroAttendance</strong> is a QR-code based digital attendance system designed for Pokhara University BCA students that can complete attendance tracking in under 30 seconds. This project will improve the productivity of teachers, students, and administrators."</p>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p><strong>Pro Tip:</strong> Your opening sentence should grab attention. Start with a fact, a statistic, or a strong statement about the problem domain — not with "This project is about..."</p>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 2: AIM & SCOPE ─────────── -->
+    <div class="section section-anchor" id="s2">
+      <div class="section-header">
+        <div class="section-icon bg-orange" style="color:#ffa657">🎯</div>
+        <div class="section-meta">
+          <div class="section-label c-orange">Section 02</div>
+          <div class="section-title">Aim & Scope</div>
+          <div class="section-desc">Define the overall goal and set clear boundaries — what your project will and will not do.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>Aim</div>
+          <p style="font-size:14px;color:#c9d1d9;line-height:1.8">The <strong style="color:#ffa657">Aim</strong> is the single, overarching goal of your project. It answers the question: <em>"What is this project ultimately trying to achieve?"</em></p>
+          <br>
+          <p style="font-size:13px;color:#8b949e">Write 1–2 sentences. Include: <strong style="color:#c9d1d9">what</strong> you are building, <strong style="color:#c9d1d9">for whom</strong>, using <strong style="color:#c9d1d9">what approach</strong>, and the <strong style="color:#c9d1d9">expected improvement</strong>.</p>
+          <div class="template-box" style="margin-top:16px">
+            <span class="keyword">The aim of</span> <span class="placeholder">[Project Name]</span> <span class="keyword">is to</span> <span class="placeholder">[action verb + what]</span> <span class="keyword">for</span> <span class="placeholder">[target users]</span> <span class="keyword">using</span> <span class="placeholder">[technology/method]</span><span class="keyword">, improving</span> <span class="placeholder">[metric]</span> <span class="keyword">by at least</span> <span class="placeholder">[X%]</span><span class="keyword">.</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>Scope</div>
+          <p style="font-size:14px;color:#c9d1d9;line-height:1.8">The <strong style="color:#ffa657">Scope</strong> defines the exact boundaries of your project. It prevents scope creep and tells the reader exactly what is included and what is excluded.</p>
+          <br>
+          <div style="background:rgba(63,185,80,0.08);border:1px solid rgba(63,185,80,0.25);border-radius:10px;padding:14px 18px;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:700;color:#3fb950;letter-spacing:1px;margin-bottom:8px">✅ IN SCOPE (What you WILL build)</div>
+            <p style="font-size:13px;color:#c9d1d9">Features and modules included in this version of the system.</p>
+          </div>
+          <div style="background:rgba(255,123,114,0.08);border:1px solid rgba(255,123,114,0.25);border-radius:10px;padding:14px 18px">
+            <div style="font-size:11px;font-weight:700;color:#ff7b72;letter-spacing:1px;margin-bottom:8px">❌ OUT OF SCOPE (What you WON'T build — maybe v2)</div>
+            <p style="font-size:13px;color:#c9d1d9">Features explicitly excluded from this version.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-box" style="background:rgba(255,166,87,0.04);border-color:rgba(255,166,87,0.2)">
+        <p style="margin-bottom:12px"><strong style="color:#ffa657">Aim Example:</strong><br>
+        "The aim of MeroAttendance is to <strong>digitize student attendance tracking</strong> in colleges using QR code technology, reducing manual effort and improving attendance accuracy by at least 95%."</p>
+        <hr style="border-color:rgba(255,255,255,0.08);margin:16px 0">
+        <div class="grid-2">
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#3fb950;margin-bottom:8px">✅ IN SCOPE</p>
+            <p style="font-size:13px">Student login &amp; registration, QR code check-in, Teacher dashboard, Attendance reports, Admin panel</p>
+          </div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#ff7b72;margin-bottom:8px">❌ OUT OF SCOPE</p>
+            <p style="font-size:13px">Parent SMS notifications, AI-based predictions, Blockchain certificates, Payroll integration</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p><strong>Pro Tip:</strong> Out-of-scope items are not failures — they are future features (v2, v3). Label them clearly as "planned for future development" to show you've thought ahead.</p>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 3: OBJECTIVES ─────────── -->
+    <div class="section section-anchor" id="s3">
+      <div class="section-header">
+        <div class="section-icon bg-green" style="color:#3fb950">✅</div>
+        <div class="section-meta">
+          <div class="section-label c-green">Section 03</div>
+          <div class="section-title">Objectives</div>
+          <div class="section-desc">Write 3–5 specific, measurable goals using the SMART framework — each with a clear timeline and success metric.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-green"><span class="card-dot" style="background:#3fb950"></span>The SMART Framework</div>
+        <table class="smart-table">
+          <thead>
+            <tr>
+              <th>Letter</th>
+              <th>Stands For</th>
+              <th>What It Means</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#58a6ff;font-size:18px">S</strong></td>
+              <td><strong>Specific</strong></td>
+              <td style="color:#8b949e">Clearly define what you will do. Avoid vague verbs like "improve" alone.</td>
+              <td style="color:#8b949e;font-size:12px">"Build a QR-code attendance check-in system"</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#ffa657;font-size:18px">M</strong></td>
+              <td><strong>Measurable</strong></td>
+              <td style="color:#8b949e">Include a number — students, %, seconds, users, features.</td>
+              <td style="color:#8b949e;font-size:12px">"...working for minimum 100 students"</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#3fb950;font-size:18px">A</strong></td>
+              <td><strong>Achievable</strong></td>
+              <td style="color:#8b949e">Realistic within your project's resources and time. Don't over-promise.</td>
+              <td style="color:#8b949e;font-size:12px">Don't say "10 million users" for a college project</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#bc8cff;font-size:18px">R</strong></td>
+              <td><strong>Relevant</strong></td>
+              <td style="color:#8b949e">Directly related to your project's aim and the problem being solved.</td>
+              <td style="color:#8b949e;font-size:12px">Each objective must tie back to your aim</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#ff7b72;font-size:18px">T</strong></td>
+              <td><strong>Time-bound</strong></td>
+              <td style="color:#8b949e">State a specific deadline — "By Week 8", "By Month 3", etc.</td>
+              <td style="color:#8b949e;font-size:12px">"...by Week 8 of development"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection-label">3 Sample SMART Objectives</div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:3px solid #58a6ff;padding-left:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(88,166,255,0.2);color:#58a6ff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">1</span>
+            <span style="font-size:14px;font-weight:600;color:#58a6ff">Develop Core Attendance Module</span>
+          </div>
+          <p style="font-size:14px;color:#c9d1d9;line-height:1.7">"By <strong>Week 8</strong>, build a QR-code based attendance check-in system working for a minimum of <strong>100 students</strong> across <strong>5 classes</strong>."</p>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <span style="padding:3px 10px;background:rgba(88,166,255,0.1);color:#58a6ff;border-radius:100px;font-size:11px">Specific</span>
+            <span style="padding:3px 10px;background:rgba(255,166,87,0.1);color:#ffa657;border-radius:100px;font-size:11px">Measurable: 100 students, 5 classes</span>
+            <span style="padding:3px 10px;background:rgba(255,123,114,0.1);color:#ff7b72;border-radius:100px;font-size:11px">Time-bound: Week 8</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-left:3px solid #ffa657;padding-left:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(255,166,87,0.2);color:#ffa657;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">2</span>
+            <span style="font-size:14px;font-weight:600;color:#ffa657">Create Teacher Dashboard</span>
+          </div>
+          <p style="font-size:14px;color:#c9d1d9;line-height:1.7">"By <strong>Week 9</strong>, implement a dashboard where teachers can view <strong>student-wise attendance</strong>, <strong>class-wise attendance %</strong>, and export reports to Excel."</p>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <span style="padding:3px 10px;background:rgba(88,166,255,0.1);color:#58a6ff;border-radius:100px;font-size:11px">Specific: 3 features listed</span>
+            <span style="padding:3px 10px;background:rgba(63,185,80,0.1);color:#3fb950;border-radius:100px;font-size:11px">Achievable</span>
+            <span style="padding:3px 10px;background:rgba(255,123,114,0.1);color:#ff7b72;border-radius:100px;font-size:11px">Time-bound: Week 9</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-left:3px solid #3fb950;padding-left:28px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(63,185,80,0.2);color:#3fb950;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">3</span>
+            <span style="font-size:14px;font-weight:600;color:#3fb950">Conduct Usability Testing</span>
+          </div>
+          <p style="font-size:14px;color:#c9d1d9;line-height:1.7">"By <strong>Week 9</strong>, perform usability testing with <strong>20+ students</strong> and achieve an <strong>80%+ satisfaction score</strong> on the SUS scale."</p>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <span style="padding:3px 10px;background:rgba(255,166,87,0.1);color:#ffa657;border-radius:100px;font-size:11px">Measurable: 80% score, 20 testers</span>
+            <span style="padding:3px 10px;background:rgba(188,140,255,0.1);color:#bc8cff;border-radius:100px;font-size:11px">Relevant to project quality</span>
+            <span style="padding:3px 10px;background:rgba(255,123,114,0.1);color:#ff7b72;border-radius:100px;font-size:11px">Time-bound: Week 9</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <span style="font-size:16px;flex-shrink:0">⚠️</span>
+        <p><strong>Common Mistakes:</strong> "The objective is to make a good app" — this is NOT SMART. There's no metric, no deadline, and it's not specific. Every objective must answer: What exactly? How many/much? By when?</p>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 4: PROBLEM & SOLUTION ─────────── -->
+    <div class="section section-anchor" id="s4">
+      <div class="section-header">
+        <div class="section-icon bg-red" style="color:#ff7b72">🔥</div>
+        <div class="section-meta">
+          <div class="section-label c-red">Section 04</div>
+          <div class="section-title">Problem Statement & Proposed Solution</div>
+          <div class="section-desc">The heart of your proposal. Convince the reader that the problem is real, serious, and that your solution uniquely addresses it.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title c-red"><span class="card-dot" style="background:#ff7b72"></span>Problem Statement</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:16px">Describe the current pain point in detail. Use real numbers. Name the affected users. Explain the consequence of NOT solving it.</p>
+          <div class="template-box">
+            <span class="keyword">"Currently,</span> <span class="placeholder">[target users]</span> <span class="keyword">face</span> <span class="placeholder">[specific problem]</span> <span class="keyword">when</span> <span class="placeholder">[situation/context]</span><span class="keyword">.</span><br><br>
+            <span class="keyword">This causes</span> <span class="placeholder">[impact: time wasted, money lost, errors, etc.]</span><span class="keyword">.</span><br><br>
+            <span class="keyword">There is no existing solution that</span> <span class="placeholder">[gap being addressed]</span><span class="keyword">."</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title c-red"><span class="card-dot" style="background:#ff7b72"></span>Proposed Solution</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:16px">Describe your app and exactly how it solves the problem. Mention what makes it different from existing solutions.</p>
+          <div class="template-box">
+            <span class="placeholder">[App Name]</span> <span class="keyword">is a</span> <span class="placeholder">[web/mobile/desktop]</span> <span class="keyword">application that</span> <span class="placeholder">[1-line about what it does]</span><span class="keyword">.</span><br><br>
+            <span class="keyword">It helps</span> <span class="placeholder">[target users]</span> <span class="keyword">by</span> <span class="placeholder">[specific benefits]</span><span class="keyword">.</span><br><br>
+            <span class="keyword">Unlike</span> <span class="placeholder">[existing alternative]</span><span class="keyword">, our solution</span> <span class="placeholder">[unique value]</span><span class="keyword">."</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection-label">Full Worked Example</div>
+
+      <div class="card" style="border-color:rgba(255,123,114,0.3)">
+        <div style="font-size:11px;font-weight:700;color:#ff7b72;letter-spacing:1.5px;margin-bottom:16px">📋 MEROATTENDANCE — COMPLETE PROBLEM + SOLUTION</div>
+        <div style="background:rgba(255,123,114,0.06);border-radius:10px;padding:18px;margin-bottom:12px">
+          <div style="font-size:11px;color:#ff7b72;font-weight:700;letter-spacing:1px;margin-bottom:10px">PROBLEM STATEMENT</div>
+          <p style="font-size:14px;line-height:1.85;color:#c9d1d9">"Currently, <strong style="color:#ff7b72">Pokhara University BCA students</strong> face <strong style="color:#ff7b72">inefficient manual attendance tracking</strong> when their teachers take roll call before each class. This causes <strong style="color:#ff7b72">5–10 minutes of wasted class time daily</strong>, resulting in 1–2 hours lost per week per class. No existing solution tracks attendance in <strong style="color:#ff7b72">under 30 seconds</strong> while also preventing proxy attendance."</p>
+        </div>
+        <div style="background:rgba(63,185,80,0.06);border-radius:10px;padding:18px">
+          <div style="font-size:11px;color:#3fb950;font-weight:700;letter-spacing:1px;margin-bottom:10px">PROPOSED SOLUTION</div>
+          <p style="font-size:14px;line-height:1.85;color:#c9d1d9">"<strong style="color:#3fb950">MeroAttendance</strong> is a QR-code based web application that lets students check in to classes in under 30 seconds. It helps students and teachers by <strong style="color:#3fb950">eliminating manual roll call and providing instant attendance analytics</strong>. Unlike paper-based systems, our solution prevents proxy attendance via <strong style="color:#3fb950">time-limited, unique QR codes</strong> that expire after 2 minutes."</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p><strong>Key Rule:</strong> The problem and solution must be <strong>mirror images</strong> of each other. Every pain point mentioned in the problem must be directly addressed in the solution. If you mention "5–10 minutes wasted," your solution must state "under 30 seconds."</p>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 5: REQUIREMENTS ─────────── -->
+    <div class="section section-anchor" id="s5">
+      <div class="section-header">
+        <div class="section-icon bg-purple" style="color:#bc8cff">📌</div>
+        <div class="section-meta">
+          <div class="section-label c-purple">Section 05</div>
+          <div class="section-title">High-Level Requirements</div>
+          <div class="section-desc">Define what your system will do (functional), how well it will perform (non-functional), and prioritize features using MoSCoW.</div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" style="border-color:rgba(88,166,255,0.3)">
+          <div class="card-title c-blue"><span class="card-dot" style="background:#58a6ff"></span>5.1 Functional</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">"What does the app DO?" — concrete features and capabilities users can interact with.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> User login / registration</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> CRUD operations on data</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Search and filter functions</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Generate reports / exports</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Notifications / alerts</li>
+          </ul>
+          <div class="tip-box" style="margin-top:16px">
+            <span class="tip-icon" style="font-size:13px">📝</span>
+            <p style="font-size:12px">Minimum <strong>8 functional requirements</strong> in your full proposal (Week 2)</p>
+          </div>
+        </div>
+        <div class="card" style="border-color:rgba(255,166,87,0.3)">
+          <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>5.2 Non-Functional</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">"How WELL does the app do it?" — quality attributes, constraints, and system-wide properties.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Performance: page load &lt; 2s</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Security: encrypted passwords</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Usability: mobile-friendly UI</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Scalability: 500+ concurrent users</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Availability: 99% uptime</li>
+          </ul>
+          <div class="tip-box" style="margin-top:16px;background:rgba(255,166,87,0.06);border-color:rgba(255,166,87,0.25)">
+            <span class="tip-icon" style="font-size:13px">📝</span>
+            <p style="font-size:12px;color:#c9a227">Minimum <strong style="color:#ffa657">5 non-functional requirements</strong> with measurable values</p>
+          </div>
+        </div>
+        <div class="card" style="border-color:rgba(63,185,80,0.3)">
+          <div class="card-title c-green"><span class="card-dot" style="background:#3fb950"></span>5.3 MoSCoW Priority</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">Prioritize requirements so everyone knows what gets built first and what can wait.</p>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;gap:8px;align-items:center"><span style="padding:3px 8px;background:rgba(255,123,114,0.15);color:#ff7b72;border-radius:4px;font-size:11px;font-weight:700">MUST</span><span style="font-size:12px;color:#8b949e">Core features — cannot ship without</span></div>
+            <div style="display:flex;gap:8px;align-items:center"><span style="padding:3px 8px;background:rgba(255,166,87,0.15);color:#ffa657;border-radius:4px;font-size:11px;font-weight:700">SHOULD</span><span style="font-size:12px;color:#8b949e">Important, include if possible</span></div>
+            <div style="display:flex;gap:8px;align-items:center"><span style="padding:3px 8px;background:rgba(88,166,255,0.15);color:#58a6ff;border-radius:4px;font-size:11px;font-weight:700">COULD</span><span style="font-size:12px;color:#8b949e">Nice to have, low priority</span></div>
+            <div style="display:flex;gap:8px;align-items:center"><span style="padding:3px 8px;background:rgba(139,148,158,0.15);color:#8b949e;border-radius:4px;font-size:11px;font-weight:700">WON'T</span><span style="font-size:12px;color:#8b949e">Not in this version (future)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection-label">MoSCoW Table Example</div>
+
+      <div class="card">
+        <table class="smart-table">
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Feature / Requirement</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span style="padding:4px 12px;background:rgba(255,123,114,0.15);color:#ff7b72;border-radius:6px;font-size:11px;font-weight:700">MUST HAVE</span></td>
+              <td style="font-size:13px">Student login, QR code generation, Attendance check-in, Teacher dashboard</td>
+              <td style="font-size:12px;color:#8b949e">Core system cannot work without these</td>
+            </tr>
+            <tr>
+              <td><span style="padding:4px 12px;background:rgba(255,166,87,0.15);color:#ffa657;border-radius:6px;font-size:11px;font-weight:700">SHOULD HAVE</span></td>
+              <td style="font-size:13px">Attendance reports export, Email notifications, Admin dashboard</td>
+              <td style="font-size:12px;color:#8b949e">Improves usability significantly</td>
+            </tr>
+            <tr>
+              <td><span style="padding:4px 12px;background:rgba(88,166,255,0.15);color:#58a6ff;border-radius:6px;font-size:11px;font-weight:700">COULD HAVE</span></td>
+              <td style="font-size:13px">Dark mode UI, Multi-language support, Analytics graphs</td>
+              <td style="font-size:12px;color:#8b949e">Nice enhancement, not critical</td>
+            </tr>
+            <tr>
+              <td><span style="padding:4px 12px;background:rgba(139,148,158,0.15);color:#8b949e;border-radius:6px;font-size:11px;font-weight:700">WON'T HAVE</span></td>
+              <td style="font-size:13px">AI prediction engine, Parent mobile app, Blockchain certificates</td>
+              <td style="font-size:12px;color:#8b949e">Out of scope for v1 — planned for v2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 6: DESIGN ─────────── -->
+    <div class="section section-anchor" id="s6">
+      <div class="section-header">
+        <div class="section-icon bg-teal" style="color:#3fbdff">🔷</div>
+        <div class="section-meta">
+          <div class="section-label c-teal">Section 06</div>
+          <div class="section-title">Design</div>
+          <div class="section-desc">Include UML diagrams, an Entity Relationship Diagram, and a Data Flow Diagram to visually describe your system architecture.</div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="diagram-card">
+          <div class="d-icon bg-blue" style="color:#58a6ff">👤</div>
+          <h4>Use Case Diagram</h4>
+          <p>Shows <strong>who</strong> (actors) does <strong>what</strong> (use cases) in the system. Visualizes the interaction between users and system features.</p>
+          <div class="d-includes">
+            <span class="d-tag">Actors (users)</span>
+            <span class="d-tag">Use cases</span>
+            <span class="d-tag">Relationships</span>
+            <span class="d-tag">&lt;&lt;include&gt;&gt;</span>
+            <span class="d-tag">&lt;&lt;extend&gt;&gt;</span>
+          </div>
+          <div class="tip-box" style="margin-top:14px;padding:10px 14px">
+            <span class="tip-icon" style="font-size:12px">📐</span>
+            <p style="font-size:12px">Use draw.io or Lucidchart. Include all user roles.</p>
+          </div>
+        </div>
+        <div class="diagram-card">
+          <div class="d-icon bg-orange" style="color:#ffa657">🗃️</div>
+          <h4>ERD — Entity Relationship Diagram</h4>
+          <p>Shows your <strong>database structure</strong> — all tables (entities), their attributes, and how they relate to each other.</p>
+          <div class="d-includes">
+            <span class="d-tag">Entities (tables)</span>
+            <span class="d-tag">Attributes</span>
+            <span class="d-tag">Primary Keys</span>
+            <span class="d-tag">Foreign Keys</span>
+            <span class="d-tag">Relationships (1:N, M:N)</span>
+          </div>
+          <div class="tip-box" style="margin-top:14px;padding:10px 14px;background:rgba(255,166,87,0.06);border-color:rgba(255,166,87,0.25)">
+            <span class="tip-icon" style="font-size:12px">📐</span>
+            <p style="font-size:12px;color:#c9a227">Minimum 4–5 entities. Show cardinality clearly.</p>
+          </div>
+        </div>
+        <div class="diagram-card">
+          <div class="d-icon bg-green" style="color:#3fb950">🔄</div>
+          <h4>DFD — Data Flow Diagram</h4>
+          <p>Shows how <strong>data flows</strong> through your system — from input to processing to storage to output. Covers Level 0 (context) and Level 1 (detail).</p>
+          <div class="d-includes">
+            <span class="d-tag">Level 0 (Context)</span>
+            <span class="d-tag">Level 1 (Detailed)</span>
+            <span class="d-tag">Processes</span>
+            <span class="d-tag">Data stores</span>
+            <span class="d-tag">External entities</span>
+          </div>
+          <div class="tip-box" style="margin-top:14px;padding:10px 14px;background:rgba(63,185,80,0.06);border-color:rgba(63,185,80,0.25)">
+            <span class="tip-icon" style="font-size:12px">📐</span>
+            <p style="font-size:12px;color:#56d364">Level 0 = one process bubble. Level 1 = expanded processes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection-label">Diagram Checklist</div>
+      <div class="card">
+        <ul class="checklist">
+          <li><span class="check-icon">✓</span><div><strong>Figure Number + Caption</strong><br><span style="font-size:13px;color:#8b949e">Every diagram must have: "Figure 1: Use Case Diagram of MeroAttendance System"</span></div></li>
+          <li><span class="check-icon">✓</span><div><strong>Legend / Key</strong><br><span style="font-size:13px;color:#8b949e">Include a legend explaining symbols used in each diagram type</span></div></li>
+          <li><span class="check-icon">✓</span><div><strong>High Resolution</strong><br><span style="font-size:13px;color:#8b949e">Export diagrams as PNG at minimum 150 DPI — blurry diagrams lose marks</span></div></li>
+          <li><span class="check-icon">✓</span><div><strong>Referenced in Text</strong><br><span style="font-size:13px;color:#8b949e">Write "As shown in Figure 1..." before each diagram — never insert a diagram without context</span></div></li>
+          <li><span class="check-icon">✓</span><div><strong>Consistent Notation</strong><br><span style="font-size:13px;color:#8b949e">Use standard UML notation throughout — don't mix different symbol styles</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 7: COST ─────────── -->
+    <div class="section section-anchor" id="s7">
+      <div class="section-header">
+        <div class="section-icon bg-gold" style="color:#f0b429">💰</div>
+        <div class="section-meta">
+          <div class="section-label c-gold">Section 07</div>
+          <div class="section-title">Development Cost Estimation</div>
+          <div class="section-desc">Break down all costs — hardware, software, and human resources — using realistic Nepalese market rates in NPR.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-gold"><span class="card-dot" style="background:#f0b429"></span>3 Cost Categories</div>
+        <div class="grid-3" style="margin-top:8px">
+          <div style="background:var(--bg3);border-radius:12px;padding:18px">
+            <div style="font-size:20px;margin-bottom:8px">🖥️</div>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Hardware Costs</h4>
+            <p style="font-size:12px;color:#8b949e">Computers, servers, networking equipment, testing devices. Include depreciation if equipment already owned.</p>
+          </div>
+          <div style="background:var(--bg3);border-radius:12px;padding:18px">
+            <div style="font-size:20px;margin-bottom:8px">💻</div>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Software / License Costs</h4>
+            <p style="font-size:12px;color:#8b949e">IDEs, cloud hosting (AWS/Heroku), domain, SSL certificates, design tools. Specify if free/open-source.</p>
+          </div>
+          <div style="background:var(--bg3);border-radius:12px;padding:18px">
+            <div style="font-size:20px;margin-bottom:8px">👨‍💻</div>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Human Resource Costs</h4>
+            <p style="font-size:12px;color:#8b949e">Developer hours × hourly rate. Break down by role (developer, designer, tester). NPR 500–1,500/hr typical.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection-label">Sample Cost Breakdown (NPR)</div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title c-gold"><span class="card-dot" style="background:#f0b429"></span>Human Resource Cost</div>
+          <table class="smart-table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Rate (NPR/hr)</th>
+                <th>Hours</th>
+                <th>Total (NPR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-size:13px">Lead Developer</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px">Rs. 800</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px">100</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px;color:#3fb950">Rs. 80,000</td>
+              </tr>
+              <tr>
+                <td style="font-size:13px">UI/UX Designer</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px">Rs. 600</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px">40</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px;color:#3fb950">Rs. 24,000</td>
+              </tr>
+              <tr>
+                <td style="font-size:13px">QA Tester</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px">Rs. 500</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px">20</td>
+                <td style="font-family:'DM Mono',monospace;font-size:13px;color:#3fb950">Rs. 10,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title c-gold"><span class="card-dot" style="background:#f0b429"></span>Total Cost Summary</div>
+          <div class="cost-card">
+            <div class="cost-row"><span class="cost-label">Hardware (Laptop, devices)</span><span class="cost-value">Rs. 15,000</span></div>
+            <div class="cost-row"><span class="cost-label">Software (Hosting, Domain, SSL)</span><span class="cost-value">Rs. 8,500</span></div>
+            <div class="cost-row"><span class="cost-label">Human Resources (total)</span><span class="cost-value">Rs. 1,14,000</span></div>
+            <div class="cost-row"><span class="cost-label">Miscellaneous (10% buffer)</span><span class="cost-value">Rs. 13,750</span></div>
+            <div class="cost-row cost-total"><span class="cost-label" style="font-weight:600">GRAND TOTAL</span><span class="cost-value">Rs. 1,51,250</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p><strong>Pro Tip:</strong> Always add a <strong>10–15% miscellaneous/contingency buffer</strong> to your total. Real projects always have unexpected costs. This shows professional planning to your evaluator.</p>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 8: TIMELINE ─────────── -->
+    <div class="section section-anchor" id="s8">
+      <div class="section-header">
+        <div class="section-icon bg-green" style="color:#56d364">📅</div>
+        <div class="section-meta">
+          <div class="section-label c-mint">Section 08</div>
+          <div class="section-title">Detail Timeline</div>
+          <div class="section-desc">A week-by-week Gantt chart showing what tasks happen when across your 10-week development period.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-mint"><span class="card-dot" style="background:#56d364"></span>What is a Gantt Chart?</div>
+        <p style="font-size:14px;color:#c9d1d9;line-height:1.8">A Gantt chart is a <strong style="color:#56d364">horizontal bar chart</strong> showing tasks on the Y-axis and time (weeks) on the X-axis. Each bar represents when a task starts and ends. Overlapping bars show parallel work. It's the standard tool for project scheduling.</p>
+      </div>
+
+      <div class="subsection-label">Sample 10-Week Timeline</div>
+
+      <div class="card" style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;min-width:600px">
+          <thead>
+            <tr>
+              <th style="text-align:left;padding:10px 12px;font-size:11px;letter-spacing:1px;color:#8b949e;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;width:220px">TASK</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace" colspan="1">W1</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W2</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W3</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W4</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W5</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W6</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W7</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W8</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W9</th>
+              <th style="padding:8px 4px;font-size:10px;color:#8b949e;border-bottom:1px solid var(--border);text-align:center;font-family:'DM Mono',monospace">W10</th>
+            </tr>
+          </thead>
+          <tbody id="ganttBody"></tbody>
+        </table>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <p><strong>20% Buffer Rule:</strong> Always add 1–2 buffer weeks. If your actual development takes 8 weeks, show 10 on your chart. Real projects always face delays.</p>
+        </div>
+        <div class="tip-box" style="background:rgba(88,166,255,0.06);border-color:rgba(88,166,255,0.25)">
+          <span class="tip-icon">🛠️</span>
+          <p style="color:#7ab8f5"><strong>Tools:</strong> Use Microsoft Project, GanttProject (free), draw.io, or even Excel to create your Gantt chart. Export as PNG for the proposal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 9: CONCLUSION ─────────── -->
+    <div class="section section-anchor" id="s9">
+      <div class="section-header">
+        <div class="section-icon bg-red" style="color:#f778ba">✨</div>
+        <div class="section-meta">
+          <div class="section-label c-pink">Section 09</div>
+          <div class="section-title">Conclusion</div>
+          <div class="section-desc">Wrap up your proposal in 1–2 paragraphs, restating the project's value and expected outcomes.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-pink"><span class="card-dot" style="background:#f778ba"></span>What to Write in the Conclusion</div>
+        <div class="grid-2" style="margin-top:8px">
+          <div>
+            <ul class="checklist">
+              <li><span class="check-icon">✓</span><div><strong>Restate the project's purpose</strong> — one sentence summary of what you built and why</div></li>
+              <li><span class="check-icon">✓</span><div><strong>Summarize key features</strong> — 2–3 highlights from your solution</div></li>
+              <li><span class="check-icon">✓</span><div><strong>Expected outcomes / impact</strong> — what will change after your project is deployed?</div></li>
+              <li><span class="check-icon">✓</span><div><strong>Future work mention</strong> — briefly mention what could be added in v2</div></li>
+            </ul>
+          </div>
+          <div>
+            <div class="warn-box" style="margin-top:0">
+              <span style="font-size:16px;flex-shrink:0">🚫</span>
+              <p><strong>Do NOT include in Conclusion:</strong> New information not mentioned before, new diagrams, new requirements, apologies, or personal opinions like "we think this is a good project."</p>
+            </div>
+            <div class="tip-box" style="margin-top:12px">
+              <span class="tip-icon">💡</span>
+              <p>Start your conclusion with: <strong>"This project..."</strong> or <strong>"In conclusion, [Project Name]..."</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-box" style="background:rgba(247,120,186,0.04);border-color:rgba(247,120,186,0.2)">
+        <p><strong style="color:#f778ba">Sample Conclusion:</strong><br><br>
+        "This project, <strong>MeroAttendance</strong>, addresses the critical inefficiency of manual student attendance tracking in Nepalese colleges by providing a fast, accurate, and user-friendly QR-code based solution. By eliminating roll call and providing real-time attendance analytics, the system is expected to save over 1 hour of class time per week per teacher while improving attendance data accuracy to above 95%. Future versions will incorporate AI-based attendance pattern analysis and a dedicated mobile application for students, further extending the system's reach and capability."</p>
+      </div>
+    </div>
+
+    <!-- ─────────── SECTION 10: REFERENCES ─────────── -->
+    <div class="section section-anchor" id="s10">
+      <div class="section-header">
+        <div class="section-icon bg-red" style="color:#ff7b72">📚</div>
+        <div class="section-meta">
+          <div class="section-label c-red">Section 10</div>
+          <div class="section-title">References</div>
+          <div class="section-desc">List all sources using IEEE citation format. Minimum 5–10 references covering academic papers, books, websites, and similar apps.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-red"><span class="card-dot" style="background:#ff7b72"></span>IEEE Citation Format Rules</div>
+        <p style="font-size:14px;color:#c9d1d9;margin-bottom:16px;line-height:1.7">IEEE style uses <strong style="color:#ff7b72">numbered citations in square brackets</strong> — [1], [2], [3] — in the text, and a matching numbered list at the end of the document.</p>
+
+        <div class="subsection-label" style="margin-top:0">Types of References</div>
+
+        <div>
+          <div class="ref-type">📰 Journal / Conference Paper</div>
+          <div class="ref-example">[1] A. Author, B. Author, "Paper Title," <em>Journal Name</em>, vol. XX, no. X, pp. XXX–XXX, Month Year.</div>
+
+          <div class="ref-type" style="margin-top:16px">🌐 Website / Online Resource</div>
+          <div class="ref-example">[2] Organization Name, "Page Title," Year. [Online]. Available: https://www.url.com/page. [Accessed: Month Day, Year].</div>
+
+          <div class="ref-type" style="margin-top:16px">📱 Application / Software</div>
+          <div class="ref-example">[3] Company Name, "App Name," Version X.X, Platform, Year. [Online]. Available: https://appstore.com/link.</div>
+
+          <div class="ref-type" style="margin-top:16px">📘 Book</div>
+          <div class="ref-example">[4] A. Author, <em>Book Title</em>, Xth ed. City, Country: Publisher Name, Year, pp. XX–XX.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-title c-red"><span class="card-dot" style="background:#ff7b72"></span>Full Reference List Example</div>
+        <div class="ref-example" style="margin-top:8px">
+          [1] J. Smith and A. Doe, "Design Patterns in Software Engineering," <em>IEEE Trans. Software Eng.</em>, vol. 45, no. 3, pp. 120–135, Mar. 2020.<br><br>
+          [2] eSewa, "About Us," 2024. [Online]. Available: https://esewa.com.np/about. [Accessed: Apr. 20, 2026].<br><br>
+          [3] R. Pressman and B. Maxim, <em>Software Engineering: A Practitioner's Approach</em>, 8th ed. New York, USA: McGraw-Hill, 2015, pp. 45–60.<br><br>
+          [4] Google LLC, "Firebase Documentation," 2024. [Online]. Available: https://firebase.google.com/docs. [Accessed: Apr. 18, 2026].<br><br>
+          [5] B. Klasnić, "QR Code Attendance Systems in Higher Education," <em>Proc. Int. Conf. on EdTech</em>, pp. 88–94, Jan. 2022.
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <p><strong>Where to find references:</strong> Google Scholar, IEEE Xplore, ResearchGate, ACM Digital Library, similar apps (eSewa, Hamro Patro), government portals, and official documentation.</p>
+        </div>
+        <div class="warn-box">
+          <span style="font-size:16px;flex-shrink:0">⚠️</span>
+          <p><strong>Never cite Wikipedia</strong> as a reference. Use it only to find original sources. Academic proposals require primary or peer-reviewed sources.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY BANNER -->
+    <div class="summary-banner">
+      <div style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600">Complete Proposal Checklist</div>
+      <h2>All 10 Sections at a Glance</h2>
+      <p style="font-size:15px;color:var(--muted);margin-top:8px">Every section must be present for a complete, professional proposal.</p>
+      <div class="summary-grid">
+        <div class="summary-num">
+          <div class="n c-blue">01</div>
+          <div class="l">Introduction</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-orange">02</div>
+          <div class="l">Aim & Scope</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-green">03</div>
+          <div class="l">Objectives</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-red">04</div>
+          <div class="l">Problem + Solution</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-purple">05</div>
+          <div class="l">Requirements</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-teal">06</div>
+          <div class="l">Design</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-gold">07</div>
+          <div class="l">Cost Estimate</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-mint">08</div>
+          <div class="l">Timeline</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-pink">09</div>
+          <div class="l">Conclusion</div>
+        </div>
+        <div class="summary-num">
+          <div class="n c-red">10</div>
+          <div class="l">References</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;padding:24px;background:var(--bg2);border-radius:16px;border:1px solid var(--border)">
+        <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Key Rules to Remember</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left">
+          <div style="font-size:13px;color:#c9d1d9;display:flex;gap:10px"><span style="color:#3fb950">✓</span><span>Every objective must be SMART (measurable + deadline)</span></div>
+          <div style="font-size:13px;color:#c9d1d9;display:flex;gap:10px"><span style="color:#3fb950">✓</span><span>Problem &amp; Solution must mirror each other exactly</span></div>
+          <div style="font-size:13px;color:#c9d1d9;display:flex;gap:10px"><span style="color:#3fb950">✓</span><span>All diagrams need figure numbers and captions</span></div>
+          <div style="font-size:13px;color:#c9d1d9;display:flex;gap:10px"><span style="color:#3fb950">✓</span><span>Use IEEE citation format for all references</span></div>
+          <div style="font-size:13px;color:#c9d1d9;display:flex;gap:10px"><span style="color:#3fb950">✓</span><span>Add 20% buffer time to your timeline</span></div>
+          <div style="font-size:13px;color:#c9d1d9;display:flex;gap:10px"><span style="color:#3fb950">✓</span><span>Cost estimates must use realistic NPR rates</span></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // MOBILE NAV
+  const mobileNavBtn = document.getElementById('mobileNavBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+  mobileNavBtn.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  mobileNavClose.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close nav when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileNav.contains(e.target) && !mobileNavBtn.contains(e.target)) {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Active mobile nav highlighting
+  const sectionEls = document.querySelectorAll('.section-anchor');
+  const mobileNavObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        mobileNavItems.forEach(n => n.classList.remove('active'));
+        const active = document.querySelector(`.mobile-nav-item[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
+  sectionEls.forEach(s => mobileNavObs.observe(s));
+
+  // PROGRESS BAR
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  });
+
+  // INTERSECTION OBSERVER for section animations
+  const sections = document.querySelectorAll('.section');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => obs.observe(s));
+
+  // ACTIVE NAV
+  const navItems = document.querySelectorAll('.nav-item');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const active = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
+  sectionEls.forEach(s => navObs.observe(s));
+
+  // GANTT CHART
+  const tasks = [
+    { name: "Requirement Analysis",      start: 1, end: 2, color: "#58a6ff" },
+    { name: "System Design (UML/ERD)",   start: 2, end: 3, color: "#ffa657" },
+    { name: "Database Design",           start: 3, end: 4, color: "#bc8cff" },
+    { name: "Frontend Development",      start: 4, end: 7, color: "#3fb950" },
+    { name: "Backend Development",       start: 4, end: 7, color: "#3fbdff" },
+    { name: "Integration & Testing",     start: 7, end: 9, color: "#f0b429" },
+    { name: "User Acceptance Testing",   start: 8, end: 9, color: "#f778ba" },
+    { name: "Bug Fixing & Refinement",   start: 9, end: 10, color: "#ff7b72" },
+    { name: "Documentation & Report",    start: 9, end: 10, color: "#56d364" },
+    { name: "Final Presentation",        start: 10, end: 10, color: "#bc8cff" },
+  ];
+
+  const tbody = document.getElementById('ganttBody');
+  tasks.forEach(t => {
+    const tr = document.createElement('tr');
+    let html = `<td style="padding:8px 12px;font-size:13px;color:#c9d1d9;border-bottom:1px solid rgba(48,54,61,0.4);white-space:nowrap">${t.name}</td>`;
+    for (let w = 1; w <= 10; w++) {
+      const inRange = w >= t.start && w <= t.end;
+      const isStart = w === t.start;
+      const isEnd = w === t.end;
+      const borderR = isStart && isEnd ? '6px' : isStart ? '6px 0 0 6px' : isEnd ? '0 6px 6px 0' : '0';
+      html += `<td style="padding:4px 2px;border-bottom:1px solid rgba(48,54,61,0.4)">
+        ${inRange ? `<div style="height:22px;background:${t.color}22;border:1px solid ${t.color}55;border-radius:${borderR};display:flex;align-items:center;justify-content:center">
+          ${isStart ? `<div style="width:8px;height:8px;border-radius:50%;background:${t.color};flex-shrink:0"></div>` : ''}
+        </div>` : ''}
+      </td>`;
+    }
+    tr.innerHTML = html;
+    tbody.appendChild(tr);
+  });
+</script>
+</body>
+</html>
