@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Project I Proposal Writing Guide — C Programming</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --gold: #f0b429;
+    --gold2: #ffd700;
+    --teal: #3fb950;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --red: #ff7b72;
+    --orange: #ffa657;
+    --pink: #f778ba;
+    --section1: #58a6ff;
+    --section2: #ffa657;
+    --section3: #3fb950;
+    --section4: #ff7b72;
+    --section5: #bc8cff;
+    --section6: #3fbdff;
+    --section7: #f0b429;
+    --section8: #56d364;
+    --section9: #f778ba;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(88,166,255,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(240,180,41,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 40% at 10% 60%, rgba(188,140,255,0.07) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,180,41,0.12);
+    border: 1px solid rgba(240,180,41,0.3);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 48px;
+    animation: fadeUp 0.6s ease 0.2s both;
+    font-weight: 300;
+  }
+
+  .hero-sections {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .hero-pill {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+    opacity: 0.85;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 40px 0;
+    border-right: 1px solid var(--border);
+    scrollbar-width: none;
+  }
+
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 24px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+
+  .nav-item.active {
+    border-left-color: var(--gold);
+    background: rgba(240,180,41,0.06);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .main {
+    padding: 60px 64px 120px;
+  }
+
+  .section {
+    margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.5s ease;
+  }
+
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .section-meta { flex: 1; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  .section-desc {
+    margin-top: 12px;
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 600px;
+  }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: rgba(240,180,41,0.3); }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .card-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  .include-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .include-item:last-child { border-bottom: none; }
+
+  .include-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .include-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .include-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .example-box {
+    background: rgba(88,166,255,0.04);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .example-box::before {
+    content: 'EXAMPLE';
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(88,166,255,0.5);
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .example-box p { font-size: 14px; line-height: 1.8; color: var(--text); }
+  .example-box strong { color: var(--blue); }
+
+  .template-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+  }
+
+  .template-box .placeholder { color: var(--orange); font-style: italic; }
+  .template-box .keyword { color: var(--teal); font-weight: 500; }
+
+  .tip-box {
+    background: rgba(240,180,41,0.06);
+    border: 1px solid rgba(240,180,41,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .tip-icon { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .tip-box p { font-size: 13px; color: #c9a227; line-height: 1.6; }
+  .tip-box strong { color: var(--gold); }
+
+  .warn-box {
+    background: rgba(255,123,114,0.06);
+    border: 1px solid rgba(255,123,114,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .warn-box p { font-size: 13px; color: #ff9492; line-height: 1.6; }
+
+  .smart-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+
+  .smart-table th {
+    background: var(--bg3);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .smart-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .smart-table tr:last-child td { border-bottom: none; }
+  .smart-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .checklist { list-style: none; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.4);
+    font-size: 14px;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(63,185,80,0.15);
+    border: 1px solid rgba(63,185,80,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--teal);
+  }
+
+  .ref-example {
+    background: var(--bg3);
+    border-left: 3px solid var(--purple);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+  }
+
+  .ref-type {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .subsection-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 32px;
+    font-family: 'DM Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .subsection-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .summary-banner {
+    background: linear-gradient(135deg, rgba(240,180,41,0.08) 0%, rgba(88,166,255,0.06) 100%);
+    border: 1px solid rgba(240,180,41,0.2);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .summary-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .summary-num {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .summary-num .n { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; }
+  .summary-num .l { font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--blue));
+    z-index: 1000;
+    transition: width 0.1s;
+  }
+
+  .c-blue { color: var(--section1); }
+  .c-orange { color: var(--section2); }
+  .c-green { color: var(--section3); }
+  .c-red { color: var(--section4); }
+  .c-purple { color: var(--section5); }
+  .c-teal { color: var(--section6); }
+  .c-gold { color: var(--section7); }
+  .c-mint { color: var(--section8); }
+  .c-pink { color: var(--section9); }
+
+  .bg-blue { background: rgba(88,166,255,0.12); }
+  .bg-orange { background: rgba(255,166,87,0.12); }
+  .bg-green { background: rgba(63,185,80,0.12); }
+  .bg-red { background: rgba(255,123,114,0.12); }
+  .bg-purple { background: rgba(188,140,255,0.12); }
+  .bg-teal { background: rgba(63,189,255,0.12); }
+  .bg-gold { background: rgba(240,180,41,0.12); }
+
+  .section-anchor { scroll-margin-top: 40px; }
+
+  @media (max-width: 900px) {
+    .section-anchor { scroll-margin-top: 80px; }
+  }
+
+  .mobile-nav-btn {
+    display: none;
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s;
+  }
+
+  .mobile-nav-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-nav-btn:hover {
+    background: var(--bg3);
+    border-color: var(--gold);
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 1000;
+    padding: 80px 20px 40px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-nav.active {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-nav-close {
+    width: 36px;
+    height: 36px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .mobile-nav-close:hover {
+    background: var(--bg3);
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .mobile-nav-item {
+    display: block;
+    padding: 16px 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .mobile-nav-item:hover {
+    background: var(--bg2);
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .mobile-nav-item.active {
+    background: rgba(240,180,41,0.1);
+    color: var(--gold);
+    border-color: rgba(240,180,41,0.3);
+  }
+
+  @media (max-width: 900px) {
+    .mobile-nav-btn { display: flex; }
+    .mobile-nav { display: block; }
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 20px 12px 50px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 12px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .hero { min-height: auto; padding: 40px 12px 60px; }
+    .hero h1 { font-size: clamp(24px, 8vw, 42px); letter-spacing: -0.5px; line-height: 1.15; }
+    .hero-sub { font-size: 14px; padding: 0 4px; }
+    .hero-sections { gap: 6px; padding: 0 4px; }
+    .hero-pill { font-size: 9px; padding: 4px 8px; }
+    .section { margin-bottom: 40px; }
+    .section-header { flex-direction: column; gap: 12px; padding-bottom: 20px; margin-bottom: 20px; }
+    .section-icon { width: 40px; height: 40px; font-size: 16px; }
+    .section-title { font-size: clamp(20px, 5vw, 28px); }
+    .section-desc { font-size: 13px; }
+    .card { padding: 16px; margin-bottom: 12px; border-radius: 12px; }
+    .card-title { font-size: 11px; }
+    .include-item { flex-direction: column; gap: 12px; padding: 14px 0; }
+    .include-icon { width: 36px; height: 36px; font-size: 16px; }
+    .include-body h4 { font-size: 15px; }
+    .include-body p { font-size: 13px; }
+    .example-box { padding: 20px; margin-top: 16px; }
+    .example-box p { font-size: 13px; }
+    .template-box { padding: 16px; font-size: 12px; overflow-x: auto; word-break: break-word; }
+    .smart-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-left: -12px; margin-right: -12px; width: calc(100% + 24px); }
+    .smart-table th, .smart-table td { padding: 8px 10px; font-size: 11px; white-space: nowrap; }
+    .card, .example-box, .template-box, .tip-box, .warn-box { margin-left: 0; margin-right: 0; }
+    .main { max-width: 100%; overflow-x: hidden; }
+    .checklist li { font-size: 13px; padding: 8px 0; gap: 10px; }
+    .summary-banner { padding: 32px 20px; margin-top: 60px; }
+    .summary-banner h2 { font-size: 28px; }
+    .summary-num { padding: 14px 10px; }
+    .summary-num .n { font-size: 24px; }
+    .summary-num .l { font-size: 9px; }
+    .subsection-label { font-size: 9px; margin-top: 24px; margin-bottom: 12px; }
+    .tip-box, .warn-box { padding: 14px 16px; gap: 10px; }
+    .tip-box p, .warn-box p { font-size: 12px; }
+    .scroll-indicator { bottom: 24px; }
+    .scroll-line { height: 30px; }
+    .ref-example { padding: 14px 16px; font-size: 11px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 28px; }
+    .hero-sub { font-size: 14px; }
+    .hero-badge { font-size: 10px; padding: 5px 12px; }
+    .section-title { font-size: 24px; }
+    .card { padding: 16px; border-radius: 12px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .summary-num .n { font-size: 20px; }
+    .summary-num .l { font-size: 8px; letter-spacing: 0.5px; }
+    .include-icon { width: 32px; height: 32px; font-size: 14px; }
+    .section-icon { width: 40px; height: 40px; font-size: 16px; border-radius: 12px; }
+  }
+
+  html { -webkit-overflow-scrolling: touch; }
+
+  @supports (-webkit-touch-callout: none) {
+    body { -webkit-text-size-adjust: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<button class="mobile-nav-btn" id="mobileNavBtn" aria-label="Toggle navigation">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <span style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600">9 Sections</span>
+    <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  </div>
+  <a class="mobile-nav-item" href="#s1">1. Introduction</a>
+  <a class="mobile-nav-item" href="#s2">2. Feasibility Study</a>
+  <a class="mobile-nav-item" href="#s3">3. Problem & Solution</a>
+  <a class="mobile-nav-item" href="#s4">4. Requirements</a>
+  <a class="mobile-nav-item" href="#s5">5. Algorithm</a>
+  <a class="mobile-nav-item" href="#s6">6. System Design</a>
+  <a class="mobile-nav-item" href="#s7">7. Implementation</a>
+  <a class="mobile-nav-item" href="#s8">8. Timeline</a>
+  <a class="mobile-nav-item" href="#s9">9. References</a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">💻 C Programming Project</div>
+  <h1>Project I <span>Proposal</span><br>Guide</h1>
+  <p class="hero-sub">A complete guide for 2nd Semester BCA students to prepare their C programming project proposal — aligned with Pokhara University syllabus.</p>
+  <div class="hero-sections">
+    <span class="hero-pill" style="color:#58a6ff;border-color:rgba(88,166,255,0.3)">1. Introduction</span>
+    <span class="hero-pill" style="color:#ffa657;border-color:rgba(255,166,87,0.3)">2. Feasibility Study</span>
+    <span class="hero-pill" style="color:#3fb950;border-color:rgba(63,185,80,0.3)">3. Problem & Solution</span>
+    <span class="hero-pill" style="color:#ff7b72;border-color:rgba(255,123,114,0.3)">4. Requirements</span>
+    <span class="hero-pill" style="color:#bc8cff;border-color:rgba(188,140,255,0.3)">5. Algorithm</span>
+    <span class="hero-pill" style="color:#3fbdff;border-color:rgba(63,189,255,0.3)">6. System Design</span>
+    <span class="hero-pill" style="color:#f0b429;border-color:rgba(240,180,41,0.3)">7. Implementation</span>
+    <span class="hero-pill" style="color:#56d364;border-color:rgba(86,211,100,0.3)">8. Timeline</span>
+    <span class="hero-pill" style="color:#f778ba;border-color:rgba(247,120,186,0.3)">9. References</span>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-title">9 Sections</div>
+    <a class="nav-item" href="#s1"><span class="nav-num bg-blue c-blue">1</span> Introduction</a>
+    <a class="nav-item" href="#s2"><span class="nav-num bg-orange c-orange">2</span> Feasibility Study</a>
+    <a class="nav-item" href="#s3"><span class="nav-num bg-green c-green">3</span> Problem & Solution</a>
+    <a class="nav-item" href="#s4"><span class="nav-num bg-red c-red">4</span> Requirements</a>
+    <a class="nav-item" href="#s5"><span class="nav-num bg-purple c-purple">5</span> Algorithm</a>
+    <a class="nav-item" href="#s6"><span class="nav-num bg-teal c-teal">6</span> System Design</a>
+    <a class="nav-item" href="#s7"><span class="nav-num bg-gold c-gold">7</span> Implementation</a>
+    <a class="nav-item" href="#s8"><span class="nav-num bg-green c-mint">8</span> Timeline</a>
+    <a class="nav-item" href="#s9"><span class="nav-num bg-red c-pink">9</span> References</a>
+  </nav>
+
+  <main class="main">
+    <div class="section section-anchor" id="s1">
+      <div class="section-header">
+        <div class="section-icon bg-blue" style="color:#58a6ff">📋</div>
+        <div class="section-meta">
+          <div class="section-label c-blue">Section 01</div>
+          <div class="section-title">Introduction</div>
+          <div class="section-desc">Set the context. Explain your project domain, the problem you're solving, and why it matters.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-blue"><span class="card-dot" style="background:#58a6ff"></span>What is the Introduction?</div>
+        <p style="font-size:14px;line-height:1.8;color:#c9d1d9">The Introduction provides the <strong style="color:#58a6ff">background context</strong> for your C programming project. It describes the problem domain, current solutions, and why your project is needed.</p>
+      </div>
+
+      <div class="subsection-label">What to Include — 4 Key Elements</div>
+
+      <div class="card">
+        <div class="include-item">
+          <div class="include-icon bg-blue" style="color:#58a6ff; font-size:18px">🌐</div>
+          <div class="include-body">
+            <h4>A — Background Context</h4>
+            <p>Describe the domain (e.g., library management, student grading, inventory system). Explain the current manual or existing process.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-icon bg-red" style="color:#ff7b72; font-size:18px">❗</div>
+          <div class="include-body">
+            <h4>B — Problem Statement</h4>
+            <p>Clearly state the core problem your C program will solve. Be specific about inefficiencies, errors, or limitations.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-icon bg-green" style="color:#3fb950; font-size:18px">🚀</div>
+          <div class="include-body">
+            <h4>C — Project Name & Purpose</h4>
+            <p>State your project name and one clear sentence about what it does. This is your "one-liner" — make it precise.</p>
+          </div>
+        </div>
+        <div class="include-item">
+          <div class="include-icon bg-purple" style="color:#bc8cff; font-size:18px">🎯</div>
+          <div class="include-body">
+            <h4>D — Target Impact</h4>
+            <p>Who benefits? How will it improve their work? Mention specific users and expected improvement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <p><strong>Library Management System — C Project:</strong><br><br>
+        "Library management is a <strong>critical administrative task</strong> in educational institutions. Currently, libraries rely on manual record-keeping using registers, which is time-consuming and error-prone. <strong>LibManage</strong> is a C-based console application that automates book issue, return, and tracking."</p>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s2">
+      <div class="section-header">
+        <div class="section-icon bg-orange" style="color:#ffa657">📊</div>
+        <div class="section-meta">
+          <div class="section-label c-orange">Section 02</div>
+          <div class="section-title">Feasibility Study</div>
+          <div class="section-desc">Evaluate whether your project is technically, economically, and operationally viable. Critical for Phase I evaluation (20% marks).</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>Why Feasibility Study Matters</div>
+        <p style="font-size:14px;color:#c9d1d9;line-height:1.8">The <strong style="color:#ffa657">Feasibility Study</strong> is a key evaluation criterion for Phase I. It proves that your project is realistic, achievable, and worth pursuing.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" style="border-color:rgba(88,166,255,0.3)">
+          <div class="card-title c-blue"><span class="card-dot" style="background:#58a6ff"></span>Technical Feasibility</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">Can we build it with C programming?</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> C language skills available</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Hardware requirements met</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Development tools accessible</li>
+          </ul>
+        </div>
+        <div class="card" style="border-color:rgba(255,166,87,0.3)">
+          <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>Economic Feasibility</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">Is it cost-effective?</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Minimal hardware cost</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Free/open-source tools</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Time within semester scope</li>
+          </ul>
+        </div>
+        <div class="card" style="border-color:rgba(63,185,80,0.3)">
+          <div class="card-title c-green"><span class="card-dot" style="background:#3fb950"></span>Operational Feasibility</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">Will it work in practice?</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> User-friendly interface</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Easy to learn/use</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Solves real problem</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s3">
+      <div class="section-header">
+        <div class="section-icon bg-red" style="color:#ff7b72">🔥</div>
+        <div class="section-meta">
+          <div class="section-label c-red">Section 03</div>
+          <div class="section-title">Problem & Solution</div>
+          <div class="section-desc">The heart of your proposal. Convince the evaluator that the problem is real and your C program uniquely addresses it.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title c-red"><span class="card-dot" style="background:#ff7b72"></span>Problem Statement</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:16px">Describe the current pain point in detail. Use real scenarios. Name affected users.</p>
+          <div class="template-box">
+            <span class="keyword">"Currently,</span> <span class="placeholder">[target users]</span> <span class="keyword">face</span> <span class="placeholder">[specific problem]</span> <span class="keyword">when</span> <span class="placeholder">[situation]</span><span class="keyword">.</span><br><br>
+            <span class="keyword">This causes</span> <span class="placeholder">[impact: time wasted, errors]</span><span class="keyword">.</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title c-red"><span class="card-dot" style="background:#ff7b72"></span>Proposed Solution</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:16px">Describe your C program and exactly how it solves the problem.</p>
+          <div class="template-box">
+            <span class="placeholder">[Project Name]</span> <span class="keyword">is a</span> <span class="placeholder">[console C application]</span> <span class="keyword">that</span> <span class="placeholder">[what it does]</span><span class="keyword">.</span><br><br>
+            <span class="keyword">It uses</span> <span class="placeholder">[C features]</span> <span class="keyword">to</span> <span class="placeholder">[benefits]</span><span class="keyword">.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s4">
+      <div class="section-header">
+        <div class="section-icon bg-purple" style="color:#bc8cff">📌</div>
+        <div class="section-meta">
+          <div class="section-label c-purple">Section 04</div>
+          <div class="section-title">Requirements</div>
+          <div class="section-desc">Define what your C program will do (functional) and how well it will perform (non-functional).</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-color:rgba(88,166,255,0.3)">
+          <div class="card-title c-blue"><span class="card-dot" style="background:#58a6ff"></span>Functional Requirements</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">"What does the program DO?"</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Add/modify/delete records</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Search functionality</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> Data validation</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#3fb950">→</span> File-based storage</li>
+          </ul>
+        </div>
+        <div class="card" style="border-color:rgba(255,166,87,0.3)">
+          <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>Non-Functional Requirements</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">"How WELL does it work?"</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Response time &lt; 2 seconds</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Data integrity maintained</li>
+            <li style="font-size:13px;display:flex;gap:8px;align-items:center"><span style="color:#ffa657">→</span> Handles minimum 100 records</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s5">
+      <div class="section-header">
+        <div class="section-icon bg-purple" style="color:#bc8cff">🔄</div>
+        <div class="section-meta">
+          <div class="section-label c-purple">Section 05</div>
+          <div class="section-title">Algorithm & Flowchart</div>
+          <div class="section-desc">Document the logic of your C program using step-by-step algorithms and visual flowcharts.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title c-purple"><span class="card-dot" style="background:#bc8cff"></span>Algorithm</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:16px">A step-by-step procedure to solve the problem.</p>
+          <div class="template-box">
+            <span class="keyword">Step 1:</span> <span class="placeholder">[Start program]</span><br>
+            <span class="keyword">Step 2:</span> <span class="placeholder">[Initialize variables]</span><br>
+            <span class="keyword">Step 3:</span> <span class="placeholder">[Display menu]</span><br>
+            <span class="keyword">Step 4:</span> <span class="placeholder">[Get user choice]</span><br>
+            <span class="keyword">Step 5:</span> <span class="placeholder">[Execute function]</span><br>
+            <span class="keyword">Step 6:</span> <span class="placeholder">[Repeat until exit]</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title c-purple"><span class="card-dot" style="background:#bc8cff"></span>Flowchart</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:16px">Visual representation using standard symbols.</p>
+          <div style="background:var(--bg3);border-radius:10px;padding:14px;margin-top:12px">
+            <div style="font-size:11px;font-weight:700;color:#bc8cff;margin-bottom:8px">SYMBOLS</div>
+            <div style="font-size:12px;color:#c9d1d9">
+              <strong style="color:#58a6ff">Oval:</strong> Start/End<br>
+              <strong style="color:#ffa657">Parallelogram:</strong> Input/Output<br>
+              <strong style="color:#3fb950">Rectangle:</strong> Process<br>
+              <strong style="color:#ff7b72">Diamond:</strong> Decision
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s6">
+      <div class="section-header">
+        <div class="section-icon bg-teal" style="color:#3fbdff">🔷</div>
+        <div class="section-meta">
+          <div class="section-label c-teal">Section 06</div>
+          <div class="section-title">System Design</div>
+          <div class="section-desc">Include Context Diagram and Data Flow Diagram (DFD) to visualize your system architecture.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-color:rgba(88,166,255,0.3)">
+          <div class="card-title c-blue"><span class="card-dot" style="background:#58a6ff"></span>Context Diagram (Level 0)</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">Shows your system as a single process interacting with external entities.</p>
+        </div>
+        <div class="card" style="border-color:rgba(255,166,87,0.3)">
+          <div class="card-title c-orange"><span class="card-dot" style="background:#ffa657"></span>Data Flow Diagram (Level 1)</div>
+          <p style="font-size:13px;color:#8b949e;margin-bottom:12px">Breaks down the system into major processes and shows data flow.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-title c-teal"><span class="card-dot" style="background:#3fbdff"></span>Data Structure Design</div>
+        <div class="template-box">
+          <span class="keyword">struct</span> <span class="placeholder">Book</span> <span class="keyword">{</span><br>
+            &nbsp;&nbsp;<span class="keyword">int</span> <span class="placeholder">id;</span><br>
+            &nbsp;&nbsp;<span class="keyword">char</span> <span class="placeholder">title[50];</span><br>
+            &nbsp;&nbsp;<span class="keyword">char</span> <span class="placeholder">author[30];</span><br>
+            &nbsp;&nbsp;<span class="keyword">int</span> <span class="placeholder">status;</span><br>
+          <span class="keyword">};</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s7">
+      <div class="section-header">
+        <div class="section-icon bg-gold" style="color:#f0b429">⚙️</div>
+        <div class="section-meta">
+          <div class="section-label c-gold">Section 07</div>
+          <div class="section-title">Implementation Plan</div>
+          <div class="section-desc">Outline your development approach, C features to be used, and testing strategy.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-gold"><span class="card-dot" style="background:#f0b429"></span>C Programming Features</div>
+        <div class="grid-3" style="margin-top:8px">
+          <div style="background:var(--bg3);border-radius:12px;padding:18px">
+            <div style="font-size:20px;margin-bottom:8px">📦</div>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Data Structures</h4>
+            <p style="font-size:12px;color:#8b949e">Structures, arrays, linked lists.</p>
+          </div>
+          <div style="background:var(--bg3);border-radius:12px;padding:18px">
+            <div style="font-size:20px;margin-bottom:8px">📁</div>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">File Handling</h4>
+            <p style="font-size:12px;color:#8b949e">fopen, fclose, fread, fwrite.</p>
+          </div>
+          <div style="background:var(--bg3);border-radius:12px;padding:18px">
+            <div style="font-size:20px;margin-bottom:8px">🔗</div>
+            <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Pointers</h4>
+            <p style="font-size:12px;color:#8b949e">Dynamic memory, passing by reference.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-title c-gold"><span class="card-dot" style="background:#f0b429"></span>Testing Strategy</div>
+        <ul class="checklist">
+          <li><span class="check-icon">✓</span><div><strong>Unit Testing</strong> — Test each function individually</div></li>
+          <li><span class="check-icon">✓</span><div><strong>Integration Testing</strong> — Test modules working together</div></li>
+          <li><span class="check-icon">✓</span><div><strong>Boundary Testing</strong> — Test with min/max values</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s8">
+      <div class="section-header">
+        <div class="section-icon bg-green" style="color:#56d364">📅</div>
+        <div class="section-meta">
+          <div class="section-label c-mint">Section 08</div>
+          <div class="section-title">Project Timeline</div>
+          <div class="section-desc">Three-phase structure: Phase I (Proposal), Phase II (Mid-term after 4 weeks), Phase III (Final submission).</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-mint"><span class="card-dot" style="background:#56d364"></span>Three-Phase Structure</div>
+        <p style="font-size:14px;color:#c9d1d9;line-height:1.8">Project I is evaluated in <strong style="color:#56d364">three phases</strong>. Phase II occurs exactly <strong>4 weeks after</strong> Phase I.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card" style="border-color:rgba(88,166,255,0.3)">
+          <div style="font-size:11px;font-weight:700;color:#58a6ff;margin-bottom:8px">PHASE I (20%)</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Proposal Defense</h4>
+          <p style="font-size:12px;color:#8b949e">Feasibility, Requirements, Project Plan, Creativity</p>
+        </div>
+        <div class="card" style="border-color:rgba(255,166,87,0.3)">
+          <div style="font-size:11px;font-weight:700;color:#ffa657;margin-bottom:8px">PHASE II (30%)</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Mid-Term Defense</h4>
+          <p style="font-size:12px;color:#8b949e">4 weeks after Proposal. System Design, Progress</p>
+        </div>
+        <div class="card" style="border-color:rgba(63,185,80,0.3)">
+          <div style="font-size:11px;font-weight:700;color:#3fb950;margin-bottom:8px">PHASE III (50%)</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:6px">Final Defense</h4>
+          <p style="font-size:12px;color:#8b949e">Presentation, Demo, Viva, Documentation</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <p><strong>Important:</strong> Final report must be submitted <strong>1 week before</strong> final defense. Hardcopy and softcopy required.</p>
+      </div>
+    </div>
+
+    <div class="section section-anchor" id="s9">
+      <div class="section-header">
+        <div class="section-icon bg-pink" style="color:#f778ba">📚</div>
+        <div class="section-meta">
+          <div class="section-label c-pink">Section 09</div>
+          <div class="section-title">References</div>
+          <div class="section-desc">List all sources using IEEE citation format. Minimum 5 references covering C programming books and online resources.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title c-pink"><span class="card-dot" style="background:#f778ba"></span>IEEE Citation Format</div>
+        <p style="font-size:14px;color:#c9d1d9;margin-bottom:16px;line-height:1.7">Use <strong style="color:#f778ba">numbered citations [1], [2]</strong> in text, with matching numbered list at end.</p>
+      </div>
+
+      <div class="ref-example">
+        [1] B. Kernighan and D. Ritchie, <em>The C Programming Language</em>, 2nd ed. Prentice Hall, 1988.
+      </div>
+      <div class="ref-example">
+        [2] Y. Kanetkar, <em>Let Us C</em>, 17th ed. BPB Publications, 2020.
+      </div>
+      <div class="ref-example">
+        [3] Tutorialspoint, "C Programming Tutorial," 2024. [Online]. Available: https://www.tutorialspoint.com/cprogramming.
+      </div>
+
+      <div class="warn-box">
+        <span style="font-size:16px;flex-shrink:0">⚠️</span>
+        <p><strong>Never cite Wikipedia</strong> as a reference. Use it only to find original sources.</p>
+      </div>
+    </div>
+
+    <div class="summary-banner">
+      <div style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600">Complete Proposal Checklist</div>
+      <h2>All 9 Sections at a Glance</h2>
+      <p style="font-size:15px;color:var(--muted);margin-top:8px">Every section must be present for a complete Project I proposal.</p>
+      <div class="summary-grid">
+        <div class="summary-num"><div class="n c-blue">01</div><div class="l">Introduction</div></div>
+        <div class="summary-num"><div class="n c-orange">02</div><div class="l">Feasibility</div></div>
+        <div class="summary-num"><div class="n c-green">03</div><div class="l">Problem + Solution</div></div>
+        <div class="summary-num"><div class="n c-purple">04</div><div class="l">Requirements</div></div>
+        <div class="summary-num"><div class="n c-teal">05</div><div class="l">Algorithm</div></div>
+        <div class="summary-num"><div class="n c-gold">06</div><div class="l">System Design</div></div>
+        <div class="summary-num"><div class="n c-mint">07</div><div class="l">Implementation</div></div>
+        <div class="summary-num"><div class="n c-pink">08</div><div class="l">Timeline</div></div>
+        <div class="summary-num"><div class="n c-red">09</div><div class="l">References</div></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  const mobileNavBtn = document.getElementById('mobileNavBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+  mobileNavBtn.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  mobileNavClose.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!mobileNav.contains(e.target) && !mobileNavBtn.contains(e.target)) {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  const sectionEls = document.querySelectorAll('.section-anchor');
+  const mobileNavObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        mobileNavItems.forEach(n => n.classList.remove('active'));
+        const active = document.querySelector(`.mobile-nav-item[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
+  sectionEls.forEach(s => mobileNavObs.observe(s));
+
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  });
+
+  const sections = document.querySelectorAll('.section');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => obs.observe(s));
+
+  const navItems = document.querySelectorAll('.nav-item');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const active = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
+  sectionEls.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
